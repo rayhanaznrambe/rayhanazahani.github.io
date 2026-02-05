@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Library - Beranda</title>
   <style>
-    /* Reset dan font dasar */
+    /* ===== Reset dasar ===== */
     * {
       margin: 0;
       padding: 0;
@@ -13,57 +13,72 @@
     }
 
     body {
-      font-family: 'Georgia', serif;
+      font-family: 'Poppins', 'Georgia', serif;
       background: linear-gradient(135deg, #3c0d0d, #000000);
       color: #f8f5f0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
-    /* Navigasi */
+    /* ===== Navigasi ===== */
     nav {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(20, 20, 20, 0.5);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 50px;
+      padding: 15px 60px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      animation: fadeDown 1s ease-in-out;
     }
 
     nav h1 {
       font-size: 28px;
-      color: #FFD700;
+      color: #ffd700;
       letter-spacing: 2px;
+      font-weight: 700;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 30px;
     }
 
     nav a {
       text-decoration: none;
       color: #f8f5f0;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    nav a:hover {
-      color: #FFD700;
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #ffd700;
+      transition: width 0.3s ease;
     }
 
-    /* Hero Section */
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Hero Section ===== */
     .hero {
       flex: 1;
       background: 
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
-        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80');
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0ea?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -73,73 +88,96 @@
       align-items: center;
       text-align: center;
       padding: 80px 20px;
-      animation: fadeIn 1.8s ease-in-out;
+      position: relative;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 60px 40px;
+      max-width: 800px;
+      backdrop-filter: blur(10px);
+      animation: float 4s ease-in-out infinite alternate;
     }
 
     .hero h2 {
-      font-size: 58px;
-      color: #FFD700;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      margin-bottom: 25px;
+      font-size: 54px;
+      color: #ffd700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
     }
 
     .hero p {
-      font-size: 22px;
-      max-width: 720px;
-      line-height: 1.6;
+      font-size: 20px;
       color: #f0e6d2;
+      line-height: 1.6;
+      margin-bottom: 30px;
     }
 
     .btn {
-      margin-top: 35px;
       background: linear-gradient(90deg, #b8860b, #ffd700);
       color: #000;
-      padding: 14px 40px;
+      padding: 14px 38px;
       border: none;
-      border-radius: 30px;
+      border-radius: 50px;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 18px #d4af37;
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #ffd700;
     }
 
-    /* Footer */
+    /* ===== Animasi & efek ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-15px); }
+    }
+
+    /* ===== Footer ===== */
     footer {
-      background: rgba(0, 0, 0, 0.9);
-      color: #ccc;
+      background: rgba(0, 0, 0, 0.85);
       text-align: center;
-      padding: 18px 10px;
+      color: #ccc;
+      padding: 20px 10px;
       font-size: 14px;
       border-top: 1px solid rgba(255, 215, 0, 0.25);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsif */
+    /* ===== Responsif ===== */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         gap: 10px;
+        padding: 15px 20px;
       }
 
       .hero h2 {
-        font-size: 42px;
+        font-size: 38px;
       }
 
       .hero p {
         font-size: 18px;
       }
 
-      .btn {
-        padding: 12px 30px;
+      .glass-box {
+        padding: 40px 25px;
       }
     }
   </style>
@@ -156,11 +194,13 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
-    <h2>Selamat Datang di Digital Library</h2>
-    <p>Jelajahi pengetahuan dan informasi melalui koleksi digital kami yang disusun untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
-    <button class="btn">Jelajahi Sekarang</button>
+    <div class="glass-box">
+      <h2>Selamat Datang di Digital Library</h2>
+      <p>Jelajahi pengetahuan dan informasi melalui koleksi digital kami yang dirancang untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
+      <button class="btn">Jelajahi Sekarang</button>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -169,4 +209,3 @@
   </footer>
 </body>
 </html>
-
