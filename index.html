@@ -15,15 +15,15 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2a0000, #000000);
+      background: linear-gradient(135deg, #250000, #000000);
       color: #f0f0f0;
       min-height: 100vh;
-      overflow-x: hidden;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
-    /* ========== Navbar ========== */
+    /* Navbar */
     nav {
       position: sticky;
       top: 0;
@@ -32,7 +32,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 18px 60px;
-      background: rgba(20, 20, 20, 0.6);
+      background: rgba(20, 20, 20, 0.7);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       animation: fadeDown 1s ease-in-out;
@@ -55,8 +55,8 @@
       text-decoration: none;
       color: #ccc;
       font-weight: 500;
-      transition: color 0.3s ease;
       position: relative;
+      transition: color 0.3s ease;
     }
 
     nav a::after {
@@ -83,97 +83,112 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== Hero Section ========== */
+    /* Hero Section */
     .hero {
       flex: 1;
+      position: relative;
       background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.8)),
-        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80');
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1535909339361-9b52e97f4bfc?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 100px 20px;
-      position: relative;
+      padding: 120px 20px;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
+    /* Floating shapes for creativity */
+    .circle {
       position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle at 30% 30%, rgba(150,0,0,0.3), transparent 70%);
-      top: 0;
-      left: 0;
+      border-radius: 50%;
       filter: blur(100px);
+      opacity: 0.3;
       z-index: 0;
-      animation: float 6s ease-in-out infinite alternate;
+      animation: move 8s ease-in-out infinite alternate;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
+    .circle.red {
+      background: #a30d0d;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle at 70% 70%, rgba(120,0,0,0.25), transparent 70%);
-      bottom: 0;
-      right: 0;
-      filter: blur(100px);
-      z-index: 0;
-      animation: float 8s ease-in-out infinite alternate-reverse;
+      top: -100px;
+      left: -100px;
     }
 
-    @keyframes float {
+    .circle.dark {
+      background: #330000;
+      width: 300px;
+      height: 300px;
+      bottom: -100px;
+      right: -80px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes move {
       0% { transform: translateY(0px); }
-      100% { transform: translateY(-30px); }
+      100% { transform: translateY(-40px); }
     }
 
     .hero-content {
-      z-index: 1;
+      z-index: 2;
       background: rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
-      padding: 60px 40px;
-      border-radius: 24px;
-      max-width: 800px;
+      padding: 70px 50px;
+      border-radius: 25px;
+      max-width: 850px;
+      box-shadow: 0 8px 35px rgba(0,0,0,0.5);
       animation: fadeIn 1.5s ease-in-out;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 100%;
+      height: 100%;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.05);
+      z-index: -1;
+      filter: blur(2px);
     }
 
     .hero h2 {
-      font-size: 52px;
+      font-size: 54px;
       margin-bottom: 20px;
       color: #fff;
       letter-spacing: 1px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
     }
 
     .hero p {
       font-size: 20px;
       color: #dcdcdc;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 35px;
     }
 
     .btn {
-      background: #b23b3b;
+      background: #a13232;
       color: #fff;
       border: none;
-      padding: 14px 36px;
+      padding: 15px 40px;
       border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(178,59,59,0.3);
+      box-shadow: 0 5px 15px rgba(161,50,50,0.4);
     }
 
     .btn:hover {
-      background: #c94b4b;
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(180,50,50,0.4);
+      background: #b33b3b;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(179,59,59,0.45);
     }
 
     @keyframes fadeIn {
@@ -181,7 +196,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== Footer ========== */
+    /* Footer */
     footer {
       text-align: center;
       background: rgba(0,0,0,0.9);
@@ -191,9 +206,11 @@
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
+        gap: 10px;
         padding: 15px 25px;
       }
 
@@ -212,6 +229,7 @@
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav>
     <h1>Digital Library</h1>
@@ -224,9 +242,11 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="circle red"></div>
+    <div class="circle dark"></div>
     <div class="hero-content">
       <h2>Selamat Datang di Digital Library</h2>
-      <p>Temukan pengetahuan dan informasi digital yang disusun untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
+      <p>Tempat di mana pengetahuan digital bertemu kreativitas. Nikmati pengalaman membaca yang modern, interaktif, dan menyenangkan untuk semua generasi pembelajar.</p>
       <button class="btn">Jelajahi Sekarang</button>
     </div>
   </section>
@@ -235,5 +255,6 @@
   <footer>
     &copy; 2026 Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
   </footer>
+
 </body>
 </html>
