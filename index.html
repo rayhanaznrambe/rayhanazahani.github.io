@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Library - Beranda</title>
   <style>
-    /* Reset dan font */
+    /* Reset dan font dasar */
     * {
       margin: 0;
       padding: 0;
@@ -24,7 +24,7 @@
     /* Navigasi */
     nav {
       background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -61,34 +61,40 @@
     /* Hero Section */
     .hero {
       flex: 1;
+      background: 
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 50px 20px;
-      animation: fadeIn 1.5s ease-in-out;
+      padding: 80px 20px;
+      animation: fadeIn 1.8s ease-in-out;
     }
 
     .hero h2 {
-      font-size: 60px;
+      font-size: 58px;
       color: #FFD700;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .hero p {
       font-size: 22px;
-      max-width: 700px;
+      max-width: 720px;
       line-height: 1.6;
       color: #f0e6d2;
     }
 
     .btn {
-      margin-top: 30px;
-      background: linear-gradient(90deg, #a67c00, #d4af37);
+      margin-top: 35px;
+      background: linear-gradient(90deg, #b8860b, #ffd700);
       color: #000;
-      padding: 12px 35px;
+      padding: 14px 40px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
@@ -98,23 +104,43 @@
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #d4af37;
+      transform: scale(1.07);
+      box-shadow: 0 0 18px #d4af37;
     }
 
     /* Footer */
     footer {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.9);
       color: #ccc;
       text-align: center;
-      padding: 15px 10px;
+      padding: 18px 10px;
       font-size: 14px;
-      border-top: 1px solid rgba(255, 215, 0, 0.2);
+      border-top: 1px solid rgba(255, 215, 0, 0.25);
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h2 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .btn {
+        padding: 12px 30px;
+      }
     }
   </style>
 </head>
@@ -133,8 +159,7 @@
   <!-- Hero -->
   <section class="hero">
     <h2>Selamat Datang di Digital Library</h2>
-    <p>Jelajahi pengetahuan tanpa batas melalui koleksi digital kami — 
-      sumber daya terbaik untuk mendukung pembelajaran dan inspirasi generasi masa depan.</p>
+    <p>Jelajahi pengetahuan dan informasi melalui koleksi digital kami yang disusun untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
     <button class="btn">Jelajahi Sekarang</button>
   </section>
 
