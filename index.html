@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Library - Segera Hadir</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Library - Beranda</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -15,126 +15,225 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=90') center/cover no-repeat;
+      background: linear-gradient(135deg, #2a0000, #000000);
+      color: #f0f0f0;
+      min-height: 100vh;
+      overflow-x: hidden;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+    }
+
+    /* ========== Navbar ========== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      color: #fff;
-      text-align: center;
+      padding: 18px 60px;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      animation: fadeDown 1s ease-in-out;
+    }
+
+    nav h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #e6e6e6;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      transition: color 0.3s ease;
       position: relative;
     }
 
-    /* overlay gelap untuk kontras */
-    body::before {
+    nav a::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(4px);
-      z-index: 0;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #c03c3c;
+      transition: width 0.3s ease;
     }
 
-    .container {
-      z-index: 1;
-      max-width: 600px;
-      padding: 40px 20px;
-      animation: fadeIn 1.5s ease-out;
+    nav a:hover {
+      color: #fff;
     }
 
-    h1 {
-      font-size: 52px;
-      font-weight: 600;
-      color: #e2e2e2;
-      text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+    nav a:hover::after {
+      width: 100%;
     }
 
-    p {
-      font-size: 18px;
-      color: #ddd;
-      margin-bottom: 40px;
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .countdown {
+    /* ========== Hero Section ========== */
+    .hero {
+      flex: 1;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.8)),
+        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
       display: flex;
       justify-content: center;
-      gap: 18px;
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-bottom: 30px;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .countdown span {
-      background: rgba(255,255,255,0.15);
-      padding: 15px 14px;
-      border-radius: 10px;
-      min-width: 80px;
-      backdrop-filter: blur(6px);
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 30% 30%, rgba(150,0,0,0.3), transparent 70%);
+      top: 0;
+      left: 0;
+      filter: blur(100px);
+      z-index: 0;
+      animation: float 6s ease-in-out infinite alternate;
     }
 
-    button {
-      background: rgba(255,255,255,0.25);
-      border: none;
-      padding: 14px 30px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 30px;
-      cursor: pointer;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 70% 70%, rgba(120,0,0,0.25), transparent 70%);
+      bottom: 0;
+      right: 0;
+      filter: blur(100px);
+      z-index: 0;
+      animation: float 8s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-30px); }
+    }
+
+    .hero-content {
+      z-index: 1;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      padding: 60px 40px;
+      border-radius: 24px;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease-in-out;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    .hero h2 {
+      font-size: 52px;
+      margin-bottom: 20px;
       color: #fff;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(6px);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
-    button:hover {
-      background: rgba(255,255,255,0.35);
-      transform: translateY(-3px);
+
+    .hero p {
+      font-size: 20px;
+      color: #dcdcdc;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      background: #b23b3b;
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(178,59,59,0.3);
+    }
+
+    .btn:hover {
+      background: #c94b4b;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(180,50,50,0.4);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      text-align: center;
+      background: rgba(0,0,0,0.9);
+      padding: 20px;
+      font-size: 14px;
+      color: #bbb;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px 25px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero-content {
+        padding: 40px 25px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <!-- Navbar -->
+  <nav>
     <h1>Digital Library</h1>
-    <p>Situs ini sedang kami persiapkan. Tetap nantikan peluncurannya — akan segera hadir!</p>
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#">Tentang</a></li>
+      <li><a href="#">Kontak</a></li>
+    </ul>
+  </nav>
 
-    <div class="countdown">
-      <span id="days">00</span>
-      <span id="hours">00</span>
-      <span id="minutes">00</span>
-      <span id="seconds">00</span>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Selamat Datang di Digital Library</h2>
+      <p>Temukan pengetahuan dan informasi digital yang disusun untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
+      <button class="btn">Jelajahi Sekarang</button>
     </div>
+  </section>
 
-    <button onclick="alert('Terima kasih!')">Ikuti Update</button>
-  </div>
-
-  <script>
-    // Target tanggal peluncuran
-    const targetDate = new Date('2026-12-01T00:00:00');
-    
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = String(days).padStart(2,'0');
-      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
-      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
-      document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
-    }
-
-    setInterval(updateCountdown, 1000);
-  </script>
-
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
+  </footer>
 </body>
 </html>
