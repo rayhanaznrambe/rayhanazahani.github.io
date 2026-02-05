@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Library - Beranda</title>
   <style>
-    /* ===== Reset dasar ===== */
+    /* ====== RESET & BASE ====== */
     * {
       margin: 0;
       padding: 0;
@@ -13,35 +13,73 @@
     }
 
     body {
-      font-family: 'Poppins', 'Georgia', serif;
-      background: linear-gradient(135deg, #3c0d0d, #000000);
-      color: #f8f5f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #3c0d0d, #1a0000);
+      color: #fff;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* ===== Navigasi ===== */
+    /* ====== BACKGROUND SHAPES ====== */
+    .bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.4;
+      z-index: 0;
+      animation: floaty 10s ease-in-out infinite alternate;
+    }
+
+    .shape1 {
+      background: #b22222;
+      width: 400px;
+      height: 400px;
+      top: -100px;
+      left: -100px;
+    }
+
+    .shape2 {
+      background: #ffd700;
+      width: 350px;
+      height: 350px;
+      bottom: -120px;
+      right: -80px;
+      opacity: 0.3;
+    }
+
+    .shape3 {
+      background: #ff6347;
+      width: 250px;
+      height: 250px;
+      bottom: 150px;
+      left: 80px;
+      opacity: 0.2;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(40px); }
+    }
+
+    /* ====== NAVBAR ====== */
     nav {
-      background: rgba(20, 20, 20, 0.5);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 60px;
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-      animation: fadeDown 1s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDown 1s ease;
     }
 
     nav h1 {
-      font-size: 28px;
-      color: #ffd700;
-      letter-spacing: 2px;
       font-weight: 700;
+      color: #ffd700;
+      font-size: 28px;
     }
 
     nav ul {
@@ -51,121 +89,150 @@
     }
 
     nav a {
-      text-decoration: none;
       color: #f8f5f0;
+      text-decoration: none;
       font-weight: 500;
-      transition: all 0.3s ease;
       position: relative;
     }
 
     nav a::after {
-      content: '';
+      content: "";
       position: absolute;
-      bottom: -5px;
-      left: 0;
       width: 0%;
       height: 2px;
       background: #ffd700;
-      transition: width 0.3s ease;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s;
     }
 
     nav a:hover::after {
       width: 100%;
     }
 
-    /* ===== Hero Section ===== */
+    @keyframes slideDown {
+      from { transform: translateY(-60px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ====== HERO SECTION ====== */
     .hero {
-      flex: 1;
-      background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.7)),
-        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0ea?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 80px 20px;
-      position: relative;
-      animation: fadeIn 1.5s ease-in-out;
+      padding: 100px 20px;
+      z-index: 1;
     }
 
-    .glass-box {
+    .hero-card {
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
       padding: 60px 40px;
       max-width: 800px;
-      backdrop-filter: blur(10px);
-      animation: float 4s ease-in-out infinite alternate;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .hero h2 {
       font-size: 54px;
       color: #ffd700;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
       margin-bottom: 20px;
+      font-weight: 700;
       letter-spacing: 1px;
     }
 
     .hero p {
       font-size: 20px;
-      color: #f0e6d2;
       line-height: 1.6;
-      margin-bottom: 30px;
+      color: #f0e6d2;
+      margin-bottom: 35px;
     }
 
     .btn {
       background: linear-gradient(90deg, #b8860b, #ffd700);
       color: #000;
-      padding: 14px 38px;
       border: none;
-      border-radius: 50px;
-      font-weight: 600;
+      padding: 15px 45px;
+      border-radius: 40px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 4px 6px 12px rgba(255, 215, 0, 0.25);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px #ffd700;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
     }
 
-    /* ===== Animasi & efek ===== */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ====== TEMPLATE SECTION ====== */
+    .templates {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 80px 20px;
+      z-index: 1;
+      position: relative;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-15px); }
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: rgba(0, 0, 0, 0.85);
+    .template-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 260px;
+      padding: 25px 20px;
       text-align: center;
-      color: #ccc;
-      padding: 20px 10px;
-      font-size: 14px;
-      border-top: 1px solid rgba(255, 215, 0, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      transform: perspective(600px) rotateX(0deg);
     }
 
-    /* ===== Responsif ===== */
+    .template-card:hover {
+      transform: perspective(600px) rotateX(8deg) translateY(-10px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .template-card h3 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .template-card p {
+      color: #f0e6d2;
+      font-size: 15px;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 25px 10px;
+      color: #ccc;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
-        gap: 10px;
-        padding: 15px 20px;
+        gap: 15px;
+        padding: 20px;
       }
 
       .hero h2 {
@@ -176,13 +243,18 @@
         font-size: 18px;
       }
 
-      .glass-box {
-        padding: 40px 25px;
+      .templates {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Background shapes -->
+  <div class="bg-shape shape1"></div>
+  <div class="bg-shape shape2"></div>
+  <div class="bg-shape shape3"></div>
+
   <!-- Navigasi -->
   <nav>
     <h1>Digital Library</h1>
@@ -196,10 +268,26 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="glass-box">
+    <div class="hero-card">
       <h2>Selamat Datang di Digital Library</h2>
-      <p>Jelajahi pengetahuan dan informasi melalui koleksi digital kami yang dirancang untuk mendukung pembelajaran serta memperluas wawasan Anda.</p>
+      <p>Temukan pengetahuan dan informasi menarik dari koleksi digital kami yang disusun untuk mendukung pembelajaran dan memperluas wawasan Anda.</p>
       <button class="btn">Jelajahi Sekarang</button>
+    </div>
+  </section>
+
+  <!-- Template lucu / konten tambahan -->
+  <section class="templates">
+    <div class="template-card">
+      <h3>📚 Koleksi Buku</h3>
+      <p>Ribuan judul digital yang siap menemani perjalanan belajar Anda.</p>
+    </div>
+    <div class="template-card">
+      <h3>💡 Artikel Inspiratif</h3>
+      <p>Baca kisah dan wawasan dari berbagai bidang pengetahuan.</p>
+    </div>
+    <div class="template-card">
+      <h3>🎧 Audio Learning</h3>
+      <p>Belajar lebih santai dengan format audio yang informatif dan menarik.</p>
     </div>
   </section>
 
