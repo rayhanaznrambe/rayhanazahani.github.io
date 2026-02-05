@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Library - Beranda</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Library - Segera Hadir</title>
   <style>
-    /* ====== RESET & BASE ====== */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
     * {
       margin: 0;
       padding: 0;
@@ -14,286 +15,126 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #3c0d0d, #1a0000);
-      color: #fff;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* ====== BACKGROUND SHAPES ====== */
-    .bg-shape {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.4;
-      z-index: 0;
-      animation: floaty 10s ease-in-out infinite alternate;
-    }
-
-    .shape1 {
-      background: #b22222;
-      width: 400px;
-      height: 400px;
-      top: -100px;
-      left: -100px;
-    }
-
-    .shape2 {
-      background: #ffd700;
-      width: 350px;
-      height: 350px;
-      bottom: -120px;
-      right: -80px;
-      opacity: 0.3;
-    }
-
-    .shape3 {
-      background: #ff6347;
-      width: 250px;
-      height: 250px;
-      bottom: 150px;
-      left: 80px;
-      opacity: 0.2;
-    }
-
-    @keyframes floaty {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(40px); }
-    }
-
-    /* ====== NAVBAR ====== */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=90') center/cover no-repeat;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      animation: slideDown 1s ease;
-    }
-
-    nav h1 {
-      font-weight: 700;
-      color: #ffd700;
-      font-size: 28px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      color: #f8f5f0;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: #ffd700;
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-60px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* ====== HERO SECTION ====== */
-    .hero {
-      position: relative;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: #fff;
       text-align: center;
-      padding: 100px 20px;
+      position: relative;
+    }
+
+    /* overlay gelap untuk kontras */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+    }
+
+    .container {
       z-index: 1;
+      max-width: 600px;
+      padding: 40px 20px;
+      animation: fadeIn 1.5s ease-out;
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      border-radius: 30px;
-      padding: 60px 40px;
-      max-width: 800px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    .hero h2 {
-      font-size: 54px;
-      color: #ffd700;
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      line-height: 1.6;
-      color: #f0e6d2;
-      margin-bottom: 35px;
-    }
-
-    .btn {
-      background: linear-gradient(90deg, #b8860b, #ffd700);
-      color: #000;
-      border: none;
-      padding: 15px 45px;
-      border-radius: 40px;
-      cursor: pointer;
+    h1 {
+      font-size: 52px;
       font-weight: 600;
-      font-size: 16px;
-      box-shadow: 4px 6px 12px rgba(255, 215, 0, 0.25);
-      transition: all 0.3s ease;
+      color: #e2e2e2;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
     }
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+    p {
+      font-size: 18px;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .countdown span {
+      background: rgba(255,255,255,0.15);
+      padding: 15px 14px;
+      border-radius: 10px;
+      min-width: 80px;
+      backdrop-filter: blur(6px);
+    }
+
+    button {
+      background: rgba(255,255,255,0.25);
+      border: none;
+      padding: 14px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+    button:hover {
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-3px);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ====== TEMPLATE SECTION ====== */
-    .templates {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      padding: 80px 20px;
-      z-index: 1;
-      position: relative;
-    }
-
-    .template-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      width: 260px;
-      padding: 25px 20px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      transform: perspective(600px) rotateX(0deg);
-    }
-
-    .template-card:hover {
-      transform: perspective(600px) rotateX(8deg) translateY(-10px);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .template-card h3 {
-      color: #ffd700;
-      margin-bottom: 10px;
-    }
-
-    .template-card p {
-      color: #f0e6d2;
-      font-size: 15px;
-    }
-
-    /* ====== FOOTER ====== */
-    footer {
-      text-align: center;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 25px 10px;
-      color: #ccc;
-      font-size: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 2;
-      position: relative;
-    }
-
-    /* ====== RESPONSIVE ====== */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
-      }
-
-      .hero h2 {
-        font-size: 38px;
-      }
-
-      .hero p {
-        font-size: 18px;
-      }
-
-      .templates {
-        flex-direction: column;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Background shapes -->
-  <div class="bg-shape shape1"></div>
-  <div class="bg-shape shape2"></div>
-  <div class="bg-shape shape3"></div>
 
-  <!-- Navigasi -->
-  <nav>
+  <div class="container">
     <h1>Digital Library</h1>
-    <ul>
-      <li><a href="#">Beranda</a></li>
-      <li><a href="#">Koleksi</a></li>
-      <li><a href="#">Tentang</a></li>
-      <li><a href="#">Kontak</a></li>
-    </ul>
-  </nav>
+    <p>Situs ini sedang kami persiapkan. Tetap nantikan peluncurannya — akan segera hadir!</p>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-card">
-      <h2>Selamat Datang di Digital Library</h2>
-      <p>Temukan pengetahuan dan informasi menarik dari koleksi digital kami yang disusun untuk mendukung pembelajaran dan memperluas wawasan Anda.</p>
-      <button class="btn">Jelajahi Sekarang</button>
+    <div class="countdown">
+      <span id="days">00</span>
+      <span id="hours">00</span>
+      <span id="minutes">00</span>
+      <span id="seconds">00</span>
     </div>
-  </section>
 
-  <!-- Template lucu / konten tambahan -->
-  <section class="templates">
-    <div class="template-card">
-      <h3>📚 Koleksi Buku</h3>
-      <p>Ribuan judul digital yang siap menemani perjalanan belajar Anda.</p>
-    </div>
-    <div class="template-card">
-      <h3>💡 Artikel Inspiratif</h3>
-      <p>Baca kisah dan wawasan dari berbagai bidang pengetahuan.</p>
-    </div>
-    <div class="template-card">
-      <h3>🎧 Audio Learning</h3>
-      <p>Belajar lebih santai dengan format audio yang informatif dan menarik.</p>
-    </div>
-  </section>
+    <button onclick="alert('Terima kasih!')">Ikuti Update</button>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
-  </footer>
+  <script>
+    // Target tanggal peluncuran
+    const targetDate = new Date('2026-12-01T00:00:00');
+    
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2,'0');
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+
 </body>
 </html>
