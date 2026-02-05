@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #a44b4b, #3c0d0d);
+      background: linear-gradient(135deg, #b65050, #8c1c1c);
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -23,7 +23,7 @@
       overflow-x: hidden;
     }
 
-    /* Navbar */
+    /* ===== Navbar ===== */
     nav {
       position: sticky;
       top: 0;
@@ -32,7 +32,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 18px 60px;
-      background: rgba(60, 0, 0, 0.6);
+      background: rgba(50, 0, 0, 0.55);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.1);
       animation: fadeDown 1s ease-in-out;
@@ -41,7 +41,7 @@
     nav h1 {
       font-size: 26px;
       font-weight: 600;
-      color: #f7f7f7;
+      color: #fff;
       letter-spacing: 1px;
     }
 
@@ -53,7 +53,7 @@
 
     nav a {
       text-decoration: none;
-      color: #eee;
+      color: #f8f8f8;
       font-weight: 500;
       position: relative;
       transition: color 0.3s ease;
@@ -66,7 +66,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: #f2b5b5;
+      background: #ffd6d6;
       transition: width 0.3s ease;
     }
 
@@ -83,58 +83,58 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero Section */
+    /* ===== Hero Section ===== */
     .hero {
       flex: 1;
       position: relative;
       background:
-        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.7)),
-        url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80');
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
-      background-position: center;
+      background-position: center center;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 100px 20px;
+      padding: 120px 20px;
       overflow: hidden;
     }
 
-    .floating-shape {
+    .blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(90px);
+      filter: blur(100px);
       opacity: 0.35;
       z-index: 0;
       animation: float 8s ease-in-out infinite alternate;
     }
 
-    .floating-shape.red {
-      background: #b65b5b;
-      width: 350px;
-      height: 350px;
+    .blob.maroon {
+      background: #d46b6b;
+      width: 400px;
+      height: 400px;
       top: -100px;
-      left: -100px;
+      left: -80px;
     }
 
-    .floating-shape.pink {
-      background: #d28f8f;
+    .blob.rose {
+      background: #e4a1a1;
       width: 300px;
       height: 300px;
-      bottom: -80px;
+      bottom: -60px;
       right: -60px;
-      animation-delay: 1.5s;
+      animation-delay: 1.2s;
     }
 
     @keyframes float {
-      0% { transform: translateY(0px); }
+      0% { transform: translateY(0); }
       100% { transform: translateY(-30px); }
     }
 
     .hero-content {
       z-index: 2;
       background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
       padding: 70px 50px;
       border-radius: 25px;
       max-width: 850px;
@@ -147,19 +147,19 @@
       margin-bottom: 20px;
       color: #fff;
       letter-spacing: 1px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     }
 
     .hero p {
       font-size: 20px;
-      color: #f5f5f5;
+      color: #f9f9f9;
       line-height: 1.7;
       margin-bottom: 35px;
     }
 
     .btn {
-      background: #f5a2a2;
-      color: #3c0d0d;
+      background: #fff;
+      color: #8c1c1c;
       border: none;
       padding: 15px 40px;
       border-radius: 50px;
@@ -167,13 +167,13 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(255, 192, 203, 0.4);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
     }
 
     .btn:hover {
-      background: #ffc0cb;
+      background: #ffe4e4;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 192, 203, 0.5);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
     }
 
     @keyframes fadeIn {
@@ -181,7 +181,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Footer */
+    /* ===== Footer ===== */
     footer {
       text-align: center;
       background: rgba(0,0,0,0.85);
@@ -191,7 +191,7 @@
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* Responsive */
+    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -229,11 +229,11 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="floating-shape red"></div>
-    <div class="floating-shape pink"></div>
+    <div class="blob maroon"></div>
+    <div class="blob rose"></div>
     <div class="hero-content">
       <h2>Selamat Datang di Digital Library</h2>
-      <p>Tempat membaca dengan sentuhan modern. Nikmati kemudahan akses pengetahuan digital yang elegan, inspiratif, dan menyenangkan.</p>
+      <p>Temukan dunia pengetahuan yang hangat dan inspiratif melalui koleksi digital kami. Desain baru, suasana modern, dan pengalaman membaca yang menyenangkan menanti Anda.</p>
       <button class="btn">Jelajahi Sekarang</button>
     </div>
   </section>
