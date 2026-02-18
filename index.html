@@ -125,91 +125,16 @@
       transform: translateY(-3px);
     }
 
-    /* ===== Profil Section ===== */
-    #profil {
-      background-color: #fff;
+    /* ===== Section Style (Profil, Video, Kontak, Login) ===== */
+    section {
       padding: 80px 20px;
       text-align: center;
     }
 
-    #profil h2 {
+    section h2 {
       color: #800000;
       font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    .profile-card {
-      background: #faf6f0;
-      border: 2px solid #e6d5b8;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      margin: 0 auto;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    }
-
-    .profile-card img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #800000;
-      margin-bottom: 20px;
-    }
-
-    .profile-card h3 { color: #800000; margin-bottom: 10px; }
-
-    .profile-card p {
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    .profile-links a {
-      display: inline-block;
-      margin: 10px;
-      background: #800000;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .profile-links a:hover { background: #a52a2a; }
-
-    /* ===== Video Section ===== */
-    #video {
-      background-color: #fdfaf6;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    #video h2 {
-      color: #800000;
       margin-bottom: 25px;
-      font-size: 32px;
-    }
-
-    iframe {
-      width: 80%;
-      max-width: 720px;
-      height: 400px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    /* ===== Kontak Section ===== */
-    #kontak {
-      background-color: #fff;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    #kontak h2 {
-      color: #800000;
-      margin-bottom: 25px;
-      font-size: 32px;
     }
 
     table {
@@ -294,6 +219,7 @@
       <li><a href="#profil">Profil</a></li>
       <li><a href="#video">Video</a></li>
       <li><a href="#kontak">Kontak</a></li>
+      <li><a href="#login">Login</a></li>
     </ul>
   </nav>
 
@@ -302,7 +228,6 @@
     <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active" alt="Perpustakaan 1">
     <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80" alt="Perpustakaan 2">
     <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80" alt="Perpustakaan 3">
-
     <div class="hero-content">
       <h2>Selamat Datang di Rayhana Digital Library</h2>
       <p>Perpustakaan digital pribadi yang mencerminkan semangat belajar tanpa batas.</p>
@@ -313,28 +238,15 @@
   <!-- ===== Profil Section ===== -->
   <section id="profil">
     <h2>Tentang Rayhana</h2>
-    <div class="profile-card">
-      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Rayhana">
-      <h3>Rayhana</h3>
-      <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
-      <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.
-      Web ini adalah refleksi semangat saya untuk terus membaca, menulis, dan menginspirasi melalui dunia digital.</p>
-
-      <div class="profile-links">
-        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank">Lihat CV</a>
-        <a href="https://www.instagram.com/rayhana_znrr?igsh=MTFjemtnZDVzMTAycw==" target="_blank">Instagram</a>
-      </div>
-    </div>
+    <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
+    <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.
+    Web ini adalah refleksi semangat saya untuk terus membaca, menulis, dan menginspirasi melalui dunia digital.</p>
   </section>
 
   <!-- ===== Video Section ===== -->
   <section id="video">
     <h2>Video Inspiratif</h2>
-    <iframe 
-      src="https://www.youtube.com/embed/4w13jP-cshM" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen></iframe>
   </section>
 
   <!-- ===== Kontak Section ===== -->
@@ -343,23 +255,29 @@
     <p>Silakan tinggalkan pesan, kritik, atau saran Anda untuk pengembangan Rayhana Digital Library.</p>
     <form>
       <table>
+        <tr><td>Nama</td><td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td></tr>
+        <tr><td>Email</td><td><input type="email" name="email" placeholder="Masukkan email aktif" required></td></tr>
+        <tr><td>Pesan / Feedback</td><td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td></tr>
+        <tr><td colspan="2" style="text-align:center;"><button type="submit" class="submit-btn">Kirim Pesan</button></td></tr>
+      </table>
+    </form>
+  </section>
+
+  <!-- ===== Login Section ===== -->
+  <section id="login">
+    <h2>Daftar Anggota</h2>
+    <p>Isi formulir di bawah untuk menjadi anggota Rayhana Digital Library.</p>
+    <form>
+      <table>
+        <tr><td>First Name</td><td><input type="text" name="fname" placeholder="Nama depan" required></td></tr>
+        <tr><td>Last Name</td><td><input type="text" name="lname" placeholder="Nama belakang" required></td></tr>
+        <tr><td>Nomor HP</td><td><input type="tel" name="phone" placeholder="Nomor telepon aktif" required></td></tr>
+        <tr><td>Email</td><td><input type="email" name="email" placeholder="Masukkan email aktif" required></td></tr>
         <tr>
-          <td>Nama</td>
-          <td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td>
+          <td>Persetujuan</td>
+          <td><label><input type="checkbox" required> DAFTAR</label></td>
         </tr>
-        <tr>
-          <td>Email</td>
-          <td><input type="email" name="email" placeholder="Masukkan email aktif" required></td>
-        </tr>
-        <tr>
-          <td>Pesan / Feedback</td>
-          <td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit" class="submit-btn">Kirim Pesan</button>
-          </td>
-        </tr>
+        <tr><td colspan="2" style="text-align:center;"><button type="submit" class="submit-btn">Kirim Pendaftaran</button></td></tr>
       </table>
     </form>
   </section>
