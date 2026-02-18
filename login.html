@@ -11,7 +11,8 @@
     color: #2a2a2a;
     text-align: center;
     padding: 60px;
-    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
   }
 
   h2 {
@@ -23,11 +24,35 @@
     margin-bottom: 20px;
   }
 
-  table {
-    margin: 0 auto 20px auto;
-    border-collapse: collapse;
-    width: 80%;
+  .form-wrapper {
+    position: relative;
+    width: 100%;
     max-width: 700px;
+    margin: 0 auto;
+    height: 500px; /* tinggi area form */
+  }
+
+  .form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+  }
+
+  .form-container.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
     background: #fff3ea;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -70,63 +95,52 @@
     text-decoration: underline;
   }
 
-  .hidden {
-    display: none;
-  }
-
-  .form-container {
-    animation: fadeIn 0.5s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 </style>
 </head>
 <body>
 
-  <!-- ===== FORM LOGIN ===== -->
-  <div id="loginForm" class="form-container">
-    <h2>Login ke Rayhana Digital Library</h2>
-    <p>Masuk dengan akun Anda untuk mengakses koleksi digital.</p>
-    <form>
-      <table>
-        <tr><td>Email</td><td><input type="email" placeholder="Masukkan email Anda" required></td></tr>
-        <tr><td>Password</td><td><input type="password" placeholder="Masukkan password" required></td></tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit">Login</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <p>Belum punya akun? <a href="#" id="showRegister">Daftar sekarang</a></p>
-  </div>
+  <div class="form-wrapper">
+    <!-- ===== FORM LOGIN ===== -->
+    <div id="loginForm" class="form-container active">
+      <h2>Login ke Rayhana Digital Library</h2>
+      <p>Masuk dengan akun Anda untuk mengakses koleksi digital.</p>
+      <form>
+        <table>
+          <tr><td>Email</td><td><input type="email" placeholder="Masukkan email Anda" required></td></tr>
+          <tr><td>Password</td><td><input type="password" placeholder="Masukkan password" required></td></tr>
+          <tr>
+            <td colspan="2" style="text-align:center;">
+              <button type="submit">Login</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <p>Belum punya akun? <a href="#" id="showRegister">Daftar sekarang</a></p>
+    </div>
 
-  <!-- ===== FORM DAFTAR ANGGOTA ===== -->
-  <div id="registerForm" class="form-container hidden">
-    <h2>Daftar Anggota Baru</h2>
-    <p>Isi formulir di bawah untuk menjadi anggota Rayhana Digital Library.</p>
-    <form>
-      <table>
-        <tr><td>First Name</td><td><input type="text" placeholder="Nama depan" required></td></tr>
-        <tr><td>Last Name</td><td><input type="text" placeholder="Nama belakang" required></td></tr>
-        <tr><td>Nomor HP</td><td><input type="tel" placeholder="Nomor telepon aktif" required></td></tr>
-        <tr><td>Email</td><td><input type="email" placeholder="Masukkan email aktif" required></td></tr>
-        <tr><td>Password</td><td><input type="password" placeholder="Buat password" required></td></tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit">Daftar</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <p>Sudah punya akun? <a href="#" id="showLogin">Login</a></p>
+    <!-- ===== FORM DAFTAR ===== -->
+    <div id="registerForm" class="form-container">
+      <h2>Daftar Anggota Baru</h2>
+      <p>Isi formulir di bawah untuk menjadi anggota Rayhana Digital Library.</p>
+      <form>
+        <table>
+          <tr><td>First Name</td><td><input type="text" placeholder="Nama depan" required></td></tr>
+          <tr><td>Last Name</td><td><input type="text" placeholder="Nama belakang" required></td></tr>
+          <tr><td>Nomor HP</td><td><input type="tel" placeholder="Nomor telepon aktif" required></td></tr>
+          <tr><td>Email</td><td><input type="email" placeholder="Masukkan email aktif" required></td></tr>
+          <tr><td>Password</td><td><input type="password" placeholder="Buat password" required></td></tr>
+          <tr>
+            <td colspan="2" style="text-align:center;">
+              <button type="submit">Daftar</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <p>Sudah punya akun? <a href="#" id="showLogin">Login</a></p>
+    </div>
   </div>
 
   <script>
-    // Ambil elemen form
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     const showRegister = document.getElementById('showRegister');
@@ -135,15 +149,15 @@
     // Tampilkan form daftar
     showRegister.addEventListener('click', (e) => {
       e.preventDefault();
-      loginForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
+      loginForm.classList.remove('active');
+      registerForm.classList.add('active');
     });
 
-    // Balik ke form login
+    // Tampilkan form login kembali
     showLogin.addEventListener('click', (e) => {
       e.preventDefault();
-      registerForm.classList.add('hidden');
-      loginForm.classList.remove('hidden');
+      registerForm.classList.remove('active');
+      loginForm.classList.add('active');
     });
   </script>
 
