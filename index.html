@@ -199,6 +199,66 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
+    /* ===== Kontak Section ===== */
+    #kontak {
+      background-color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    #kontak h2 {
+      color: #800000;
+      margin-bottom: 25px;
+      font-size: 32px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 700px;
+      background: #faf6f0;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    td {
+      padding: 12px 15px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #d3c4a3;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #800000;
+    }
+
+    button.submit-btn {
+      background-color: #800000;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button.submit-btn:hover {
+      background-color: #a52a2a;
+    }
+
     /* ===== Footer ===== */
     footer {
       text-align: center;
@@ -211,15 +271,11 @@
 
     /* ===== Responsive ===== */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 25px;
-      }
-
+      nav { flex-direction: column; gap: 10px; padding: 15px 25px; }
       .hero h2 { font-size: 38px; }
       .hero-content { padding: 40px 25px; }
       iframe { width: 95%; height: 240px; }
+      table { width: 95%; }
     }
   </style>
 </head>
@@ -261,13 +317,11 @@
       <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Rayhana">
       <h3>Rayhana</h3>
       <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
-      <p>
-        Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.
-        Web ini adalah refleksi semangat saya untuk terus membaca, menulis, dan menginspirasi melalui dunia digital.
-      </p>
+      <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.
+      Web ini adalah refleksi semangat saya untuk terus membaca, menulis, dan menginspirasi melalui dunia digital.</p>
 
       <div class="profile-links">
-        <a href="https://drive.google.com/file/d/1XXqL4c7qz2y-Yu5PCfv4Z2y8tF4YiJwM/view?usp=drive_link" target="_blank">Lihat CV</a>
+        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank">Lihat CV</a>
         <a href="https://www.instagram.com/rayhana_znrr?igsh=MTFjemtnZDVzMTAycw==" target="_blank">Instagram</a>
       </div>
     </div>
@@ -276,11 +330,42 @@
   <!-- ===== Video Section ===== -->
   <section id="video">
     <h2>Video Inspiratif</h2>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    <iframe 
+      src="https://www.youtube.com/embed/4w13jP-cshM" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <!-- ===== Kontak Section ===== -->
+  <section id="kontak">
+    <h2>Kontak & Feedback</h2>
+    <p>Silakan tinggalkan pesan, kritik, atau saran Anda untuk pengembangan Rayhana Digital Library.</p>
+    <form>
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email" placeholder="Masukkan email aktif" required></td>
+        </tr>
+        <tr>
+          <td>Pesan / Feedback</td>
+          <td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;">
+            <button type="submit" class="submit-btn">Kirim Pesan</button>
+          </td>
+        </tr>
+      </table>
+    </form>
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer id="kontak">
+  <footer>
     &copy; 2026 Rayhana Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
   </footer>
 
