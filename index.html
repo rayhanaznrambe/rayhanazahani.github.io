@@ -6,9 +6,7 @@
   <title>Rayhana Digital Library</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #faf6f0;
@@ -18,291 +16,92 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* ===== Navbar ===== */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 60px;
-      background-color: #800000;
-      color: #fff;
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 60px; background-color: #800000; color: #fff;
       border-bottom: 6px solid #e6d5b8;
     }
-
     nav h1 { font-size: 26px; font-weight: 700; }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f8f8f8;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
+    nav ul { list-style: none; display: flex; gap: 30px; }
+    nav a { text-decoration: none; color: #f8f8f8; font-weight: 500; transition: color 0.3s; }
     nav a:hover { color: #e6d5b8; }
-
-    /* ===== Hero Section ===== */
     .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
+      position: relative; height: 100vh; display: flex; justify-content: center; align-items: center;
+      text-align: center; color: #fff; overflow: hidden;
     }
-
     .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 1;
+      content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1;
     }
-
     .hero img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity 2s ease-in-out;
     }
-
     .hero img.active { opacity: 1; }
-
     .hero-content {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border: 3px solid #e6d5b8;
-      border-radius: 25px;
-      padding: 70px 50px;
-      max-width: 850px;
-      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
+      position: relative; z-index: 2; background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px); border: 3px solid #e6d5b8;
+      border-radius: 25px; padding: 70px 50px; max-width: 850px;
+      box-shadow: 0 8px 35px rgba(0,0,0,0.5);
     }
-
-    .hero h2 {
-      font-size: 54px;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #f2e4cc;
-      margin-top: 15px;
-    }
-
+    .hero h2 { font-size: 54px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+    .hero p { font-size: 18px; color: #f2e4cc; margin-top: 15px; }
     .btn {
-      background: #e6d5b8;
-      color: #7b1f1f;
-      border: none;
-      padding: 15px 45px;
-      border-radius: 50px;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      margin-top: 35px;
+      background: #e6d5b8; color: #7b1f1f; border: none; padding: 15px 45px;
+      border-radius: 50px; font-size: 17px; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 35px;
     }
-
-    .btn:hover {
-      background: #f2e4cc;
-      transform: translateY(-3px);
-    }
-
-    /* ===== Profil Section ===== */
-    #profil {
-      background-color: #fff;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    #profil h2 {
-      color: #800000;
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
+    .btn:hover { background: #f2e4cc; transform: translateY(-3px); }
+    #profil { background-color: #fff; padding: 80px 20px; text-align: center; }
+    #profil h2 { color: #800000; font-size: 36px; margin-bottom: 30px; }
     .profile-card {
-      background: #faf6f0;
-      border: 2px solid #e6d5b8;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      margin: 0 auto;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      background: #faf6f0; border: 2px solid #e6d5b8; border-radius: 20px;
+      padding: 30px; max-width: 600px; margin: 0 auto; box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-
     .profile-card img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #800000;
-      margin-bottom: 20px;
+      width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+      border: 3px solid #800000; margin-bottom: 20px;
     }
-
     .profile-card h3 { color: #800000; margin-bottom: 10px; }
-
-    .profile-card p {
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
+    .profile-card p { margin-bottom: 15px; line-height: 1.6; }
     .profile-links a {
-      display: inline-block;
-      margin: 10px;
-      background: #800000;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: background 0.3s;
+      display: inline-block; margin: 10px; background: #800000; color: #fff;
+      padding: 10px 20px; border-radius: 25px; text-decoration: none; transition: background 0.3s;
     }
-
     .profile-links a:hover { background: #a52a2a; }
-
-    /* ===== Video Section ===== */
-    #video {
-      background-color: #fdfaf6;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    #video h2 {
-      color: #800000;
-      margin-bottom: 25px;
-      font-size: 32px;
-    }
-
+    #video { background-color: #fdfaf6; text-align: center; padding: 80px 20px; }
+    #video h2 { color: #800000; margin-bottom: 25px; font-size: 32px; }
     iframe {
-      width: 80%;
-      max-width: 720px;
-      height: 400px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 80%; max-width: 720px; height: 400px; border: none;
+      border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
-    /* ===== Form Sections (Kontak & Login) ===== */
-    #kontak, #login {
-      background-color: #fff;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    #kontak h2, #login h2 {
-      color: #800000;
-      margin-bottom: 25px;
-      font-size: 32px;
-    }
-
-    table {
-      margin: 0 auto;
-      border-collapse: collapse;
-      width: 80%;
-      max-width: 700px;
-      background: #faf6f0;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    td {
-      padding: 12px 15px;
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #d3c4a3;
-      border-radius: 8px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 15px;
-      resize: vertical;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #800000;
-    }
-
-    button.submit-btn {
-      background-color: #800000;
-      color: white;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-top: 10px;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-
-    button.submit-btn:hover {
-      background-color: #a52a2a;
-    }
-
-    /* ===== Footer ===== */
     footer {
-      text-align: center;
-      background-color: #800000;
-      color: #e6d5b8;
-      padding: 20px;
-      font-size: 14px;
-      border-top: 6px solid #e6d5b8;
-    }
-
-    @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 10px; padding: 15px 25px; }
-      .hero h2 { font-size: 38px; }
-      .hero-content { padding: 40px 25px; }
-      iframe { width: 95%; height: 240px; }
-      table { width: 95%; }
+      text-align: center; background-color: #800000; color: #e6d5b8;
+      padding: 20px; font-size: 14px; border-top: 6px solid #e6d5b8;
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== Audio Background ===== -->
   <audio autoplay loop hidden>
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ===== Navbar ===== -->
   <nav>
     <h1>Rayhana Digital Library</h1>
     <ul>
       <li><a href="#beranda">Beranda</a></li>
       <li><a href="#profil">Profil</a></li>
       <li><a href="#video">Video</a></li>
-      <li><a href="#kontak">Kontak</a></li>
-      <li><a href="#login">Login</a></li>
+      <li><a href="kontak.html" target="_blank">Kontak</a></li>
+      <li><a href="login.html" target="_blank">Login</a></li>
     </ul>
   </nav>
 
-  <!-- ===== Hero Section ===== -->
   <section id="beranda" class="hero">
-    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active" alt="Perpustakaan 1">
-    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80" alt="Perpustakaan 2">
-    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80" alt="Perpustakaan 3">
-
+    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
+    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
     <div class="hero-content">
       <h2>Selamat Datang di Rayhana Digital Library</h2>
       <p>Perpustakaan digital pribadi yang mencerminkan semangat belajar tanpa batas.</p>
@@ -310,89 +109,29 @@
     </div>
   </section>
 
-  <!-- ===== Profil Section ===== -->
   <section id="profil">
     <h2>Tentang Rayhana</h2>
     <div class="profile-card">
       <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Rayhana">
       <h3>Rayhana</h3>
       <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
-      <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.
-      Web ini adalah refleksi semangat saya untuk terus membaca, menulis, dan menginspirasi melalui dunia digital.</p>
-
+      <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.</p>
       <div class="profile-links">
         <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank">Lihat CV</a>
-        <a href="https://www.instagram.com/rayhana_znrr?igsh=MTFjemtnZDVzMTAycw==" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/rayhana_znrr" target="_blank">Instagram</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== Video Section ===== -->
   <section id="video">
     <h2>Video Inspiratif</h2>
-    <iframe 
-      src="https://www.youtube.com/embed/4w13jP-cshM" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen></iframe>
   </section>
 
-  <!-- ===== Kontak Section ===== -->
-  <section id="kontak">
-    <h2>Kontak & Feedback</h2>
-    <p>Silakan tinggalkan pesan, kritik, atau saran Anda untuk pengembangan Rayhana Digital Library.</p>
-    <form>
-      <table>
-        <tr>
-          <td>Nama</td>
-          <td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td><input type="email" name="email" placeholder="Masukkan email aktif" required></td>
-        </tr>
-        <tr>
-          <td>Pesan / Feedback</td>
-          <td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit" class="submit-btn">Kirim Pesan</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </section>
-
-  <!-- ===== Login Section ===== -->
-  <section id="login">
-    <h2>Daftar Anggota</h2>
-    <p>Isi formulir di bawah untuk menjadi anggota Rayhana Digital Library.</p>
-    <form>
-      <table>
-        <tr><td>First Name</td><td><input type="text" name="fname" placeholder="Nama depan" required></td></tr>
-        <tr><td>Last Name</td><td><input type="text" name="lname" placeholder="Nama belakang" required></td></tr>
-        <tr><td>Nomor HP</td><td><input type="tel" name="phone" placeholder="Nomor telepon aktif" required></td></tr>
-        <tr><td>Email</td><td><input type="email" name="email" placeholder="Masukkan email aktif" required></td></tr>
-        <tr>
-          <td>Persetujuan</td>
-          <td><label><input type="checkbox" required> DAFTAR</label></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit" class="submit-btn">Kirim Pendaftaran</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </section>
-
-  <!-- ===== Footer ===== -->
   <footer>
     &copy; 2026 Rayhana Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
   </footer>
 
-  <!-- ===== Background Slideshow ===== -->
   <script>
     const slides = document.querySelectorAll('.hero img');
     let current = 0;
@@ -402,6 +141,5 @@
       slides[current].classList.add('active');
     }, 6000);
   </script>
-
 </body>
 </html>
