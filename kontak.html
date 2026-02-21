@@ -5,25 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontak - Rayhana Digital Library</title>
 <style>
-body { font-family: 'Outfit', sans-serif; background-color: #faf6f0; color: #2a2a2a; text-align:center; padding:60px; }
-h2 { color:#800000; }
-table { margin: 30px auto; border-collapse: collapse; width: 80%; max-width: 700px; background:#fff3ea; border-radius: 10px; box-shadow:0 6px 15px rgba(0,0,0,0.1);}
-td { padding:12px; text-align:left; }
-input, textarea { width:100%; padding:10px; border:1px solid #d3c4a3; border-radius:8px; font-family:'Outfit'; }
-button { background:#800000; color:white; padding:10px 25px; border:none; border-radius:25px; cursor:pointer; }
-button:hover { background:#a52a2a; }
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #800000; /* Warna maroon khas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #2a2a2a;
+    padding: 40px;
+  }
+
+  .form-wrapper {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid #e6d5b8;
+    border-radius: 25px;
+    padding: 50px 60px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 520px;
+    color: #fff;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #f5e9d7;
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    padding: 12px 8px;
+    text-align: left;
+    color: #fff;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #e6d5b8;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    background: #fffaf4;
+    color: #2a2a2a;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #f2e4cc;
+    box-shadow: 0 0 0 2px #e6d5b8;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    background: #e6d5b8;
+    color: #7b1f1f;
+    padding: 12px 45px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background: #f2e4cc;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 480px) {
+    .form-wrapper {
+      padding: 35px 25px;
+    }
+  }
 </style>
 </head>
 <body>
-<h2>Kontak & Feedback</h2>
-<p>Silakan tinggalkan pesan, kritik, atau saran Anda.</p>
-<form>
-  <table>
-    <tr><td>Nama</td><td><input type="text" required></td></tr>
-    <tr><td>Email</td><td><input type="email" required></td></tr>
-    <tr><td>Pesan</td><td><textarea rows="4" required></textarea></td></tr>
-    <tr><td colspan="2" style="text-align:center;"><button type="submit">Kirim Pesan</button></td></tr>
-  </table>
-</form>
+
+  <div class="form-wrapper">
+    <h2>Kontak & Feedback</h2>
+    <p>Silakan tinggalkan pesan, kritik, atau saran Anda untuk pengembangan Rayhana Digital Library.</p>
+    <form>
+      <table>
+        <tr>
+          <td>Nama</td>
+          <td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email" placeholder="Masukkan email aktif" required></td>
+        </tr>
+        <tr>
+          <td>Pesan</td>
+          <td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;">
+            <button type="submit">Kirim Pesan</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
 </body>
 </html>
