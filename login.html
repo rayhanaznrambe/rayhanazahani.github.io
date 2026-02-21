@@ -19,7 +19,6 @@
   }
 
   .form-wrapper {
-    position: relative;
     width: 100%;
     max-width: 420px;
     background: rgba(255, 255, 255, 0.25);
@@ -28,7 +27,7 @@
     border-radius: 25px;
     box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3);
     padding: 40px 30px;
-    overflow: hidden;
+    transition: all 0.4s ease;
   }
 
   h2 {
@@ -42,10 +41,6 @@
     color: #f8f2e8;
     font-size: 15px;
     margin-bottom: 25px;
-  }
-
-  form {
-    width: 100%;
   }
 
   .input-group {
@@ -111,22 +106,9 @@
     margin-top: 20px;
   }
 
-  /* ===== Animasi Pergantian Form ===== */
-  .form-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: all 0.4s ease;
-    opacity: 0;
-    transform: translateY(30px);
-    pointer-events: none;
-  }
-
-  .form-container.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  /* ===== FORM VISIBILITY FIX ===== */
+  #registerForm {
+    display: none;
   }
 </style>
 </head>
@@ -134,7 +116,7 @@
 
   <div class="form-wrapper">
     <!-- ===== FORM LOGIN ===== -->
-    <div id="loginForm" class="form-container active">
+    <div id="loginForm">
       <h2>Login</h2>
       <p>Masuk ke akun Rayhana Digital Library</p>
       <form>
@@ -152,7 +134,7 @@
     </div>
 
     <!-- ===== FORM REGISTER ===== -->
-    <div id="registerForm" class="form-container">
+    <div id="registerForm">
       <h2>Daftar Anggota</h2>
       <p>Buat akun baru untuk mengakses koleksi digital Rayhana</p>
       <form>
@@ -190,14 +172,14 @@
 
     showRegister.addEventListener('click', (e) => {
       e.preventDefault();
-      loginForm.classList.remove('active');
-      registerForm.classList.add('active');
+      loginForm.style.display = "none";
+      registerForm.style.display = "block";
     });
 
     showLogin.addEventListener('click', (e) => {
       e.preventDefault();
-      registerForm.classList.remove('active');
-      loginForm.classList.add('active');
+      registerForm.style.display = "none";
+      loginForm.style.display = "block";
     });
   </script>
 
