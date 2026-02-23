@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rayhana Digital Library</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,19 +40,25 @@
     }
 
     .logo-container img {
-      height: 42px;
-      width: 42px;
+      height: 44px;
+      width: 44px;
       border-radius: 50%;
       object-fit: contain;
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.15);
       border: 2px solid #e6d5b8;
       padding: 3px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.08);
     }
 
     .logo-container h1 {
       font-size: 24px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
+      color: #fff;
     }
 
     nav ul {
@@ -72,7 +79,7 @@
       color: #e6d5b8;
     }
 
-    /* ===== HERO ===== */
+    /* ===== HERO SECTION ===== */
     .hero {
       position: relative;
       height: 100vh;
@@ -279,7 +286,7 @@
     </div>
   </section>
 
-  <!-- ===== PROFIL ===== -->
+  <!-- ===== PROFIL SECTION ===== -->
   <section id="profil">
     <h2>Tentang Rayhana</h2>
     <div class="profile-card">
@@ -294,7 +301,7 @@
     </div>
   </section>
 
-  <!-- ===== VIDEO ===== -->
+  <!-- ===== VIDEO SECTION ===== -->
   <section id="video">
     <h2>Video Inspiratif</h2>
     <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen></iframe>
