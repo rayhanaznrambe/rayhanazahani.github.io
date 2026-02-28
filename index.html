@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rayhana Digital Library</title>
-
+  <title>Source Library</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #faf6f0;
@@ -31,41 +29,41 @@
       background-color: #800000;
       color: #fff;
       border-bottom: 6px solid #e6d5b8;
+      flex-wrap: nowrap;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     .logo-container img {
       height: 44px;
       width: 44px;
-      border-radius: 50%;
       object-fit: contain;
+      border-radius: 8px;
       background-color: rgba(255,255,255,0.15);
       border: 2px solid #e6d5b8;
       padding: 3px;
       transition: transform 0.3s ease;
     }
 
-    .logo-container img:hover {
-      transform: scale(1.08);
-    }
+    .logo-container img:hover { transform: scale(1.08); }
 
     .logo-container h1 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       color: #fff;
+      white-space: nowrap;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
-      align-items: center;
+      gap: 30px;
     }
 
     nav a {
@@ -75,8 +73,56 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #e6d5b8;
+    nav a:hover { color: #e6d5b8; }
+
+    /* ===== HAMBURGER MENU ===== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin-bottom: 5px;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav { padding: 10px 20px; }
+      .logo-container h1 { font-size: 18px; }
+      .logo-container img { height: 38px; width: 38px; }
+      .menu-toggle { display: flex; }
+
+      /* Make mobile menu narrower than full width so it doesn't hug edges */
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 60px);
+        max-width: 420px;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #800000;
+        border-top: 2px solid #e6d5b8;
+        display: none;
+        animation: slideDown 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      nav ul.active { display: flex; }
+      nav li { width: 100%; padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.12); box-sizing: border-box; }
+      nav a { display: block; width: 100%; }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translate(-50%, -10px); }
+        to { opacity: 1; transform: translate(-50%, 0); }
+      }
     }
 
     /* ===== HERO SECTION ===== */
@@ -90,169 +136,176 @@
       color: #fff;
       overflow: hidden;
     }
-
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0,0,0,0.45);
       z-index: 1;
     }
-
     .hero img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity 2s ease-in-out;
     }
-
     .hero img.active { opacity: 1; }
-
     .hero-content {
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border: 3px solid #e6d5b8;
-      border-radius: 25px;
-      padding: 70px 50px;
-      max-width: 850px;
-      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
+      position: relative; z-index: 2; background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px); border: 3px solid #e6d5b8;
+      border-radius: 25px; padding: 70px 50px; max-width: 850px;
+      box-shadow: 0 8px 35px rgba(0,0,0,0.5);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
     }
-
-    .hero h2 {
-      font-size: 54px;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    /* Unreal / ethereal touches (subtle, keeps original palette) */
+    .hero-content::after {
+      content: "";
+      position: absolute;
+      left: -20%;
+      top: -30%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 30% 30%, rgba(230,213,184,0.14), transparent 40%);
+      filter: blur(24px);
+      z-index: 0;
+      transform: rotate(12deg);
     }
-
-    .hero p {
-      font-size: 18px;
-      color: #f2e4cc;
-      margin-top: 15px;
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      right: -10%;
+      bottom: -30%;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle at 70% 70%, rgba(128,0,0,0.08), transparent 40%);
+      filter: blur(28px);
+      z-index: 0;
     }
-
+    .hero-content:hover { transform: translateY(-6px); box-shadow: 0 18px 60px rgba(0,0,0,0.6); }
+    .hero h2 { font-size: 54px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); margin-bottom: 6px; color: #fff; }
+    .hero p { font-size: 18px; color: #f2e4cc; margin-top: 8px; }
     .btn {
-      background: #e6d5b8;
-      color: #7b1f1f;
-      border: none;
-      padding: 15px 45px;
-      border-radius: 50px;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      margin-top: 35px;
+      background: #e6d5b8; color: #7b1f1f; border: none; padding: 15px 45px;
+      border-radius: 50px; font-size: 17px; font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 28px;
+    }
+    .btn:hover { background: #f2e4cc; transform: translateY(-3px); }
+
+    /* small action links under hero */
+    .hero .sub-actions { margin-top: 16px; display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; z-index:2; position:relative;}
+    .ghost {
+      background: transparent; color: #f2e4cc; border: 1px solid rgba(242,228,204,0.14); padding: 10px 18px; border-radius: 999px; font-weight:600;
     }
 
-    .btn:hover {
-      background: #f2e4cc;
-      transform: translateY(-3px);
-    }
-
-    /* ===== PROFIL ===== */
-    #profil {
+    /* ===== ABOUT US ===== */
+    #about {
       background-color: #fff;
       padding: 80px 20px;
       text-align: center;
     }
-
-    #profil h2 {
-      color: #800000;
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    .profile-card {
-      background: #faf6f0;
-      border: 2px solid #e6d5b8;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
+    #about h2 { color: #800000; font-size: 36px; margin-bottom: 30px; }
+    #about p {
+      max-width: 800px;
       margin: 0 auto;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
+      color: #333;
+      font-size: 18px;
     }
-
-    .profile-card img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #800000;
-      margin-bottom: 20px;
-    }
-
-    .profile-card h3 { color: #800000; margin-bottom: 10px; }
-    .profile-card p { margin-bottom: 15px; line-height: 1.6; }
-
-    .profile-links a {
+    /* profile reveal */
+    .profile-toggle {
+      margin-top: 28px;
       display: inline-block;
-      margin: 10px;
-      background: #800000;
-      color: #fff;
+      background: transparent;
+      border: 2px solid #800000;
+      color: #800000;
       padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: background 0.3s;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 700;
     }
+    .library-profile {
+      max-width: 880px;
+      margin: 28px auto 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,246,240,0.98));
+      border: 2px solid #e6d5b8;
+      padding: 22px;
+      border-radius: 14px;
+      display: none;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .profile-card { padding: 14px; border-radius: 12px; background: #fff; border: 1px solid rgba(128,0,0,0.06); }
+    .profile-card h4 { color: #800000; margin-bottom: 8px; }
+    .profile-card p { font-size: 15px; color: #333; line-height: 1.6; }
 
-    .profile-links a:hover { background: #a52a2a; }
+    /* ===== CATALOG (placeholder for searching collection) ===== */
+    #catalog {
+      padding: 70px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04));
+    }
+    #catalog h2 { color: #800000; font-size: 32px; margin-bottom: 20px; }
+    #catalog p { max-width: 900px; margin: 0 auto 18px; color:#333; line-height:1.6; }
 
-    /* ===== VIDEO ===== */
-    #video {
+    /* ===== ADMIN SECTION ===== */
+    #admin {
       background-color: #fdfaf6;
       text-align: center;
       padding: 80px 20px;
     }
-
-    #video h2 {
-      color: #800000;
-      margin-bottom: 25px;
-      font-size: 32px;
+    #admin h2 { color: #800000; font-size: 36px; margin-bottom: 30px; }
+    .admin-card {
+      background: #fff;
+      border: 2px solid #e6d5b8;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-
+    .admin-card img {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; border: 3px solid #800000; margin-bottom: 20px;
+    }
+    .admin-card h3 { color: #800000; margin-bottom: 10px; }
+    .admin-card p { margin-bottom: 15px; line-height: 1.6; }
+    .admin-links a {
+      display: inline-block; margin: 10px; background: #800000; color: #fff;
+      padding: 10px 20px; border-radius: 25px; text-decoration: none; transition: background 0.3s;
+    }
+    .admin-links a:hover { background: #a52a2a; }
     iframe {
-      width: 80%;
-      max-width: 720px;
-      height: 400px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 80%; max-width: 720px; height: 400px; border: none;
+      border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      margin-top: 30px;
     }
 
     /* ===== FOOTER ===== */
     footer {
-      text-align: center;
-      background-color: #800000;
-      color: #e6d5b8;
-      padding: 20px;
-      font-size: 14px;
-      border-top: 6px solid #e6d5b8;
+      text-align: center; background-color: #800000; color: #e6d5b8;
+      padding: 36px 20px; font-size: 14px; border-top: 6px solid #e6d5b8;
     }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .footer-brand { display:flex; gap:12px; align-items:center; }
+    .footer-brand h3 { color:#f8f8f8; margin:0; font-size:18px; }
+    .contact-list { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .contact-item { display:flex; gap:8px; align-items:center; color:#f2e4cc; font-weight:600; text-decoration:none; }
+    .socials { display:flex; gap:10px; }
+    .social-btn {
+      display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:10px;
+      background: rgba(230,213,184,0.08); border:1px solid rgba(230,213,184,0.06); color:#fff; text-decoration:none;
+      font-weight:700;
+    }
+    .footer-note { width:100%; margin-top:12px; color:#f2e4cc; opacity:0.95; font-size:13px; text-align:center; }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        padding: 15px;
-      }
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-      }
-      .logo-container h1 { font-size: 20px; }
+    /* small screens footer */
+    @media (max-width:600px) {
+      .footer-inner { flex-direction:column; gap:12px; align-items:center; }
+      .contact-list { justify-content:center; }
     }
   </style>
 </head>
-
 <body>
 
   <audio autoplay loop hidden>
@@ -262,58 +315,131 @@
   <!-- ===== NAVBAR ===== -->
   <nav>
     <div class="logo-container">
-      <img src="Elegant letter _R_ with book.png" alt="Logo Rayhana">
-      <h1>Rayhana Digital Library</h1>
+      <img src="logorayhana.png" alt="Logo Source">
+      <h1>Source Library</h1>
     </div>
-    <ul>
-      <li><a href="#beranda">Beranda</a></li>
-      <li><a href="#profil">Profil</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="kontak.html" target="_blank">Kontak</a></li>
-      <li><a href="login.html" target="_blank"><strong>Login</strong></a></li>
+
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul id="navMenu">
+      <li><a href="#beranda">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#admin">Admin</a></li>
+      <li><a href="kontak.html" target="_blank" rel="noopener">Contact</a></li>
+      <li><a href="login.html" target="_blank" rel="noopener"><strong>Login</strong></a></li>
     </ul>
   </nav>
 
   <!-- ===== HERO SECTION ===== -->
   <section id="beranda" class="hero">
-    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
-    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80">
-    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
-    <div class="hero-content">
-      <h2>Selamat Datang di Rayhana Digital Library</h2>
-      <p>Perpustakaan digital pribadi yang mencerminkan semangat belajar tanpa batas.</p>
-      <button class="btn" onclick="document.querySelector('#profil').scrollIntoView({behavior:'smooth'});">Kenali Rayhana</button>
-    </div>
-  </section>
+    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active" alt="library image 1">
+    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80" alt="library image 2">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80" alt="library image 3">
+    <div class="hero-content" role="region" aria-label="Hero">
+      <h2>Welcome to Source Library</h2>
+      <p>Public digital library bringing knowledge to everyone — anytime, anywhere.</p>
+      <!-- button label intentionally Indonesian per request -->
+      <button class="btn" onclick="document.querySelector('#catalog').scrollIntoView({behavior:'smooth'});">Mencari Koleksi</button>
 
-  <!-- ===== PROFIL SECTION ===== -->
-  <section id="profil">
-    <h2>Tentang Rayhana</h2>
-    <div class="profile-card">
-      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Rayhana">
-      <h3>Rayhana</h3>
-      <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
-      <p>Saya membangun Rayhana Digital Library sebagai ruang belajar pribadi dan tempat berbagi pengetahuan.</p>
-      <div class="profile-links">
-        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank">Lihat CV</a>
-        <a href="https://www.instagram.com/rayhana_znrr" target="_blank">Instagram</a>
+      <div class="sub-actions">
+        <button class="ghost" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">About Us</button>
+        <a class="ghost" href="#admin">Meet the Admin</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== VIDEO SECTION ===== -->
-  <section id="video">
-    <h2>Video Inspiratif</h2>
-    <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen></iframe>
+  <!-- ===== ABOUT US SECTION ===== -->
+  <section id="about">
+    <h2>Tentang Perpustakaan</h2>
+    <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi. Di sini, kamu bisa menemukan berbagai bacaan menarik dari buku pengetahuan umum hingga novel dan cerita imajinatif yang seru. Kami ingin membuat membaca terasa ringan, menyenangkan, dan mudah diakses oleh siapa pun, kapan pun. Karena bagi kami, setiap buku adalah jendela baru untuk belajar, berimajinasi, dan menikmati cerita.</p>
+
+    <!-- tombol ke profil perpustakaan tambahan -->
+    <button class="profile-toggle" id="profileToggle" aria-expanded="false">Library Profile</button>
+
+    <!-- desain awal profil (isi placeholder untuk visi/misi/tujuan; ditampilkan inline, bukan new tab) -->
+    <div class="library-profile" id="libraryProfile" aria-hidden="true">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+        <h3 style="color:#800000; margin:0;">Profile — Source Library</h3>
+        <small style="color:#7b1f1f; font-weight:700;">Design placeholder • Fill later</small>
+      </div>
+
+      <div class="profile-grid">
+        <div class="profile-card">
+          <h4>Vision</h4>
+          <p>— [Placeholder] A short sentence summarizing the library's long-term vision (e.g. "To make knowledge accessible for all").</p>
+        </div>
+        <div class="profile-card">
+          <h4>Mission</h4>
+          <p>— [Placeholder] A few mission points explaining how the library operates and serves the community.</p>
+        </div>
+        <div class="profile-card">
+          <h4>Goals</h4>
+          <p>— [Placeholder] Short-term and long-term goals, outreach programs, and digital initiatives.</p>
+        </div>
+        <div class="profile-card">
+          <h4>Values</h4>
+          <p>— [Placeholder] Core values such as openness, inclusivity, curiosity, and lifelong learning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATALOG PLACEHOLDER (target for 'Mencari Koleksi' button) ===== -->
+  <section id="catalog">
+    <h2>Catalog / Search (Placeholder)</h2>
+    <p>This is the initial design placeholder for the collection search area. When you're ready, we can add a search box, filters, categories, and dynamic fetch of your collection.</p>
+    <button class="btn" onclick="alert('Search module: implement later — this is a placeholder.');">Open Search (Placeholder)</button>
+  </section>
+
+  <!-- ===== ADMIN SECTION ===== -->
+  <section id="admin">
+    <h2>Tentang Admin</h2>
+    <div class="admin-card">
+      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Admin">
+      <h3>Rayhana</h3>
+      <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
+      <p>Saya membangun Source Library sebagai sarana berbagi pengetahuan dan mendorong semangat belajar tanpa batas. Mari tumbuh bersama melalui literasi digital!</p>
+      <div class="admin-links">
+        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank" rel="noopener">Lihat CV</a>
+        <a href="https://www.instagram.com/rayhana_znrr" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen title="Admin video"></iframe>
+    </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    &copy; 2026 Rayhana Digital Library | Pengetahuan Digital untuk Generasi Masa Depan
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logorayhana.png" alt="Logo" style="height:48px;width:48px;border-radius:8px;border:2px solid #e6d5b8;padding:6px;background:rgba(255,255,255,0.06);">
+        <div>
+          <h3>Source Library</h3>
+          <div style="font-size:12px;color:#f2e4cc;opacity:0.95;">Public Digital Library • Open for Everyone</div>
+        </div>
+      </div>
+
+      <div class="contact-list" aria-label="Contact">
+        <a class="contact-item" href="tel:089613706759"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden style="opacity:0.95"><path d="M21 16.5v3a1.5 1.5 0 0 1-1.6 1.49 19.5 19.5 0 0 1-8.59-3.05A19.52 19.52 0 0 1 3.02 9.13 19.5 19.5 0 0 1 .97 1.54 1.5 1.5 0 0 1 2.46.02h3A1.5 1.5 0 0 1 7 1.4c.12.65.35 1.28.67 1.86a1.5 1.5 0 0 1-.31 1.62l-1.1 1.1a15.3 15.3 0 0 0 6.9 6.9l1.1-1.1a1.5 1.5 0 0 1 1.62-.31c.58.33 1.21.55 1.86.67A1.5 1.5 0 0 1 21 16.5z" stroke="#f2e4cc" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/></svg> 089613706759</a>
+
+        <a class="contact-item" href="mailto:sourcelibrary@gmail.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden style="opacity:0.95"><path d="M3 7.5v9A2 2 0 0 0 5 19.5h14a2 2 0 0 0 2-2v-9" stroke="#f2e4cc" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7.5l-9 6-9-6" stroke="#f2e4cc" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/></svg> sourcelibrary@gmail.com</a>
+
+        <div class="socials">
+          <a class="social-btn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden style="opacity:0.95"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="0.9"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="#fff" stroke-width="0.9"/><path d="M17.5 6.5h.01" stroke="#fff" stroke-width="0.9" stroke-linecap="round"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">&copy; 2026 Source Library | Perpustakaan Umum untuk Semua</div>
   </footer>
 
-  <!-- ===== SLIDESHOW SCRIPT ===== -->
+  <!-- ===== SCRIPTS ===== -->
   <script>
+    // Background slideshow
     const slides = document.querySelectorAll('.hero img');
     let current = 0;
     setInterval(() => {
@@ -321,6 +447,40 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 6000);
+
+    // Menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      // animate hamburger
+      menuToggle.classList.toggle('open');
+    });
+
+    // allow keyboard toggle for accessibility
+    menuToggle.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') menuToggle.click();
+    });
+
+    // Profile toggle under About
+    const profileToggle = document.getElementById('profileToggle');
+    const libraryProfile = document.getElementById('libraryProfile');
+    profileToggle.addEventListener('click', () => {
+      const opened = libraryProfile.style.display === 'block';
+      if (opened) {
+        libraryProfile.style.display = 'none';
+        profileToggle.setAttribute('aria-expanded', 'false');
+        libraryProfile.setAttribute('aria-hidden', 'true');
+        profileToggle.textContent = 'Library Profile';
+      } else {
+        libraryProfile.style.display = 'block';
+        profileToggle.setAttribute('aria-expanded', 'true');
+        libraryProfile.setAttribute('aria-hidden', 'false');
+        profileToggle.textContent = 'Close Profile';
+        libraryProfile.scrollIntoView({behavior:'smooth'});
+      }
+    });
   </script>
+
 </body>
 </html>
