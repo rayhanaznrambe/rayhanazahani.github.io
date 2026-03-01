@@ -10,8 +10,8 @@
     html,body{height:100%;scroll-behavior:smooth}
     body{
       font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:#0d0a0a;
-      color:#f8f4f4;
+      background:#faf6f0;
+      color:#2a2a2a;
       display:flex;
       flex-direction:column;
       min-height:100vh;
@@ -23,24 +23,38 @@
       position:sticky;top:0;z-index:50;
       display:flex;justify-content:space-between;align-items:center;
       padding:14px 48px;
-      background:rgba(60,0,0,0.8);
-      color:#fff;
-      border-bottom:3px solid #ffb47b;
-      box-shadow:0 6px 18px rgba(255,160,100,0.25);
-      backdrop-filter: blur(10px);
+      background:#800000;color:#fff;
+      border-bottom:6px solid #e6d5b8;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      backdrop-filter: blur(6px);
     }
     .logo-container{display:flex;align-items:center;gap:12px}
     .logo-container img{
       height:44px;width:44px;border-radius:8px;object-fit:contain;
-      border:2px solid #ffb47b;padding:3px;transition:transform .25s ease;
+      background:rgba(255,255,255,0.12);border:2px solid #e6d5b8;padding:3px;
+      transition:transform .25s ease;
     }
-    .logo-container img:hover{transform:scale(1.08) rotate(3deg)}
-    .logo-container h1{font-size:20px;font-weight:700;color:#ffb47b;text-shadow:0 0 8px #ffb47b}
+    .logo-container img:hover{transform:scale(1.06) rotate(3deg)}
+    .logo-container h1{font-size:20px;font-weight:700;color:#fff}
     nav ul{list-style:none;display:flex;gap:28px;align-items:center}
-    nav a{text-decoration:none;color:#fff;font-weight:600;transition:color .25s}
-    nav a:hover{color:#ffb47b}
+    nav a{text-decoration:none;color:#f8f8f8;font-weight:600;transition:color .22s}
+    nav a:hover{color:#e6d5b8}
     .menu-toggle{display:none;flex-direction:column;cursor:pointer}
-    .menu-toggle span{height:3px;width:26px;background:#ffb47b;border-radius:4px;margin-bottom:5px;display:block}
+    .menu-toggle span{height:3px;width:26px;background:#fff;border-radius:4px;margin-bottom:5px;display:block}
+
+    @media(max-width:768px){
+      nav{padding:10px 18px}
+      .menu-toggle{display:flex}
+      nav ul{
+        display:none;flex-direction:column;align-items:center;
+        position:absolute;top:68px;left:50%;transform:translateX(-50%);
+        width:calc(100% - 40px);max-width:420px;background:#800000;border-radius:12px;
+        border-top:2px solid #e6d5b8;padding:10px 0;
+      }
+      nav ul.active{display:flex}
+      nav li{width:100%;padding:10px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+      .logo-container h1{font-size:18px}
+    }
 
     /* ===== HERO ===== */
     .hero{
@@ -54,204 +68,110 @@
       opacity:0;transition:opacity 1.6s ease-in-out;
     }
     .hero img.active{opacity:1}
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 18% 40%, rgba(180,220,255,0.1), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(255,200,240,0.07), transparent 30%);
+      mix-blend-mode:screen;animation:auroraMove 12s infinite alternate linear;z-index:1;
+    }
+    @keyframes auroraMove{
+      0%{background-position:15% 35%,85% 70%}
+      100%{background-position:25% 45%,75% 75%}
+    }
     .hero::after{
       content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(20,0,0,0.4),rgba(20,0,0,0.9));z-index:2;
+      background:linear-gradient(180deg,rgba(0,0,0,0.28),rgba(0,0,0,0.6));z-index:2;
     }
     .hero-content{
       position:relative;z-index:3;
-      max-width:900px;width:calc(100% - 60px);
+      max-width:920px;width:calc(100% - 60px);
       padding:48px;border-radius:20px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,180,123,0.3);
-      backdrop-filter:blur(15px);
-      box-shadow:0 0 20px rgba(255,180,123,0.25);
+      background:rgba(255,255,255,0.06);
+      border:2px solid rgba(230,213,184,0.28);
+      backdrop-filter:blur(10px);
+      box-shadow:0 18px 48px rgba(0,0,0,0.5);
       transition:transform .36s ease;
     }
     .hero-content:hover{transform:translateY(-6px)}
     .hero h2{
-      font-size:54px;
-      background:linear-gradient(90deg,#fff6e7,#ffb47b);
+      font-size:54px;line-height:1.02;
+      background:linear-gradient(90deg,#fff,#e6d5b8);
       -webkit-background-clip:text;color:transparent;
-      text-shadow:0 0 20px rgba(255,180,123,0.6);
+      text-shadow:0 8px 28px rgba(0,0,0,0.5);
     }
-    .hero p{font-size:18px;color:#ffe8cc;margin-top:12px}
+    .hero p{font-size:18px;color:#f2e4cc;margin-top:12px}
+    .btn{
+      margin-top:28px;padding:14px 40px;border-radius:50px;border:0;
+      background:linear-gradient(90deg,#e6d5b8,#fff);color:#7b1f1f;font-weight:700;
+      cursor:pointer;font-size:16px;box-shadow:0 8px 30px rgba(0,0,0,0.36);
+      transition:transform .22s,box-shadow .22s;
+    }
+    .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 40px rgba(230,213,184,0.45)}
+    .sub-actions{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .ghost{background:transparent;color:#f2e4cc;border:1px solid rgba(242,228,204,0.1);padding:9px 14px;border-radius:999px;font-weight:700}
 
-    /* ===== ABOUT (Futuristic Redesign Maroon) ===== */
-    #about{
-      position:relative;
-      background:radial-gradient(circle at 40% 30%,#200, #0d0a0a 80%);
-      text-align:center;
-      padding:100px 20px;
-      color:#fff;
-      overflow:hidden;
-    }
-    #about::before{
-      content:"";
-      position:absolute;inset:-120px;
-      background:conic-gradient(from 45deg,#ffb47b33,#ffdfaf33,#ffb47b33);
-      filter:blur(120px);
-      animation:spin 25s linear infinite;
-      z-index:0;
-    }
-    @keyframes spin{100%{transform:rotate(360deg)}}
-    #about h2{
-      position:relative;
-      font-size:42px;
-      background:linear-gradient(90deg,#ffb47b,#fff6e7);
-      -webkit-background-clip:text;
-      color:transparent;
-      text-shadow:0 0 12px #ffb47b;
-      z-index:2;
-      margin-bottom:16px;
-    }
-    #about p{
-      position:relative;
-      max-width:880px;
-      margin:0 auto;
-      font-size:18px;
-      line-height:1.8;
-      color:#ffedd5;
-      opacity:0.9;
-      z-index:2;
-    }
+    /* ===== ABOUT (Futuristic simple style) ===== */
+    #about{background:#fff;text-align:center;position:relative;overflow:hidden;}
+    #about h2{color:#800000;font-size:34px;margin-bottom:18px;text-shadow:0 0 6px rgba(128,0,0,0.3);}
+    #about p{max-width:880px;margin:0 auto;line-height:1.75;color:#333;font-size:17px;}
     .profile-toggle{
-      position:relative;
-      z-index:2;
-      margin-top:24px;
-      padding:12px 28px;
-      border-radius:40px;
-      border:2px solid #ffb47b;
-      background:transparent;
-      color:#ffb47b;
-      font-weight:700;
-      cursor:pointer;
-      transition:all .4s ease;
-      box-shadow:0 0 12px #ffb47b44, inset 0 0 6px #ffb47b33;
-    }
-    .profile-toggle:hover{
-      background:linear-gradient(90deg,#ffb47b33,#ffdfaf33);
-      box-shadow:0 0 20px #ffb47b99;
-      color:#fff;
-    }
-    .library-profile{
-      position:relative;
-      max-width:920px;
-      margin:30px auto 0;
-      padding:32px;
-      border-radius:20px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,180,123,0.3);
-      backdrop-filter:blur(18px);
-      box-shadow:0 0 25px rgba(255,180,123,0.25);
-      display:none;
-      opacity:0;
-      transform:translateY(30px);
-      transition:opacity 1s ease,transform 1s ease;
-      z-index:2;
-    }
-    .library-profile.show{
-      display:block;
-      opacity:1;
-      transform:translateY(0);
-    }
-    .library-profile h3{
-      font-size:24px;
-      color:#ffb47b;
-      margin-bottom:18px;
-      text-shadow:0 0 10px #ffb47b88;
-    }
-    .library-profile .card{
-      background:rgba(255,255,255,0.08);
-      border-radius:14px;
-      padding:18px;
-      border:1px solid rgba(255,180,123,0.3);
-      box-shadow:0 0 10px rgba(255,180,123,0.2);
-      transition:transform .3s ease, box-shadow .3s ease;
-    }
-    .library-profile .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 0 20px rgba(255,200,140,0.4);
-    }
-    .library-profile h4{
-      color:#ffdfaf;
-      font-size:20px;
-      margin-bottom:8px;
-      text-shadow:0 0 8px #ffdfaf66;
-    }
-    .library-profile p, .library-profile li{
-      color:#fff2e0;
-      line-height:1.7;
-    }
-
-    /* ===== FOOTER (Futuristic Maroon Version) ===== */
-    footer{
-      background:rgba(30,0,0,0.95);
-      color:#ffdfaf;
-      padding:60px 20px 30px;
-      border-top:2px solid rgba(255,180,123,0.4);
-      backdrop-filter:blur(8px);
-      box-shadow:0 -4px 30px rgba(255,180,123,0.2);
-      margin-top:auto;
-    }
-    .footer-grid{
-      max-width:1100px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:28px;
-    }
-    .footer-col h3{
-      color:#fff;
-      margin-bottom:12px;
-      font-size:18px;
-      border-bottom:2px solid rgba(255,180,123,0.35);
-      display:inline-block;
-      padding-bottom:6px;
-      text-shadow:0 0 10px #ffb47b55;
-    }
-    .footer-col ul{list-style:none;padding:0;margin-top:10px}
-    .footer-col li{margin-bottom:8px}
-    .footer-col a{
-      color:#ffdfaf;text-decoration:none;font-weight:600;
+      margin-top:18px;padding:10px 22px;border-radius:30px;border:2px solid #800000;
+      background:linear-gradient(135deg,#fff0,#80000020);
+      color:#800000;font-weight:700;cursor:pointer;
       transition:all .3s ease;
     }
-    .footer-col a:hover{
-      text-shadow:0 0 10px #ffb47b;color:#fff;
+    .profile-toggle:hover{background:#800000;color:#fff;box-shadow:0 0 12px rgba(128,0,0,0.4);}
+    .library-profile{
+      max-width:900px;margin:22px auto 0;padding:18px;border-radius:12px;
+      background:#fdf6f2;border:1px solid rgba(230,213,184,0.4);
+      display:none;opacity:0;transform:translateY(20px);
+      transition:opacity .6s ease, transform .6s ease;
     }
+    .library-profile.show{display:block;opacity:1;transform:translateY(0);}
+    .library-profile h3{color:#800000;margin-bottom:10px;}
+    .library-profile .card{
+      background:#fff;padding:12px;border-radius:10px;
+    }
+    .library-profile .card h4{color:#800000;margin-bottom:6px;}
+
+    /* ===== ADMIN ===== */
+    #admin{text-align:center;background:#fdfaf6}
+    #admin h2{color:#800000;font-size:32px;margin-bottom:12px}
+    .admin-card{max-width:760px;margin:0 auto;padding:26px;border-radius:16px;background:#fff;border:2px solid #e6d5b8;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+    .admin-card img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid #800000;margin-bottom:14px}
+    .admin-links a{display:inline-block;margin:8px;background:#800000;color:#fff;padding:10px 18px;border-radius:22px;text-decoration:none;font-weight:700}
+    .admin-links a:hover{background:#a52a2a}
+    iframe{width:88%;max-width:720px;height:400px;border:none;border-radius:12px;margin-top:18px;box-shadow:0 8px 20px rgba(0,0,0,0.18)}
+
+    /* ===== FOOTER ===== */
+    footer{
+      background:linear-gradient(180deg,#4d0000,#800000);
+      color:#e6d5b8;padding:50px 20px 30px;border-top:6px solid #e6d5b8;margin-top:auto;
+    }
+    .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+    .footer-col h3{color:#fff;margin-bottom:12px;font-size:18px;border-bottom:2px solid rgba(230,213,184,0.35);display:inline-block;padding-bottom:6px}
+    .footer-col ul{list-style:none;padding:0;margin-top:10px}
+    .footer-col li{margin-bottom:8px}
+    .footer-col a{color:#f2e4cc;text-decoration:none;font-weight:600}
+    .footer-col a:hover{text-shadow:0 0 8px #e6d5b8;color:#fff}
     .footer-social{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
-    .footer-social a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:44px;height:44px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,180,123,0.4);
-      transition:all .35s ease;
-      opacity:0.85;
-    }
-    .footer-social a:hover{
-      transform:translateY(-4px) scale(1.08);
-      background:#ffb47b;
-      box-shadow:0 0 18px #ffb47b;
-      opacity:1;
-    }
-    .footer-social img{
-      width:24px;height:24px;filter:invert(1);
-    }
+    .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(230,213,184,0.2);transition:all .35s ease;opacity:0.85;}
+    .footer-social a:hover{transform:translateY(-4px) scale(1.08);background:#e6d5b8;box-shadow:0 0 14px #e6d5b8;opacity:1;}
+    .footer-social img{width:24px;height:24px;filter:invert(1);transition:filter .35s ease;}
     .footer-social a:hover img{filter:invert(0)}
     .footer-bottom{text-align:center;color:#fff;font-size:13px;margin-top:22px;line-height:1.6}
-    .footer-bottom strong{color:#ffb47b}
+    .footer-bottom strong{color:#e6d5b8}
+
   </style>
 </head>
-
 <body>
   <nav>
     <div class="logo-container">
       <img src="logorayhana.png" alt="Logo">
       <h1>Source Library</h1>
     </div>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     <ul id="navMenu">
       <li><a href="#beranda">Home</a></li>
       <li><a href="#about">About Us</a></li>
@@ -261,56 +181,51 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="beranda" class="hero">
     <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
     <div class="hero-content">
       <h2>Welcome to Source Library</h2>
-      <p>Perpustakaan digital masa depan — menyatukan pengetahuan dan teknologi.</p>
+      <p>Public digital library bringing knowledge to everyone — anytime, anywhere.</p>
     </div>
   </section>
 
-  <!-- ABOUT (Futuristic Maroon) -->
   <section id="about">
     <h2>About Source Library</h2>
-    <p>Source Library adalah perpustakaan digital masa kini yang menggabungkan literasi, teknologi, dan desain modern untuk menciptakan ruang pengetahuan yang inklusif, adaptif, dan berkelanjutan.</p>
-    <button class="profile-toggle" id="profileToggle">View Vision & Mission</button>
-
+    <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi...</p>
+    <button class="profile-toggle" id="profileToggle">Library Profile</button>
     <div class="library-profile" id="libraryProfile">
       <h3>Profile — Source Library</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
         <div class="card">
           <h4>Vision</h4>
-          <p>Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya dalam menyediakan informasi dan literasi bagi masyarakat digital.</p>
+          <p>Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya.</p>
         </div>
         <div class="card">
           <h4>Mission</h4>
           <ol style="text-align:left; padding-left:20px;">
-            <li>Menyediakan akses literasi yang terbuka dan mudah dijangkau oleh masyarakat umum melalui platform digital.</li>
-            <li>Menyajikan koleksi digital yang aktual, tematik, dan relevan dengan tren literasi masyarakat.</li>
-            <li>Menggabungkan sumber pengetahuan masa kini dan lintas waktu untuk mendukung pembelajaran sepanjang hayat.</li>
-            <li>Meningkatkan minat baca masyarakat melalui pengemasan informasi yang menarik, ringkas, dan interaktif.</li>
-            <li>Mengembangkan budaya literasi digital berbasis teknologi terbuka yang dapat dikembangkan lebih lanjut oleh generasi berikutnya.</li>
+            <li>Menyediakan akses literasi yang terbuka dan mudah dijangkau.</li>
+            <li>Menyajikan koleksi digital yang aktual dan relevan.</li>
+            <li>Menggabungkan sumber pengetahuan masa kini untuk pembelajaran sepanjang hayat.</li>
           </ol>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ADMIN (placeholder minimal untuk struktur) -->
-  <section id="admin" style="text-align:center;padding:80px 20px;background:#1a0a0a;">
-    <h2 style="color:#ffb47b;">Tentang Admin</h2>
-    <p>Admin: Rayhana — Mahasiswa | Pencinta Buku | Pengembang Digital Library</p>
+  <section id="admin">
+    <h2>Tentang Admin</h2>
+    <div class="admin-card">
+      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Admin">
+      <h3>Rayhana</h3>
+      <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
+    </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
         <h3>About Source Library</h3>
-        <p style="color:#fff8e7;font-size:14px;line-height:1.7;">
-          Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.
-        </p>
+        <p>Source Library adalah perpustakaan digital publik yang berfokus menyebarkan pengetahuan kepada semua generasi.</p>
       </div>
       <div class="footer-col">
         <h3>Quick Links</h3>
@@ -318,7 +233,7 @@
           <li><a href="#beranda">🏠 Home</a></li>
           <li><a href="#about">📚 About</a></li>
           <li><a href="#admin">👩‍💻 Admin</a></li>
-          <li><a href="kontak.html" target="_blank">✉️ Contact</a></li>
+          <li><a href="kontak.html">✉️ Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -333,15 +248,9 @@
       <div class="footer-col">
         <h3>Follow Us</h3>
         <div class="footer-social">
-          <a href="https://www.instagram.com/rayhana_znrr" target="_blank" title="Instagram">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-          </a>
-          <a href="mailto:sourcelibrary@gmail.com" title="Email">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-          </a>
-          <a href="https://wa.me/6289613706759" target="_blank" title="WhatsApp">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-          </a>
+          <a href="https://www.instagram.com/rayhana_znrr" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+          <a href="mailto:sourcelibrary@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"></a>
+          <a href="https://wa.me/6289613706759" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
         </div>
       </div>
     </div>
@@ -351,19 +260,21 @@
   </footer>
 
   <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    menuToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+
     const heroImages = document.querySelectorAll(".hero img");
     let current = 0;
     setInterval(() => {
       heroImages[current].classList.remove("active");
       current = (current + 1) % heroImages.length;
       heroImages[current].classList.add("active");
-    }, 6000);
+    }, 5000);
 
     const profileToggle = document.getElementById("profileToggle");
     const libraryProfile = document.getElementById("libraryProfile");
-    profileToggle.addEventListener("click", () => {
-      libraryProfile.classList.toggle("show");
-    });
+    profileToggle.addEventListener("click", () => libraryProfile.classList.toggle("show"));
   </script>
 </body>
 </html>
