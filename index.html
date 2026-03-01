@@ -290,4 +290,47 @@
           <li><a href="#">Archives</a></li>
         </ul>
       </div>
-      <div class
+      <div class="footer-col">
+        <h3>Follow Us</h3>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/rayhana_znrr" target="_blank" title="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+          </a>
+          <a href="mailto:sourcelibrary@gmail.com" title="Email">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+          </a>
+          <a href="https://wa.me/6289613706759" target="_blank" title="WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>Source Library</strong> — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle menu mobile
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    menuToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+
+    // Slideshow
+    const heroImages = document.querySelectorAll(".hero img");
+    let current = 0;
+    setInterval(() => {
+      heroImages[current].classList.remove("active");
+      current = (current + 1) % heroImages.length;
+      heroImages[current].classList.add("active");
+    }, 5000);
+
+    // Toggle Library Profile with fade animation
+    const profileToggle = document.getElementById("profileToggle");
+    const libraryProfile = document.getElementById("libraryProfile");
+    profileToggle.addEventListener("click", () => {
+      libraryProfile.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
