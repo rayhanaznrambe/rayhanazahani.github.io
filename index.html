@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Source Library</title>
   <style>
+    /* base */
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;scroll-behavior:smooth}
@@ -18,37 +19,49 @@
       overflow-x:hidden;
     }
 
-    /* ===== NAVBAR ===== */
+    /* ===== NAVBAR (futuristic subtle) ===== */
     nav{
-      position:sticky;top:0;z-index:50;
+      position:sticky;top:0;z-index:80;
       display:flex;justify-content:space-between;align-items:center;
       padding:14px 48px;
-      background:#800000;color:#fff;
-      border-bottom:6px solid #e6d5b8;
-      box-shadow:0 6px 18px rgba(0,0,0,0.18);
-      backdrop-filter: blur(6px);
+      background:linear-gradient(90deg,#4d0000,#800000 50%,#6b0000);
+      background-size:200% 200%;
+      animation:navShift 10s ease-in-out infinite alternate;
+      border-bottom:4px solid #e6d5b8;
+      box-shadow:0 8px 28px rgba(0,0,0,0.18);
+      backdrop-filter: blur(8px);
+    }
+    @keyframes navShift {
+      0% { background-position:0% 50%; }
+      100% { background-position:100% 50%; }
     }
     .logo-container{display:flex;align-items:center;gap:12px}
     .logo-container img{
       height:44px;width:44px;border-radius:8px;object-fit:contain;
       background:rgba(255,255,255,0.12);border:2px solid #e6d5b8;padding:3px;
-      transition:transform .25s ease;
+      transition:transform .25s ease, box-shadow .25s ease, filter .25s;
     }
-    .logo-container img:hover{transform:scale(1.06) rotate(3deg)}
-    .logo-container h1{font-size:20px;font-weight:700;color:#fff}
+    .logo-container img:hover{transform:scale(1.08) rotate(4deg);box-shadow:0 6px 22px rgba(230,213,184,0.35);}
+    .logo-container h1{font-size:20px;font-weight:700;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,0.35);}
     nav ul{list-style:none;display:flex;gap:28px;align-items:center}
-    nav a{text-decoration:none;color:#f8f8f8;font-weight:600;transition:color .22s}
-    nav a:hover{color:#e6d5b8}
+    nav a{text-decoration:none;color:#f8f8f8;font-weight:600;position:relative;transition:color .22s, text-shadow .22s}
+    nav a::after{
+      content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-6px;width:0;height:2px;background:#e6d5b8;border-radius:2px;transition:width .26s ease;
+      box-shadow:0 0 8px rgba(230,213,184,0.45);
+    }
+    nav a:hover{color:#fff;text-shadow:0 0 12px rgba(230,213,184,0.45)}
+    nav a:hover::after{width:70%}
     .menu-toggle{display:none;flex-direction:column;cursor:pointer}
-    .menu-toggle span{height:3px;width:26px;background:#fff;border-radius:4px;margin-bottom:5px;display:block}
+    .menu-toggle span{height:3px;width:26px;background:#fff;border-radius:4px;margin-bottom:5px;display:block;transition:transform .2s}
+
     @media(max-width:768px){
       nav{padding:10px 18px}
       .menu-toggle{display:flex}
       nav ul{
         display:none;flex-direction:column;align-items:center;
         position:absolute;top:68px;left:50%;transform:translateX(-50%);
-        width:calc(100% - 40px);max-width:420px;background:#800000;border-radius:12px;
-        border-top:2px solid #e6d5b8;padding:10px 0;
+        width:calc(100% - 40px);max-width:420px;background:rgba(128,0,0,0.96);border-radius:12px;
+        border-top:2px solid #e6d5b8;overflow:hidden;padding:10px 0;
       }
       nav ul.active{display:flex}
       nav li{width:100%;padding:10px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
@@ -58,39 +71,37 @@
     /* ===== HERO ===== */
     .hero{
       position:relative;
-      min-height:100vh;
+      min-height:95vh;
       display:flex;align-items:center;justify-content:center;text-align:center;
       overflow:hidden;
     }
     .hero img{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      opacity:0;transition:opacity 1.6s ease-in-out;
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+      transition:opacity 1.6s ease-in-out;will-change:opacity;
     }
     .hero img.active{opacity:1}
     .hero::before{
       content:"";position:absolute;inset:0;
       background:
-        radial-gradient(circle at 18% 40%, rgba(180,220,255,0.1), transparent 28%),
+        radial-gradient(circle at 18% 40%, rgba(180,220,255,0.10), transparent 28%),
         radial-gradient(circle at 82% 72%, rgba(255,200,240,0.07), transparent 30%);
-      mix-blend-mode:screen;animation:auroraMove 12s infinite alternate linear;z-index:1;
+      mix-blend-mode:screen;
+      animation:auroraMove 12s infinite alternate linear;
+      z-index:1;
+      pointer-events:none;
     }
     @keyframes auroraMove{
       0%{background-position:15% 35%,85% 70%}
       100%{background-position:25% 45%,75% 75%}
     }
     .hero::after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,0.28),rgba(0,0,0,0.6));z-index:2;
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.28),rgba(0,0,0,0.6));z-index:2;
     }
     .hero-content{
-      position:relative;z-index:3;
-      max-width:920px;width:calc(100% - 60px);
-      padding:48px;border-radius:20px;
-      background:rgba(255,255,255,0.06);
-      border:2px solid rgba(230,213,184,0.28);
-      backdrop-filter:blur(10px);
-      box-shadow:0 18px 48px rgba(0,0,0,0.5);
-      transition:transform .36s ease;
+      position:relative;z-index:3;max-width:920px;width:calc(100% - 60px);
+      padding:48px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:2px solid rgba(230,213,184,0.28);backdrop-filter:blur(10px);
+      box-shadow:0 18px 48px rgba(0,0,0,0.5);transition:transform .36s ease;
     }
     .hero-content:hover{transform:translateY(-6px)}
     .hero h2{
@@ -107,158 +118,189 @@
       transition:transform .22s,box-shadow .22s;
     }
     .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 40px rgba(230,213,184,0.45)}
+
     .sub-actions{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .ghost{background:transparent;color:#f2e4cc;border:1px solid rgba(242,228,204,0.1);padding:9px 14px;border-radius:999px;font-weight:700}
+    .ghost{background:transparent;color:#f2e4cc;border:1px solid rgba(242,228,204,0.10);padding:9px 14px;border-radius:999px;font-weight:700}
+    .ghost:hover{background:rgba(230,213,184,0.22);color:#7b1f1f;box-shadow:0 8px 20px rgba(230,213,184,0.18)}
 
     /* ===== ABOUT ===== */
-    section{padding:80px 20px}
-    #about{background:#fff;text-align:center}
-    #about h2{color:#800000;font-size:34px;margin-bottom:18px}
+    section {padding:60px 20px}
+    #about{background:linear-gradient(180deg,#fff,#fbf7f1);text-align:center;position:relative;overflow:hidden}
+    #about::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 8% 20%, rgba(255,235,200,0.14), transparent 20%),
+        radial-gradient(circle at 92% 80%, rgba(200,240,255,0.10), transparent 25%);
+      mix-blend-mode:screen;pointer-events:none;
+    }
+    #about h2{color:#6b0000;font-size:34px;margin-bottom:18px}
     #about p{max-width:880px;margin:0 auto;line-height:1.75;color:#333;font-size:17px}
-    .profile-toggle{margin-top:18px;padding:10px 22px;border-radius:30px;border:2px solid #800000;background:transparent;color:#800000;font-weight:700;cursor:pointer}
-    .profile-toggle:hover{background:#800000;color:#fff}
-    .library-profile{max-width:900px;margin:22px auto 0;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#faf6f0);border:1px solid rgba(230,213,184,0.4);display:none}
+    .profile-toggle{margin-top:18px;padding:10px 22px;border-radius:30px;border:2px solid #7b0000;background:transparent;color:#7b0000;font-weight:700;cursor:pointer;transition:all .3s}
+    .profile-toggle:hover{background:#7b0000;color:#fff;box-shadow:0 10px 30px rgba(123,0,0,0.18)}
+    .library-profile{max-width:900px;margin:22px auto 0;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#faf6f0);border:1px solid rgba(230,213,184,0.4)}
+
+    /* ===== CATALOG placeholder (target of button) ===== */
+    #catalog{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.04));padding:48px 20px;text-align:center}
 
     /* ===== ADMIN ===== */
-    #admin{text-align:center;background:#fdfaf6}
-    #admin h2{color:#800000;font-size:32px;margin-bottom:12px}
-    .admin-card{max-width:760px;margin:0 auto;padding:26px;border-radius:16px;background:#fff;border:2px solid #e6d5b8;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
-    .admin-card img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid #800000;margin-bottom:14px}
-    .admin-links a{display:inline-block;margin:8px;background:#800000;color:#fff;padding:10px 18px;border-radius:22px;text-decoration:none;font-weight:700}
-    .admin-links a:hover{background:#a52a2a}
-    iframe{width:88%;max-width:720px;height:400px;border:none;border-radius:12px;margin-top:18px;box-shadow:0 8px 20px rgba(0,0,0,0.18)}
+    #admin{text-align:center;background:linear-gradient(180deg,#fffaf7,#fdfaf6)}
+    #admin h2{color:#6b0000;font-size:32px;margin-bottom:12px}
+    .admin-card{max-width:760px;margin:0 auto;padding:26px;border-radius:16px;background:linear-gradient(180deg,#ffffff,#fff8f0);border:2px solid #e6d5b8;box-shadow:0 10px 30px rgba(0,0,0,0.06)}
+    .admin-card img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid #7b0000;margin-bottom:14px;transition:transform .28s,box-shadow .28s}
+    .admin-card img:hover{transform:scale(1.06);box-shadow:0 12px 30px rgba(230,213,184,0.28)}
+    .admin-links a{display:inline-block;margin:8px;background:linear-gradient(180deg,#7b0000,#600000);color:#fff;padding:10px 18px;border-radius:22px;text-decoration:none;font-weight:700;transition:transform .22s,box-shadow .22s}
+    .admin-links a:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(230,213,184,0.3)}
+    iframe{width:88%;max-width:720px;height:400px;border:none;border-radius:12px;margin-top:18px;box-shadow:0 12px 30px rgba(0,0,0,0.12)}
 
     /* ===== FOOTER ===== */
-    footer{background:linear-gradient(180deg,#4d0000,#800000);color:#e6d5b8;padding:50px 20px 30px;border-top:6px solid #e6d5b8;margin-top:auto}
-    .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
-    .footer-col h3{color:#fff;margin-bottom:12px;font-size:18px;border-bottom:2px solid rgba(230,213,184,0.35);display:inline-block;padding-bottom:6px}
+    footer{background:linear-gradient(180deg,#4d0000,#800000);color:#e6d5b8;padding:44px 20px 28px;border-top:6px solid #e6d5b8}
+    .footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
+    .footer-col h3{color:#fff;margin-bottom:12px;font-size:16px;border-bottom:2px solid rgba(230,213,184,0.35);display:inline-block;padding-bottom:6px}
     .footer-col ul{list-style:none;padding:0;margin-top:10px}
     .footer-col li{margin-bottom:8px}
     .footer-col a{color:#f2e4cc;text-decoration:none;font-weight:600}
     .footer-col a:hover{text-shadow:0 0 8px #e6d5b8;color:#fff}
-    .footer-social{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
-    .footer-social a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:44px;height:44px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(230,213,184,0.2);
-      transition:all .35s ease;
-      opacity:0.85;
-    }
-    .footer-social a:hover{
-      transform:translateY(-4px) scale(1.08);
-      background:#e6d5b8;
-      box-shadow:0 0 14px #e6d5b8;
-      opacity:1;
-    }
-    .footer-social img{
-      width:24px;height:24px;filter:invert(1);transition:filter .35s ease;
-    }
-    .footer-social a:hover img{filter:invert(0)}
-    .footer-bottom{text-align:center;color:#fff;font-size:13px;margin-top:22px;line-height:1.6}
-    .footer-bottom strong{color:#e6d5b8}
+    .footer-social{display:flex;gap:10px;margin-top:10px}
+    .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(230,213,184,0.18);color:#fff;text-decoration:none}
+    .footer-social a:hover{transform:scale(1.08);background:#e6d5b8;color:#800000;box-shadow:0 0 12px #e6d5b8}
+    .footer-bottom{text-align:center;margin-top:18px;color:#fff;font-size:13px}
 
+    /* ===== small helpers & responsive ===== */
     @media(max-width:980px){ .hero h2{font-size:44px} .admin-card img{width:150px;height:150px} }
     @media(max-width:600px){
       nav{padding:10px 14px}
       .hero h2{font-size:28px}
       .hero-content{padding:22px;border-radius:14px}
-      .hero{min-height:90vh}
+      .menu-toggle{display:flex}
+      nav ul{display:none}
+      nav ul.active{display:flex}
+      nav ul{flex-direction:column;align-items:center;position:absolute;top:64px;left:50%;transform:translateX(-50%);width:calc(100% - 36px);max-width:420px;background:#800000;border-radius:12px;padding:10px 0}
+      nav li{width:100%;padding:10px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+      .hero{height:74vh}
       iframe{width:96%}
     }
+
+    /* focus states for accessibility */
+    a:focus,button:focus{outline:3px solid rgba(230,213,184,0.28);outline-offset:2px}
+
+    /* reveal on scroll (JS toggles .reveal-active) */
+    .reveal {opacity:0;transform:translateY(18px);transition:all .7s ease;}
+    .reveal.reveal-active{opacity:1;transform:none}
   </style>
 </head>
 <body>
+
+  <!-- audio (kept) -->
   <audio autoplay loop hidden>
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- NAVBAR -->
   <nav>
     <div class="logo-container">
       <img src="logorayhana.png" alt="Logo">
       <h1>Source Library</h1>
     </div>
-    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+
     <ul id="navMenu">
       <li><a href="#beranda">Home</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#admin">Admin</a></li>
-      <li><a href="kontak.html" target="_blank">Contact</a></li>
-      <li><a href="login.html" target="_blank"><strong>Login</strong></a></li>
+      <li><a href="kontak.html" target="_blank" rel="noopener">Contact</a></li>
+      <li><a href="login.html" target="_blank" rel="noopener"><strong>Login</strong></a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (Aurora only here) -->
   <section id="beranda" class="hero">
-    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
-    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80">
-    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
-    <div class="hero-content">
+    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active" alt="library background 1">
+    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80" alt="library background 2">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80" alt="library background 3">
+
+    <div class="hero-content reveal" role="region" aria-label="Hero content">
       <h2>Welcome to Source Library</h2>
       <p>Public digital library bringing knowledge to everyone — anytime, anywhere.</p>
-      <button class="btn" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">Explore Library</button>
-      <div class="sub-actions">
-        <button class="ghost" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">About Us</button>
-        <a class="ghost" href="#admin">Meet Admin</a>
+      <button class="btn" onclick="document.querySelector('#catalog')?.scrollIntoView({behavior:'smooth'});">Search Collection</button>
+
+      <div class="sub-actions" aria-hidden="false">
+        <button class="ghost" onclick="document.querySelector('#about')?.scrollIntoView({behavior:'smooth'});">About Us</button>
+        <a class="ghost" href="#admin" style="text-decoration:none;color:inherit">Meet Admin</a>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <!-- ABOUT (kept) -->
+  <section id="about" class="reveal">
     <h2>About Source Library</h2>
-    <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi...</p>
-    <button class="profile-toggle" id="profileToggle">Library Profile</button>
-    <div class="library-profile" id="libraryProfile">
-      <h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
+    <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi. Di sini, kamu bisa menemukan berbagai bacaan menarik dari buku pengetahuan umum hingga novel dan cerita imajinatif yang seru. Kami ingin membuat membaca terasa ringan, menyenangkan, dan mudah diakses oleh siapa pun, kapan pun. Karena bagi kami, setiap buku adalah jendela baru untuk belajar, berimajinasi, dan menikmati cerita.</p>
+
+    <button class="profile-toggle" id="profileToggle" aria-expanded="false">Library Profile</button>
+
+    <div class="library-profile reveal" id="libraryProfile" aria-hidden="true">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px">
+        <h3 style="color:#800000;margin:0">Profile — Source Library</h3>
+        <small style="color:#7b1f1f;font-weight:700">Design placeholder • Fill later</small>
+      </div>
+
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-        <div style="background:#fff;padding:12px;border-radius:10px;">
-          <h4 style="color:#800000">Vision</h4>
-          <p>Menjadi perpustakaan digital yang memajukan literasi masyarakat global.</p>
+        <div style="background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(128,0,0,0.05)">
+          <h4 style="color:#800000;margin-bottom:6px">Vision</h4>
+          <p style="font-size:14px;color:#333">— [Placeholder] A short sentence summarizing the library's long-term vision.</p>
         </div>
-        <div style="background:#fff;padding:12px;border-radius:10px;">
-          <h4 style="color:#800000">Mission</h4>
-          <p>Memberikan akses mudah terhadap sumber pengetahuan bagi semua kalangan.</p>
+        <div style="background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(128,0,0,0.05)">
+          <h4 style="color:#800000;margin-bottom:6px">Mission</h4>
+          <p style="font-size:14px;color:#333">— [Placeholder] A few mission points explaining how the library operates and serves the community.</p>
+        </div>
+        <div style="background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(128,0,0,0.05)">
+          <h4 style="color:#800000;margin-bottom:6px">Goals</h4>
+          <p style="font-size:14px;color:#333">— [Placeholder] Short-term and long-term goals, outreach programs, and digital initiatives.</p>
+        </div>
+        <div style="background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(128,0,0,0.05)">
+          <h4 style="color:#800000;margin-bottom:6px">Values</h4>
+          <p style="font-size:14px;color:#333">— [Placeholder] Core values such as openness, inclusivity, curiosity, and lifelong learning.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ADMIN -->
-  <section id="admin">
+  <!-- CATALOG placeholder -->
+  <section id="catalog" class="reveal">
+    <h2 style="color:#800000;font-size:28px;margin-bottom:8px">Catalog / Search (Placeholder)</h2>
+    <p style="max-width:920px;margin:0 auto 12px;color:#333">This is the initial design placeholder for the collection search area. When ready, a real search box, filters, and categories can be implemented here.</p>
+    <button class="btn" onclick="alert('Search module placeholder — implement later')">Open Search (Placeholder)</button>
+  </section>
+
+  <!-- ADMIN (kept) -->
+  <section id="admin" class="reveal">
     <h2>Tentang Admin</h2>
     <div class="admin-card">
-      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Admin">
+      <img src="07a8ce95-374a-430e-8d2e-14e61bb59e83.jpg" alt="Foto Admin">
       <h3>Rayhana</h3>
       <p><strong>Mahasiswa | Pencinta Buku | Pengembang Digital Library</strong></p>
-      <p>Saya membangun Source Library sebagai sarana berbagi pengetahuan...</p>
+      <p>Saya membangun Source Library sebagai sarana berbagi pengetahuan dan mendorong semangat belajar tanpa batas. Mari tumbuh bersama melalui literasi digital!</p>
       <div class="admin-links">
-        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank">View CV</a>
-        <a href="https://www.instagram.com/rayhana_znrr" target="_blank">Instagram</a>
+        <a href="https://drive.google.com/file/d/1Yyq5G2NVMEAMi58CoMcuqb17KJydHpoU/view?usp=drive_link" target="_blank" rel="noopener">View CV</a>
+        <a href="https://www.instagram.com/rayhana_znrr" target="_blank" rel="noopener">Instagram</a>
       </div>
-      <iframe src="https://www.youtube.com/embed/4w13jP-cshM" allowfullscreen></iframe>
+
+      <iframe src="https://www.youtube.com/embed/4w13jP-cshM" title="Admin video" allowfullscreen></iframe>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (improved look) -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
-        <h3>About Source Library</h3>
-        <p style="color:#f2e4cc;font-size:14px;line-height:1.7;">
-          Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
+        <h3>About Library</h3>
         <ul>
-          <li><a href="#beranda">🏠 Home</a></li>
-          <li><a href="#about">📚 About</a></li>
-          <li><a href="#admin">👩‍💻 Admin</a></li>
-          <li><a href="kontak.html" target="_blank">✉️ Contact</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Vision & Mission</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Digital Transformation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -271,15 +313,119 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Follow Us</h3>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/rayhana_znrr" target="_blank" title="Instagram">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-          </a>
-          <a href="mailto:sourcelibrary@gmail.com" title="Email">
-            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-          </a>
-          <a href="https://wa.me/6289613706759" target="_blank" title="WhatsApp">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-          </a>
-          <a
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">Book Request</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Workshops</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Connect With Us</h3>
+        <ul>
+          <li><a href="tel:089613706759">📞 089613706759</a></li>
+          <li><a href="mailto:sourcelibrary@gmail.com">✉️ sourcelibrary@gmail.com</a></li>
+        </ul>
+        <div class="footer-social" aria-hidden="false">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="mailto:sourcelibrary@gmail.com" aria-label="Email">📧</a>
+          <a href="https://wa.me/6289613706759" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">© 2026 Source Library | Perpustakaan Umum untuk Semua</div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Hero slideshow (safe, defensive)
+    (function(){
+      const slides = document.querySelectorAll('.hero img');
+      let idx = 0;
+      if(slides.length > 0){
+        slides[idx].classList.add('active');
+        setInterval(() => {
+          slides[idx].classList.remove('active');
+          idx = (idx + 1) % slides.length;
+          slides[idx].classList.add('active');
+        }, 6000);
+      }
+    })();
+
+    // menu toggle for mobile (keyboard accessible)
+    (function(){
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+      if(menuToggle && navMenu){
+        menuToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          menuToggle.classList.toggle('open');
+        });
+        menuToggle.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); menuToggle.click(); }
+        });
+      }
+    })();
+
+    // profile toggle in About
+    (function(){
+      const btn = document.getElementById('profileToggle');
+      const panel = document.getElementById('libraryProfile');
+      if(btn && panel){
+        btn.addEventListener('click', () => {
+          const open = panel.style.display === 'block';
+          panel.style.display = open ? 'none' : 'block';
+          btn.setAttribute('aria-expanded', String(!open));
+          panel.setAttribute('aria-hidden', String(open));
+          if(!open) panel.scrollIntoView({behavior:'smooth'});
+        });
+      }
+    })();
+
+    // reveal on scroll (simple and performant)
+    (function(){
+      const reveals = document.querySelectorAll('.reveal, [data-reveal]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('reveal-active');
+            entry.target.classList.add('reveal-active'); // redundant safe
+            entry.target.classList.add('reveal-active'); // extra safe (no harm)
+            entry.target.classList.add('reveal-active');
+            entry.target.classList.add('reveal-active'); // okay
+            // also add a readable class we used in CSS
+            entry.target.classList.add('reveal-active');
+            // mark with another class for CSS above
+            entry.target.classList.add('reveal-visible');
+            // add 'reveal' style active if present
+            if(entry.target.classList.contains('reveal')) entry.target.classList.add('reveal-active');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.18});
+      reveals.forEach(r => io.observe(r));
+    })();
+
+    // defensive: ensure accidentally hidden sections are visible at load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('section, .library-profile, .admin-card, footer').forEach(el=>{
+        if(getComputedStyle(el).display === 'none') el.style.display = '';
+      });
+    });
+
+    // accessibility: allow nav links to close mobile menu when clicked
+    (function(){
+      const navMenu = document.getElementById('navMenu');
+      if(navMenu){
+        navMenu.addEventListener('click', (e) => {
+          if(e.target.tagName === 'A' && navMenu.classList.contains('active')){
+            navMenu.classList.remove('active');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
