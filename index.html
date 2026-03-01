@@ -111,24 +111,57 @@
     .ghost{background:transparent;color:#f2e4cc;border:1px solid rgba(242,228,204,0.1);padding:9px 14px;border-radius:999px;font-weight:700}
 
     /* ===== ABOUT ===== */
-    section{padding:80px 20px}
-    #about{background:#fff;text-align:center}
-    #about h2{color:#800000;font-size:34px;margin-bottom:18px}
-    #about p{max-width:880px;margin:0 auto;line-height:1.75;color:#333;font-size:17px}
-    .profile-toggle{margin-top:18px;padding:10px 22px;border-radius:30px;border:2px solid #800000;background:transparent;color:#800000;font-weight:700;cursor:pointer}
-    .profile-toggle:hover{background:#800000;color:#fff}
-    .library-profile{
-      max-width:900px;margin:22px auto 0;padding:18px;
-      border-radius:12px;background:linear-gradient(180deg,#fff,#faf6f0);
-      border:1px solid rgba(230,213,184,0.4);display:none;
-      opacity:0;transform:translateY(20px);
-      transition:opacity .8s ease, transform .8s ease;
-    }
-    .library-profile.show{
-      display:block;
-      opacity:1;
-      transform:translateY(0);
-    }
+    <section id="about">
+  <h2>About Source Library</h2>
+  <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi...</p>
+  <button class="profile-toggle" id="profileToggle">Library Profile</button>
+
+  <div class="library-profile" id="libraryProfile">
+    <h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+      <div style="background:linear-gradient(145deg, #1c1c1c, #2a2a2a); padding:16px; border-radius:12px; color:#fff; box-shadow: 0 0 12px #00f0ff, 0 0 24px #8a2be2; opacity:0; animation:fadeIn 1s forwards;">
+        <h4 style="color:#00f0ff; text-shadow: 0 0 6px #00f0ff;">Vision</h4>
+        <p>
+          Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya dalam menyediakan informasi 
+          dan literasi bagi masyarakat digital.
+        </p>
+      </div>
+      <div style="background:linear-gradient(145deg, #1c1c1c, #2a2a2a); padding:16px; border-radius:12px; color:#fff; box-shadow: 0 0 12px #00f0ff, 0 0 24px #8a2be2; opacity:0; animation:fadeIn 1.2s forwards;">
+        <h4 style="color:#00f0ff; text-shadow: 0 0 6px #00f0ff;">Mission</h4>
+        <ol style="text-align:left; padding-left:20px; line-height:1.7;">
+          <li>Menyediakan akses literasi yang terbuka dan mudah dijangkau oleh masyarakat umum melalui platform digital.</li>
+          <li>Menyajikan koleksi digital yang aktual, tematik, dan relevan dengan tren literasi masyarakat.</li>
+          <li>Menggabungkan sumber pengetahuan masa kini dan lintas waktu untuk mendukung pembelajaran sepanjang hayat.</li>
+          <li>Meningkatkan minat baca masyarakat melalui pengemasan informasi yang menarik, ringkas, dan interaktif.</li>
+          <li>Mengembangkan budaya literasi digital berbasis teknologi terbuka yang dapat dikembangkan lebih lanjut oleh generasi berikutnya.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+  }
+
+  /* Tambahan hover efek neon sederhana untuk kotak profil */
+  .library-profile div:hover {
+    box-shadow: 0 0 20px #00f0ff, 0 0 40px #8a2be2, 0 0 60px #00f0ff;
+    transform: scale(1.03);
+    transition: all 0.3s ease;
+  }
+</style>
+
+<script>
+  // Toggle Library Profile dengan animasi fade-in
+  const profileToggle = document.getElementById("profileToggle");
+  const libraryProfile = document.getElementById("libraryProfile");
+  profileToggle.addEventListener("click", () => {
+    libraryProfile.classList.toggle("show");
+  });
+</script>
 
     /* ===== ADMIN ===== */
     #admin{text-align:center;background:#fdfaf6}
