@@ -18,7 +18,7 @@
       overflow-x:hidden;
     }
 
-    /* ===== NAVBAR (futuristic glow) ===== */
+    /* ===== NAVBAR (futuristic with glow line) ===== */
     nav{
       position:sticky;top:0;z-index:80;
       display:flex;justify-content:space-between;align-items:center;
@@ -115,8 +115,7 @@
     .ghost{background:transparent;color:#f2e4cc;border:1px solid rgba(242,228,204,0.4);padding:9px 14px;border-radius:999px;font-weight:700;transition:all .3s ease;}
     .ghost:hover{background:#e6d5b8;color:#7b1f1f;box-shadow:0 0 20px #e6d5b8;}
 
-    /* ===== ABOUT ===== */
-    section{padding:80px 20px}
+    /* ===== ABOUT (gradient & light motion) ===== */
     #about{
       background:linear-gradient(180deg,#fff,#f8f3eb);
       text-align:center;position:relative;overflow:hidden;
@@ -136,11 +135,10 @@
       background:linear-gradient(145deg,#fffdf8,#f8f3eb);
       border:1px solid rgba(230,213,184,0.5);
       box-shadow:0 0 25px rgba(230,213,184,0.3);
-      transition:box-shadow .3s;display:none;
-    }
+      transition:box-shadow .3s;}
     .library-profile:hover{box-shadow:0 0 40px rgba(230,213,184,0.6);}
 
-    /* ===== ADMIN ===== */
+    /* ===== ADMIN (dynamic gradient + glow) ===== */
     #admin{
       text-align:center;
       background:radial-gradient(circle at top,#fdf7f2,#faf6f0);
@@ -221,15 +219,4 @@
     <div class="hero-content" data-reveal>
       <h2>Welcome to Source Library</h2>
       <p>Public digital library bringing knowledge to everyone — anytime, anywhere.</p>
-      <button class="btn" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">Explore Library</button>
-      <div class="sub-actions">
-        <button class="ghost" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">About Us</button>
-        <a class="ghost" href="#admin">Meet Admin</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Source Library</h2>
-    <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua generasi...</
+      <button class="btn" onclick="
