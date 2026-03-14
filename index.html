@@ -143,6 +143,56 @@ footer{background:linear-gradient(180deg,#4d0000,#800000);color:#e6d5b8;padding:
 
 .footer-bottom{text-align:center;color:#fff;font-size:13px;margin-top:22px;line-height:1.6}
 .footer-bottom strong{color:#e6d5b8}
+
+/* ===== EXPLORE LIBRARY MENU ===== */
+.library-menu{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:200;
+}
+.library-menu.active{display:flex}
+.library-box{
+background:#fff;
+padding:40px;
+border-radius:16px;
+text-align:center;
+max-width:520px;
+width:90%;
+border:2px solid #e6d5b8;
+box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+.library-box h2{color:#800000;margin-bottom:20px}
+.library-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:12px;
+}
+.library-grid a{
+text-decoration:none;
+padding:14px;
+border-radius:10px;
+background:#faf6f0;
+border:1px solid #e6d5b8;
+color:#800000;
+font-weight:600;
+}
+.library-grid a:hover{background:#e6d5b8}
+.close-library{
+margin-top:20px;
+padding:8px 18px;
+border:none;
+background:#800000;
+color:#fff;
+border-radius:8px;
+cursor:pointer;
+}
 </style>
 </head>
 
@@ -181,7 +231,7 @@ footer{background:linear-gradient(180deg,#4d0000,#800000);color:#e6d5b8;padding:
 <h2>Welcome to Source Library</h2>
 <p>Public digital library bringing knowledge to everyone, anytime,and anywhere.</p>
 
-<button class="btn" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">
+<button class="btn" onclick="openLibrary()">
 Explore Library
 </button>
 
@@ -195,6 +245,24 @@ About Us
 
 </div>
 </section>
+
+<!-- EXPLORE LIBRARY MENU -->
+<div id="libraryMenu" class="library-menu">
+<div class="library-box">
+<h2>Pilih Koleksi</h2>
+
+<div class="library-grid">
+<a href="katalog.html?kategori=novel">📖 Novel</a>
+<a href="katalog.html?kategori=akademik">🎓 Akademik</a>
+<a href="katalog.html?kategori=jurnal">🔬 Jurnal</a>
+<a href="katalog.html?kategori=sejarah">🌍 Sejarah</a>
+<a href="katalog.html?kategori=biografi">👤 Biografi</a>
+<a href="katalog.html">📚 Semua Koleksi</a>
+</div>
+
+<button class="close-library" onclick="closeLibrary()">Tutup</button>
+</div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -293,6 +361,14 @@ const libraryProfile=document.getElementById("libraryProfile");
 profileToggle.addEventListener("click",()=>{
 libraryProfile.classList.toggle("show");
 });
+
+function openLibrary(){
+document.getElementById("libraryMenu").classList.add("active");
+}
+
+function closeLibrary(){
+document.getElementById("libraryMenu").classList.remove("active");
+}
 </script>
 
 </body>
