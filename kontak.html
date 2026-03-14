@@ -1,141 +1,157 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontak - Rayhana Digital Library</title>
+<title>Contact - Source Library</title>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+body{
+font-family: Arial, sans-serif;
+background:#faf6f0;
+margin:0;
+padding:40px;
+}
 
-  body {
-    font-family: 'Outfit', sans-serif;
-    background-color: #800000; /* Warna maroon khas */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #2a2a2a;
-    padding: 40px;
-  }
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
 
-  .form-wrapper {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid #e6d5b8;
-    border-radius: 25px;
-    padding: 50px 60px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    width: 90%;
-    max-width: 520px;
-    color: #fff;
-    text-align: center;
-  }
+h1{
+color:#800000;
+margin-bottom:10px;
+}
 
-  h2 {
-    font-size: 30px;
-    color: #fff;
-    margin-bottom: 10px;
-  }
+p{
+color:#444;
+}
 
-  p {
-    color: #f5e9d7;
-    font-size: 15px;
-    margin-bottom: 25px;
-  }
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
 
-  table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 100%;
-  }
+button{
+margin-top:15px;
+padding:10px 25px;
+background:#800000;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
 
-  td {
-    padding: 12px 8px;
-    text-align: left;
-    color: #fff;
-  }
+button:hover{
+background:#a00000;
+}
 
-  input, textarea {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1.5px solid #e6d5b8;
-    border-radius: 10px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 15px;
-    background: #fffaf4;
-    color: #2a2a2a;
-    outline: none;
-    transition: all 0.3s ease;
-  }
+.comment-section{
+margin-top:35px;
+}
 
-  input:focus, textarea:focus {
-    border-color: #f2e4cc;
-    box-shadow: 0 0 0 2px #e6d5b8;
-  }
+.comment{
+background:#f3f3f3;
+padding:12px;
+border-radius:6px;
+margin-top:10px;
+}
 
-  textarea {
-    resize: vertical;
-  }
+.comment strong{
+color:#800000;
+}
 
-  button {
-    background: #e6d5b8;
-    color: #7b1f1f;
-    padding: 12px 45px;
-    border: none;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin-top: 15px;
-  }
-
-  button:hover {
-    background: #f2e4cc;
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 480px) {
-    .form-wrapper {
-      padding: 35px 25px;
-    }
-  }
 </style>
 </head>
+
 <body>
 
-  <div class="form-wrapper">
-    <h2>Kontak & Feedback</h2>
-    <p>Silakan tinggalkan pesan, kritik, atau saran Anda untuk pengembangan Rayhana Digital Library.</p>
-    <form>
-      <table>
-        <tr>
-          <td>Nama</td>
-          <td><input type="text" name="nama" placeholder="Masukkan nama Anda" required></td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td><input type="email" name="email" placeholder="Masukkan email aktif" required></td>
-        </tr>
-        <tr>
-          <td>Pesan</td>
-          <td><textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="text-align:center;">
-            <button type="submit">Kirim Pesan</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </div>
+<div class="container">
+
+<h1>Contact & Feedback</h1>
+
+<p>Silakan kirim komentar atau masukan untuk Source Library.</p>
+
+<input type="text" id="name" placeholder="Nama Anda">
+
+<textarea id="message" rows="4" placeholder="Tulis komentar..."></textarea>
+
+<button onclick="addComment()">Kirim</button>
+
+<div class="comment-section">
+
+<h2>Komentar Pengunjung</h2>
+
+<div id="commentList"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+function showComments(){
+
+let list = document.getElementById("commentList");
+
+list.innerHTML = "";
+
+comments.forEach(function(comment){
+
+let div = document.createElement("div");
+
+div.className = "comment";
+
+div.innerHTML = "<strong>" + comment.name + "</strong><br>" + comment.message;
+
+list.appendChild(div);
+
+});
+
+}
+
+function addComment(){
+
+let name = document.getElementById("name").value;
+
+let message = document.getElementById("message").value;
+
+if(name === "" || message === ""){
+alert("Isi nama dan komentar terlebih dahulu");
+return;
+}
+
+let newComment = {
+name: name,
+message: message
+};
+
+comments.push(newComment);
+
+localStorage.setItem("comments", JSON.stringify(comments));
+
+showComments();
+
+document.getElementById("name").value = "";
+document.getElementById("message").value = "";
+
+}
+
+showComments();
+
+</script>
 
 </body>
 </html>
