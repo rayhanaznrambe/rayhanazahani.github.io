@@ -7,68 +7,186 @@
 
 <style>
 
-body{
-font-family: Arial, sans-serif;
-background:#faf6f0;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+*{
+box-sizing:border-box;
 margin:0;
-padding:40px;
+padding:0;
 }
 
-.container{
-max-width:700px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
+body{
+font-family:"Outfit", sans-serif;
+background:#faf6f0;
+color:#2a2a2a;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 20px;
 }
+
+/* CONTAINER */
+
+.container{
+width:100%;
+max-width:750px;
+background:white;
+padding:40px;
+border-radius:18px;
+border:2px solid #e6d5b8;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* TITLE */
 
 h1{
 color:#800000;
+font-size:32px;
 margin-bottom:10px;
 }
 
 p{
-color:#444;
+color:#555;
+margin-bottom:20px;
 }
+
+/* INPUT */
 
 input, textarea{
 width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:6px;
-border:1px solid #ccc;
+padding:12px;
+margin-top:12px;
+border-radius:8px;
+border:1px solid #ddd;
+font-family:"Outfit";
 font-size:14px;
+transition:all .2s;
 }
 
+input:focus, textarea:focus{
+outline:none;
+border-color:#800000;
+box-shadow:0 0 0 2px rgba(128,0,0,0.1);
+}
+
+/* BUTTON */
+
 button{
-margin-top:15px;
-padding:10px 25px;
-background:#800000;
-color:white;
+margin-top:16px;
+padding:12px 30px;
+border-radius:40px;
 border:none;
-border-radius:6px;
+background:linear-gradient(90deg,#800000,#a00000);
+color:white;
+font-weight:600;
+font-size:15px;
 cursor:pointer;
-font-weight:bold;
+transition:all .25s;
 }
 
 button:hover{
-background:#a00000;
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
+
+/* COMMENT AREA */
 
 .comment-section{
-margin-top:35px;
+margin-top:40px;
 }
+
+.comment-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.comment-header h2{
+color:#800000;
+}
+
+/* COMMENT CARD */
 
 .comment{
-background:#f3f3f3;
-padding:12px;
-border-radius:6px;
-margin-top:10px;
+display:flex;
+gap:12px;
+background:#fff;
+padding:15px;
+border-radius:12px;
+border:1px solid #eee;
+margin-bottom:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+animation:fadeIn .4s ease;
 }
 
-.comment strong{
+/* AVATAR */
+
+.avatar{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#800000;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+}
+
+/* COMMENT CONTENT */
+
+.comment-content{
+flex:1;
+}
+
+.comment-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:4px;
+}
+
+.comment-name{
 color:#800000;
+font-weight:600;
+}
+
+.comment-time{
+font-size:12px;
+color:#777;
+}
+
+.comment-text{
+color:#444;
+}
+
+/* DELETE BUTTON */
+
+.delete-btn{
+background:none;
+border:none;
+color:#999;
+font-size:12px;
+cursor:pointer;
+}
+
+.delete-btn:hover{
+color:red;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 </style>
@@ -79,8 +197,7 @@ color:#800000;
 <div class="container">
 
 <h1>Contact & Feedback</h1>
-
-<p>Silakan kirim komentar atau masukan untuk Source Library.</p>
+<p>Silakan kirim komentar atau masukan untuk <strong>Source Library</strong>.</p>
 
 <input type="text" id="name" placeholder="Nama Anda">
 
@@ -90,7 +207,10 @@ color:#800000;
 
 <div class="comment-section">
 
+<div class="comment-header">
 <h2>Komentar Pengunjung</h2>
+<span id="commentCount"></span>
+</div>
 
 <div id="commentList"></div>
 
@@ -102,50 +222,89 @@ color:#800000;
 
 let comments = JSON.parse(localStorage.getItem("comments")) || [];
 
+function updateCount(){
+document.getElementById("commentCount").innerText =
+comments.length + " komentar";
+}
+
+function formatTime(date){
+return new Date(date).toLocaleString();
+}
+
 function showComments(){
 
 let list = document.getElementById("commentList");
+list.innerHTML="";
 
-list.innerHTML = "";
-
-comments.forEach(function(comment){
+comments.forEach((comment,index)=>{
 
 let div = document.createElement("div");
+div.className="comment";
 
-div.className = "comment";
+div.innerHTML = `
+<div class="avatar">${comment.name.charAt(0).toUpperCase()}</div>
 
-div.innerHTML = "<strong>" + comment.name + "</strong><br>" + comment.message;
+<div class="comment-content">
+
+<div class="comment-top">
+<div>
+<span class="comment-name">${comment.name}</span>
+<span class="comment-time">• ${formatTime(comment.time)}</span>
+</div>
+
+<button class="delete-btn" onclick="deleteComment(${index})">
+hapus
+</button>
+
+</div>
+
+<div class="comment-text">${comment.message}</div>
+
+</div>
+`;
 
 list.appendChild(div);
 
 });
 
+updateCount();
+
 }
 
 function addComment(){
 
-let name = document.getElementById("name").value;
+let name=document.getElementById("name").value;
+let message=document.getElementById("message").value;
 
-let message = document.getElementById("message").value;
-
-if(name === "" || message === ""){
+if(name=="" || message==""){
 alert("Isi nama dan komentar terlebih dahulu");
 return;
 }
 
-let newComment = {
-name: name,
-message: message
+let newComment={
+name:name,
+message:message,
+time:new Date()
 };
 
 comments.push(newComment);
 
-localStorage.setItem("comments", JSON.stringify(comments));
+localStorage.setItem("comments",JSON.stringify(comments));
 
 showComments();
 
-document.getElementById("name").value = "";
-document.getElementById("message").value = "";
+document.getElementById("name").value="";
+document.getElementById("message").value="";
+
+}
+
+function deleteComment(index){
+
+comments.splice(index,1);
+
+localStorage.setItem("comments",JSON.stringify(comments));
+
+showComments();
 
 }
 
