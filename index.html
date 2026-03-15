@@ -136,8 +136,6 @@ transition:opacity 1.6s ease-in-out
 
 .hero img.active{opacity:1}
 
-/* FIX CLICK BUTTON */
-
 .hero::after{
 content:"";
 position:absolute;
@@ -192,6 +190,36 @@ transition:transform .22s
 
 .btn:hover{
 transform:translateY(-4px) scale(1.05)
+}
+
+/* SUB BUTTONS */
+
+.sub-actions{
+margin-top:18px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap
+}
+
+.ghost{
+background:rgba(255,255,255,0.1);
+color:#f2e4cc;
+border:1px solid rgba(230,213,184,0.5);
+padding:10px 18px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+transition:all .25s;
+backdrop-filter:blur(4px);
+text-decoration:none;
+}
+
+.ghost:hover{
+background:#e6d5b8;
+color:#800000;
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* ===== EXPLORE LIBRARY MODAL ===== */
@@ -335,18 +363,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* CARD EFFECT */
-
-.library-profile div div{
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-transition:.25s;
-}
-
-.library-profile div div:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 35px rgba(0,0,0,0.15);
-}
-
 /* FOOTER */
 
 footer{
@@ -415,14 +431,13 @@ color:#e6d5b8
 <source src="assets/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- NAVBAR -->
 <nav>
 <div class="logo-container">
 <img src="logorayhana.png" alt="Logo">
 <h1>Source Library</h1>
 </div>
 
-<ul id="navMenu">
+<ul>
 <li><a href="#beranda">Home</a></li>
 <li><a href="#about">About Us</a></li>
 <li><a href="admin.html">Admin</a></li>
@@ -431,7 +446,6 @@ color:#e6d5b8
 </ul>
 </nav>
 
-<!-- HERO -->
 <section id="beranda" class="hero">
 
 <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
@@ -457,7 +471,6 @@ About Us
 </div>
 </section>
 
-<!-- EXPLORE LIBRARY MENU -->
 <div id="libraryMenu" class="library-menu">
 <div class="library-box">
 <h2>Pilih Koleksi</h2>
@@ -475,7 +488,6 @@ About Us
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About Source Library</h2>
 <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
@@ -513,7 +525,6 @@ dan literasi bagi masyarakat digital.
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
 
 <div class="footer-grid">
@@ -523,16 +534,6 @@ dan literasi bagi masyarakat digital.
 <p style="color:#f2e4cc;font-size:14px;line-height:1.7;">
 Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.
 </p>
-</div>
-
-<div class="footer-col">
-<h3>Quick Links</h3>
-<ul>
-<li><a href="#beranda">🏠 Home</a></li>
-<li><a href="#about">📚 About</a></li>
-<li><a href="admin.html">👩‍💻 Admin</a></li>
-<li><a href="kontak.html" target="_blank">✉️ Contact</a></li>
-</ul>
 </div>
 
 <div class="footer-col">
@@ -553,11 +554,6 @@ Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarka
 </footer>
 
 <script>
-
-const menuToggle=document.getElementById("menuToggle");
-const navMenu=document.getElementById("navMenu");
-
-menuToggle.addEventListener("click",()=>navMenu.classList.toggle("active"));
 
 const heroImages=document.querySelectorAll(".hero img");
 let current=0;
