@@ -422,6 +422,95 @@ margin-top:22px;
 color:#e6d5b8
 }
 
+/* ===== RECOMMENDED BOOKS ===== */
+
+#recommended{
+padding:80px 40px;
+background:#faf6f0;
+}
+
+.recommend-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.recommend-header h2{
+font-family:"Cinzel",serif;
+color:#800000;
+font-size:34px;
+}
+
+.recommend-row{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:10px;
+}
+
+.recommend-row::-webkit-scrollbar{
+height:8px;
+}
+
+.recommend-row::-webkit-scrollbar-thumb{
+background:#800000;
+border-radius:20px;
+}
+
+.book-card{
+min-width:170px;
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.35s;
+cursor:pointer;
+flex-shrink:0;
+}
+
+.book-card:hover{
+transform:scale(1.08) translateY(-6px);
+box-shadow:0 25px 50px rgba(0,0,0,0.25);
+}
+
+.book-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.book-info{
+padding:10px;
+text-align:center;
+}
+
+.book-info h4{
+font-size:14px;
+color:#800000;
+margin-bottom:4px;
+}
+
+.book-info p{
+font-size:12px;
+color:#555;
+}
+
+.slider-btn{
+background:#800000;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.slider-btn:hover{
+background:#600000;
+}  
+  
 </style>
 </head>
 
@@ -488,6 +577,95 @@ About Us
 </div>
 </div>
 
+/* ===== RECOMMENDED BOOKS ===== */
+
+#recommended{
+padding:80px 40px;
+background:#faf6f0;
+}
+
+.recommend-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.recommend-header h2{
+font-family:"Cinzel",serif;
+color:#800000;
+font-size:34px;
+}
+
+.recommend-row{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:10px;
+}
+
+.recommend-row::-webkit-scrollbar{
+height:8px;
+}
+
+.recommend-row::-webkit-scrollbar-thumb{
+background:#800000;
+border-radius:20px;
+}
+
+.book-card{
+min-width:170px;
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:.35s;
+cursor:pointer;
+flex-shrink:0;
+}
+
+.book-card:hover{
+transform:scale(1.08) translateY(-6px);
+box-shadow:0 25px 50px rgba(0,0,0,0.25);
+}
+
+.book-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.book-info{
+padding:10px;
+text-align:center;
+}
+
+.book-info h4{
+font-size:14px;
+color:#800000;
+margin-bottom:4px;
+}
+
+.book-info p{
+font-size:12px;
+color:#555;
+}
+
+.slider-btn{
+background:#800000;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.slider-btn:hover{
+background:#600000;
+}
+  
 <section id="about">
 <h2>About Source Library</h2>
 <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
@@ -586,6 +764,51 @@ document.getElementById("libraryMenu").classList.add("active");
 
 function closeLibrary(){
 document.getElementById("libraryMenu").classList.remove("active");
+}
+
+<script src="books.js"></script>
+
+/* ======================= */
+/* RECOMMENDED BOOKS */
+/* ======================= */
+
+const recommendRow=document.getElementById("recommendRow");
+
+if(typeof books!=="undefined"){
+
+let rekom=books.slice(0,12);
+
+rekom.forEach(book=>{
+
+recommendRow.innerHTML+=`
+
+<div class="book-card" onclick="window.open('${book.file}','_blank')">
+
+<img src="${book.cover}" alt="${book.judul}">
+
+<div class="book-info">
+
+<h4>${book.judul}</h4>
+
+<p>${book.penulis}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function scrollBooks(dir){
+
+recommendRow.scrollBy({
+left:dir*400,
+behavior:"smooth"
+});
+
 }
 
 </script>
