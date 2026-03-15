@@ -8,16 +8,20 @@
 
 <title>Katalog Buku - Source Library</title>
 
+<!-- FONT KLASIK -->
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
 <style>
 
 /* BODY */
 
 body{
-font-family:'Segoe UI',sans-serif;
-background:#0f0f0f;
+font-family:'Libre Baskerville', serif;
+background:#f5efe6;
 margin:0;
 padding:40px;
-color:white;
+color:#4b0f0f;
 }
 
 /* HEADER */
@@ -28,17 +32,25 @@ margin-bottom:40px;
 }
 
 .header h1{
-font-size:36px;
+font-family:'Playfair Display', serif;
+font-size:42px;
+color:#7a1c1c;
 margin-bottom:10px;
+letter-spacing:1px;
 }
 
 .back{
-background:#e50914;
+background:#7a1c1c;
 color:white;
-padding:8px 18px;
-border-radius:20px;
+padding:8px 20px;
+border-radius:25px;
 text-decoration:none;
 font-size:14px;
+transition:0.3s;
+}
+
+.back:hover{
+background:#4b0f0f;
 }
 
 /* SEARCH */
@@ -46,7 +58,7 @@ font-size:14px;
 .search-box{
 display:flex;
 justify-content:center;
-margin:30px 0;
+margin:35px 0;
 }
 
 .search-box input{
@@ -54,40 +66,39 @@ width:420px;
 max-width:90%;
 padding:14px 20px;
 border-radius:30px;
-border:none;
+border:1px solid #d8cfc2;
 font-size:15px;
-background:#1c1c1c;
-color:white;
+background:#fffaf3;
 outline:none;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
 .search-box input::placeholder{
-color:#888;
+color:#999;
 }
 
-/* BOOK GRID */
+/* GRID */
 
 .book-container{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-gap:28px;
-margin-top:40px;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:30px;
+margin-top:30px;
 }
 
 /* CARD */
 
 .book-card{
-background:#1a1a1a;
-border-radius:10px;
+background:white;
+border-radius:12px;
 overflow:hidden;
+box-shadow:0 8px 18px rgba(0,0,0,0.08);
 transition:0.35s;
-cursor:pointer;
 }
 
 .book-card:hover{
-transform:scale(1.08);
-z-index:2;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
+transform:translateY(-8px);
+box-shadow:0 18px 35px rgba(0,0,0,0.18);
 }
 
 /* COVER */
@@ -101,42 +112,44 @@ object-fit:cover;
 /* INFO */
 
 .book-info{
-padding:14px;
+padding:16px;
 text-align:center;
 }
 
 .book-title{
+font-family:'Playfair Display', serif;
+font-size:16px;
 font-weight:600;
-font-size:15px;
-margin-bottom:5px;
+margin-bottom:6px;
+color:#7a1c1c;
 }
 
 .book-author{
-font-size:13px;
-color:#aaa;
+font-size:14px;
+color:#555;
 }
 
 .book-year{
-font-size:12px;
-color:#777;
-margin-bottom:10px;
+font-size:13px;
+color:#888;
+margin-bottom:12px;
 }
 
 /* BUTTON */
 
 .book-btn{
-background:#e50914;
+background:#7a1c1c;
 color:white;
-padding:6px 12px;
+padding:6px 14px;
 border-radius:6px;
 text-decoration:none;
-font-size:12px;
+font-size:13px;
 display:inline-block;
-margin-top:5px;
+transition:0.3s;
 }
 
 .book-btn:hover{
-background:#ff1e28;
+background:#4b0f0f;
 }
 
 </style>
@@ -144,7 +157,6 @@ background:#ff1e28;
 </head>
 
 <body>
-
 
 <div class="header">
 
@@ -154,16 +166,11 @@ background:#ff1e28;
 
 </div>
 
-
 <div class="search-box">
-
 <input type="text" id="search" placeholder="Cari judul buku, penulis, atau tahun...">
-
 </div>
 
-
 <div id="bookList" class="book-container"></div>
-
 
 <script src="books.js"></script>
 
@@ -172,30 +179,22 @@ background:#ff1e28;
 /* AMBIL PARAMETER KATEGORI */
 
 const params = new URLSearchParams(window.location.search);
-
 const kategori = params.get("kategori");
-
 let filteredBooks = books;
-
 
 /* FILTER BERDASARKAN KATEGORI */
 
 if(kategori){
-
 filteredBooks = books.filter(b => b.kategori === kategori);
-
 }
-
 
 /* TAMPILKAN BUKU */
 
 displayBooks(filteredBooks);
 
-
 function displayBooks(data){
 
 const list = document.getElementById("bookList");
-
 list.innerHTML="";
 
 data.forEach(book =>{
@@ -209,15 +208,11 @@ list.innerHTML += `
 <div class="book-info">
 
 <div class="book-title">${book.judul}</div>
-
 <div class="book-author">${book.penulis}</div>
-
 <div class="book-year">${book.tahun}</div>
 
 <a class="book-btn" href="${book.file}" target="_blank">
-
 Baca Buku
-
 </a>
 
 </div>
@@ -230,7 +225,6 @@ Baca Buku
 
 }
 
-
 /* SEARCH */
 
 document.getElementById("search").addEventListener("input", function(){
@@ -240,9 +234,7 @@ const keyword = this.value.toLowerCase();
 const results = books.filter(book =>
 
 book.judul.toLowerCase().includes(keyword) ||
-
 book.penulis.toLowerCase().includes(keyword) ||
-
 book.tahun.includes(keyword)
 
 );
