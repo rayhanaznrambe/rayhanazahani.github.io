@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -192,61 +192,111 @@ transition:transform .22s
 transform:translateY(-4px) scale(1.05)
 }
 
-/* ===== RECOMMENDED BOOKS ===== */
+/* SUB BUTTONS */
 
-#recommended{
-background:#faf6f0;
-text-align:center;
-padding:80px 20px
-}
-
-#recommended h2{
-color:#800000;
-font-size:36px;
-font-family:"Cinzel",serif;
-margin-bottom:30px
-}
-
-.book-scroll{
+.sub-actions{
+margin-top:18px;
 display:flex;
-gap:20px;
-overflow-x:auto;
-padding:20px 40px
+justify-content:center;
+gap:12px;
+flex-wrap:wrap
 }
 
-.book-card{
-min-width:180px;
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
+.ghost{
+background:rgba(255,255,255,0.1);
+color:#f2e4cc;
+border:1px solid rgba(230,213,184,0.5);
+padding:10px 18px;
+border-radius:30px;
+font-weight:600;
 cursor:pointer;
-transition:.25s
+transition:all .25s;
+backdrop-filter:blur(4px);
+text-decoration:none;
 }
 
-.book-card:hover{
-transform:translateY(-6px)
+.ghost:hover{
+background:#e6d5b8;
+color:#800000;
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-.book-card img{
+/* ===== EXPLORE LIBRARY MODAL ===== */
+
+.library-menu{
+position:fixed;
+top:0;
+left:0;
 width:100%;
-height:250px;
-object-fit:cover
+height:100%;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(6px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:200;
 }
 
-.book-info{
-padding:12px;
-text-align:left
+.library-menu.active{
+display:flex;
+animation:fade .3s ease;
 }
 
-.book-info h4{
-font-size:15px;
-color:#800000
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
 }
 
-.book-info p{
-font-size:13px;
-color:#555
+.library-box{
+background:#fff;
+padding:40px;
+border-radius:18px;
+max-width:600px;
+width:90%;
+text-align:center;
+border:2px solid #e6d5b8;
+box-shadow:0 30px 70px rgba(0,0,0,0.4);
+}
+
+.library-box h2{
+color:#800000;
+font-family:"Cinzel",serif;
+margin-bottom:30px;
+}
+
+.library-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:14px;
+}
+
+.library-grid a{
+text-decoration:none;
+padding:18px;
+border-radius:12px;
+background:#faf6f0;
+border:1px solid #e6d5b8;
+color:#800000;
+font-weight:600;
+transition:.25s;
+}
+
+.library-grid a:hover{
+background:#800000;
+color:#fff;
+transform:translateY(-4px);
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+}
+
+.close-library{
+margin-top:20px;
+padding:10px 22px;
+border:none;
+background:#800000;
+color:#fff;
+border-radius:8px;
+cursor:pointer;
 }
 
 /* ===== ABOUT ===== */
@@ -273,6 +323,8 @@ color:#333;
 font-size:17px
 }
 
+/* PROFILE BUTTON */
+
 .profile-toggle{
 margin-top:20px;
 padding:12px 28px;
@@ -282,13 +334,15 @@ background:transparent;
 color:#800000;
 font-weight:700;
 cursor:pointer;
-transition:.25s
+transition:.25s;
 }
 
 .profile-toggle:hover{
 background:#800000;
-color:#fff
+color:#fff;
 }
+
+/* PROFILE BOX */
 
 .library-profile{
 max-width:900px;
@@ -300,13 +354,13 @@ border:1px solid #e6d5b8;
 display:none;
 opacity:0;
 transform:translateY(20px);
-transition:.5s
+transition:.5s;
 }
 
 .library-profile.show{
 display:block;
 opacity:1;
-transform:translateY(0)
+transform:translateY(0);
 }
 
 /* FOOTER */
@@ -331,14 +385,41 @@ gap:28px
 color:#fff;
 margin-bottom:12px;
 font-size:18px;
-font-family:"Cinzel",serif
+font-family:"Cinzel",serif;
+border-bottom:2px solid rgba(230,213,184,0.35);
+display:inline-block;
+padding-bottom:6px
+}
+
+.footer-col ul{
+list-style:none;
+margin-top:10px
+}
+
+.footer-col li{
+margin-bottom:8px
+}
+
+.footer-col a{
+color:#f2e4cc;
+text-decoration:none;
+font-weight:600
+}
+
+.footer-col a:hover{
+text-shadow:0 0 8px #e6d5b8;
+color:#fff
 }
 
 .footer-bottom{
 text-align:center;
 color:#fff;
 font-size:13px;
-margin-top:22px
+margin-top:22px;
+}
+
+.footer-bottom strong{
+color:#e6d5b8
 }
 
 </style>
@@ -346,37 +427,140 @@ margin-top:22px
 
 <body>
 
+<audio autoplay loop hidden>
+<source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
 <nav>
 <div class="logo-container">
-<img src="logorayhana.png">
+<img src="logorayhana.png" alt="Logo">
 <h1>Source Library</h1>
 </div>
+
+<ul>
+<li><a href="#beranda">Home</a></li>
+<li><a href="#about">About Us</a></li>
+<li><a href="admin.html">Admin</a></li>
+<li><a href="kontak.html">Contact</a></li>
+<li><a href="login.html" target="_blank"><strong>Login</strong></a></li>
+</ul>
 </nav>
 
 <section id="beranda" class="hero">
+
 <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
 <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80">
 <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
+
+<div class="hero-content">
+<h2>Welcome to Source Library</h2>
+<p>Public digital library bringing knowledge to everyone, anytime,and anywhere.</p>
+
+<button class="btn" onclick="openLibrary()">
+Explore Library
+</button>
+
+<div class="sub-actions">
+<button class="ghost" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'});">
+About Us
+</button>
+
+<a class="ghost" href="admin.html">Meet Admin</a>
+</div>
+
+</div>
 </section>
 
-<!-- RECOMMENDED BOOKS -->
-<section id="recommended">
-<h2>Recommended Books</h2>
-<div class="book-scroll" id="recommendContainer"></div>
-</section>
+<div id="libraryMenu" class="library-menu">
+<div class="library-box">
+<h2>Pilih Koleksi</h2>
+
+<div class="library-grid">
+<a href="katalog.html?kategori=novel">📖 Novel</a>
+<a href="katalog.html?kategori=akademik">🎓 Akademik</a>
+<a href="katalog.html?kategori=jurnal">🔬 Jurnal</a>
+<a href="katalog.html?kategori=sejarah">🌍 Sejarah</a>
+<a href="katalog.html?kategori=biografi">👤 Biografi</a>
+<a href="katalog.html">📚 Semua Koleksi</a>
+</div>
+
+<button class="close-library" onclick="closeLibrary()">Tutup</button>
+</div>
+</div>
 
 <section id="about">
 <h2>About Source Library</h2>
 <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
+
+<button class="profile-toggle" id="profileToggle">Library Profile</button>
+
+<div class="library-profile" id="libraryProfile">
+
+<h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+
+<div style="background:#fff;padding:12px;border-radius:10px;">
+<h4 style="color:#800000">Vision</h4>
+<p>
+Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya dalam menyediakan informasi 
+dan literasi bagi masyarakat digital.
+</p>
+</div>
+
+<div style="background:#fff;padding:12px;border-radius:10px;">
+<h4 style="color:#800000">Mission</h4>
+
+<ol style="text-align:left; padding-left:20px; line-height:1.7; color:#333;">
+<li>Menyediakan akses literasi yang terbuka dan mudah dijangkau oleh masyarakat umum melalui platform digital.</li>
+<li>Menyajikan koleksi digital yang aktual, tematik, dan relevan dengan tren literasi masyarakat.</li>
+<li>Menggabungkan sumber pengetahuan masa kini dan lintas waktu untuk mendukung pembelajaran sepanjang hayat.</li>
+<li>Meningkatkan minat baca masyarakat melalui pengemasan informasi yang menarik, ringkas, dan interaktif.</li>
+<li>Mengembangkan budaya literasi digital berbasis teknologi terbuka yang dapat dikembangkan lebih lanjut oleh generasi berikutnya.</li>
+</ol>
+
+</div>
+
+</div>
+</div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<div class="footer-bottom">
-<p>© 2026 <strong>Source Library</strong></p>
-</div>
-</footer>
 
-<script src="books.js"></script>
+<div class="footer-grid">
+
+<div class="footer-col">
+<h3>About Source Library</h3>
+<p style="color:#f2e4cc;font-size:14px;line-height:1.7;">
+Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.
+</p>
+</div>
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#beranda">🏠 Home</a></li>
+<li><a href="#about">📚 About</a></li>
+<li><a href="admin.html">👩‍💻 Admin</a></li>
+<li><a href="kontak.html" target="_blank">✉️ Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h3>Collections</h3>
+<ul>
+<li><a href="#">E-Books</a></li>
+<li><a href="#">Research</a></li>
+<li><a href="#">Archives</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 <strong>Source Library</strong> — All rights reserved.</p>
+</div>
 
 <script>
 
@@ -389,31 +573,19 @@ current=(current+1)%heroImages.length;
 heroImages[current].classList.add("active");
 },5000);
 
-/* RECOMMENDED BOOKS */
+const profileToggle=document.getElementById("profileToggle");
+const libraryProfile=document.getElementById("libraryProfile");
 
-const recommendContainer=document.getElementById("recommendContainer");
-
-if(typeof books!=="undefined"){
-
-books.slice(0,10).forEach(book=>{
-
-const card=document.createElement("div");
-card.className="book-card";
-
-card.innerHTML=`
-<img src="${book.cover}">
-<div class="book-info">
-<h4>${book.judul}</h4>
-<p>${book.penulis}</p>
-</div>
-`;
-
-card.onclick=()=>window.open(book.file,"_blank");
-
-recommendContainer.appendChild(card);
-
+profileToggle.addEventListener("click",()=>{
+libraryProfile.classList.toggle("show");
 });
 
+function openLibrary(){
+document.getElementById("libraryMenu").classList.add("active");
+}
+
+function closeLibrary(){
+document.getElementById("libraryMenu").classList.remove("active");
 }
 
 </script>
