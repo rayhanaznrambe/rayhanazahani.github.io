@@ -590,6 +590,7 @@ dan literasi bagi masyarakat digital.
 </section>
 
 <!-- FOOTER -->
+<!-- FOOTER -->
 <footer>
 
 <div class="footer-grid">
@@ -626,6 +627,31 @@ Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarka
 <p>© 2026 <strong>Source Library</strong> — All rights reserved.</p>
 </div>
 
+<script>
+
+const heroImages=document.querySelectorAll(".hero img");
+let current=0;
+
+setInterval(()=>{
+heroImages[current].classList.remove("active");
+current=(current+1)%heroImages.length;
+heroImages[current].classList.add("active");
+},5000);
+
+const profileToggle=document.getElementById("profileToggle");
+const libraryProfile=document.getElementById("libraryProfile");
+
+profileToggle.addEventListener("click",()=>{
+libraryProfile.classList.toggle("show");
+});
+
+function openLibrary(){
+document.getElementById("libraryMenu").classList.add("active");
+}
+
+function closeLibrary(){
+document.getElementById("libraryMenu").classList.remove("active");
+}
 <script>
 
 const heroImages=document.querySelectorAll(".hero img");
