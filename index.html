@@ -652,31 +652,6 @@ document.getElementById("libraryMenu").classList.add("active");
 function closeLibrary(){
 document.getElementById("libraryMenu").classList.remove("active");
 }
-<script>
-
-const heroImages=document.querySelectorAll(".hero img");
-let current=0;
-
-setInterval(()=>{
-heroImages[current].classList.remove("active");
-current=(current+1)%heroImages.length;
-heroImages[current].classList.add("active");
-},5000);
-
-const profileToggle=document.getElementById("profileToggle");
-const libraryProfile=document.getElementById("libraryProfile");
-
-profileToggle.addEventListener("click",()=>{
-libraryProfile.classList.toggle("show");
-});
-
-function openLibrary(){
-document.getElementById("libraryMenu").classList.add("active");
-}
-
-function closeLibrary(){
-document.getElementById("libraryMenu").classList.remove("active");
-}
 
 <script src="books.js"></script>
 const recommendContainer=document.getElementById("recommendContainer");
