@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Katalog Buku - Source Library</title>
 
 <style>
 
 body{
-font-family: "Outfit", Arial;
+font-family:'Segoe UI',sans-serif;
 background:#faf6f0;
 margin:0;
 padding:40px;
@@ -18,96 +19,138 @@ padding:40px;
 
 .header{
 text-align:center;
-margin-bottom:40px;
+margin-bottom:30px;
 }
 
 .header h1{
 color:#800000;
-margin-bottom:10px;
+font-size:32px;
 }
 
-.back-btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 16px;
+.back{
 background:#800000;
 color:white;
+padding:8px 18px;
+border-radius:20px;
 text-decoration:none;
-border-radius:6px;
 font-size:14px;
 }
 
 /* SEARCH */
 
 .search-box{
-text-align:center;
-margin-bottom:30px;
+display:flex;
+justify-content:center;
+margin:30px 0;
 }
 
 .search-box input{
-padding:12px;
-width:300px;
-max-width:80%;
-border-radius:8px;
-border:1px solid #ccc;
+
+width:400px;
+max-width:90%;
+padding:12px 18px;
+border-radius:30px;
+border:1px solid #ddd;
+font-size:15px;
+
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+
 }
 
 /* BOOK GRID */
 
 .book-container{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+
 gap:25px;
+
+margin-top:40px;
+
 }
 
-/* BOOK CARD */
+/* CARD */
 
 .book-card{
+
 background:white;
-padding:15px;
+
 border-radius:12px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
+
+padding:15px;
+
 text-align:center;
-transition:transform 0.2s;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+transition:0.3s;
+
 }
 
 .book-card:hover{
-transform:translateY(-5px);
+
+transform:translateY(-6px);
+
 }
 
 .book-card img{
+
 width:120px;
+
 height:180px;
+
 object-fit:cover;
-margin-bottom:10px;
+
 border-radius:6px;
+
+margin-bottom:10px;
+
 }
 
 .book-title{
+
 font-weight:bold;
+
 color:#800000;
+
 margin-bottom:5px;
+
 }
 
 .book-author{
+
 font-size:14px;
+
 color:#555;
+
 }
 
 .book-year{
+
 font-size:13px;
+
 color:#777;
+
 margin-bottom:10px;
+
 }
 
 .book-btn{
-display:inline-block;
-padding:6px 12px;
+
 background:#800000;
+
 color:white;
-text-decoration:none;
+
+padding:6px 12px;
+
 border-radius:6px;
+
+text-decoration:none;
+
 font-size:13px;
+
 }
 
 </style>
@@ -116,70 +159,67 @@ font-size:13px;
 
 <body>
 
+
 <div class="header">
+
 <h1>📚 Katalog Buku</h1>
 
-<a class="back-btn" href="index.html">
-← Kembali ke Homepage
-</a>
+<a href="index.html" class="back">← Kembali</a>
+
 </div>
 
 
 <div class="search-box">
-<input type="text" id="search" placeholder="Cari judul, penulis, atau tahun...">
+
+<input type="text" id="search" placeholder="Cari buku, penulis, tahun...">
+
 </div>
 
 
 <div id="bookList" class="book-container"></div>
 
 
-<!-- LOAD DATA BUKU -->
-<script src="book.js"></script>
 
+<script src="book.js"></script>
 
 <script>
 
-/* =====================
-AMBIL PARAMETER KATEGORI
-===================== */
+/* AMBIL PARAMETER KATEGORI */
 
 const params = new URLSearchParams(window.location.search);
-const kategori = params.get("kategori");
 
+const kategori = params.get("kategori");
 
 let filteredBooks = books;
 
 
-/* FILTER BERDASARKAN KATEGORI */
+/* FILTER KATEGORI */
 
 if(kategori){
 
-filteredBooks = books.filter(book =>
-book.kategori === kategori
-);
+filteredBooks = books.filter(b => b.kategori === kategori);
 
 }
 
 
-/* =====================
-TAMPILKAN BUKU
-===================== */
+/* TAMPILKAN BUKU */
 
 displayBooks(filteredBooks);
 
 
 function displayBooks(data){
 
-const container = document.getElementById("bookList");
+const list = document.getElementById("bookList");
 
-container.innerHTML="";
+list.innerHTML="";
 
-data.forEach(book=>{
+data.forEach(book =>{
 
-const card = `
+list.innerHTML += `
+
 <div class="book-card">
 
-<img src="${book.cover}" alt="${book.judul}">
+<img src="${book.cover}">
 
 <div class="book-title">${book.judul}</div>
 
@@ -188,22 +228,21 @@ const card = `
 <div class="book-year">${book.tahun}</div>
 
 <a class="book-btn" href="${book.file}" target="_blank">
+
 Baca Buku
+
 </a>
 
 </div>
-`;
 
-container.innerHTML += card;
+`;
 
 });
 
 }
 
 
-/* =====================
-SEARCH SYSTEM
-===================== */
+/* SEARCH */
 
 document.getElementById("search").addEventListener("input", function(){
 
