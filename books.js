@@ -3,240 +3,211 @@ const books = [
 /* ================= NOVEL ================= */
 
 {
-judul: "Laskar Pelangi",
-penulis: "Andrea Hirata",
-tahun: "2005",
-kategori: "novel",
-cover: "https://covers.openlibrary.org/b/id/8231856-L.jpg",
-file: "#"
+judul:"Pride and Prejudice",
+penulis:"Jane Austen",
+tahun:"1813",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg",
+file:"https://www.gutenberg.org/ebooks/1342"
 },
 
 {
-judul: "Bumi",
-penulis: "Tere Liye",
-tahun: "2014",
-kategori: "novel",
-cover: "https://covers.openlibrary.org/b/id/9259251-L.jpg",
-file: "#"
+judul:"Frankenstein",
+penulis:"Mary Shelley",
+tahun:"1818",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9780486282114-L.jpg",
+file:"https://www.gutenberg.org/ebooks/84"
 },
 
 {
-judul: "Negeri 5 Menara",
-penulis: "Ahmad Fuadi",
-tahun: "2009",
-kategori: "novel",
-cover: "https://covers.openlibrary.org/b/id/6979861-L.jpg",
-file: "#"
+judul:"Dracula",
+penulis:"Bram Stoker",
+tahun:"1897",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9780486411095-L.jpg",
+file:"https://www.gutenberg.org/ebooks/345"
 },
 
 {
-judul: "Harry Potter and the Philosopher's Stone",
-penulis: "J.K. Rowling",
-tahun: "1997",
-kategori: "novel",
-cover: "https://covers.openlibrary.org/b/id/7984916-L.jpg",
-file: "#"
+judul:"Alice's Adventures in Wonderland",
+penulis:"Lewis Carroll",
+tahun:"1865",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9780486275437-L.jpg",
+file:"https://www.gutenberg.org/ebooks/11"
 },
 
 {
-judul: "The Alchemist",
-penulis: "Paulo Coelho",
-tahun: "1988",
-kategori: "novel",
-cover: "https://covers.openlibrary.org/b/id/8277890-L.jpg",
-file: "#"
+judul:"The Adventures of Sherlock Holmes",
+penulis:"Arthur Conan Doyle",
+tahun:"1892",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9780486474915-L.jpg",
+file:"https://www.gutenberg.org/ebooks/1661"
 },
 
+{
+judul:"Moby Dick",
+penulis:"Herman Melville",
+tahun:"1851",
+kategori:"novel",
+cover:"https://covers.openlibrary.org/b/isbn/9781503280786-L.jpg",
+file:"https://www.gutenberg.org/ebooks/2701"
+},
 
 /* ================= AKADEMIK ================= */
 
 {
-judul: "Introduction to Algorithms",
-penulis: "Thomas H. Cormen",
-tahun: "2009",
-kategori: "akademik",
-cover: "https://covers.openlibrary.org/b/id/8101356-L.jpg",
-file: "#"
+judul:"On the Origin of Species",
+penulis:"Charles Darwin",
+tahun:"1859",
+kategori:"akademik",
+cover:"https://covers.openlibrary.org/b/isbn/9781509827695-L.jpg",
+file:"https://www.gutenberg.org/ebooks/1228"
 },
 
 {
-judul: "Artificial Intelligence: A Modern Approach",
-penulis: "Stuart Russell",
-tahun: "2010",
-kategori: "akademik",
-cover: "https://covers.openlibrary.org/b/id/8221251-L.jpg",
-file: "#"
+judul:"Relativity: The Special and General Theory",
+penulis:"Albert Einstein",
+tahun:"1916",
+kategori:"akademik",
+cover:"https://covers.openlibrary.org/b/isbn/9780486417141-L.jpg",
+file:"https://www.gutenberg.org/ebooks/30155"
 },
 
 {
-judul: "Database System Concepts",
-penulis: "Abraham Silberschatz",
-tahun: "2011",
-kategori: "akademik",
-cover: "https://covers.openlibrary.org/b/id/8091016-L.jpg",
-file: "#"
+judul:"The Principles of Psychology",
+penulis:"William James",
+tahun:"1890",
+kategori:"akademik",
+cover:"https://covers.openlibrary.org/b/isbn/9780486203810-L.jpg",
+file:"https://www.gutenberg.org/ebooks/57628"
 },
 
 {
-judul: "Computer Networks",
-penulis: "Andrew S. Tanenbaum",
-tahun: "2013",
-kategori: "akademik",
-cover: "https://covers.openlibrary.org/b/id/8225261-L.jpg",
-file: "#"
+judul:"The Elements of Euclid",
+penulis:"Euclid",
+tahun:"300 BC",
+kategori:"akademik",
+cover:"https://covers.openlibrary.org/b/isbn/9780486600886-L.jpg",
+file:"https://www.gutenberg.org/ebooks/21076"
+},
+
+/* ================= FILSAFAT ================= */
+
+{
+judul:"Meditations",
+penulis:"Marcus Aurelius",
+tahun:"180",
+kategori:"filsafat",
+cover:"https://covers.openlibrary.org/b/isbn/9780140449334-L.jpg",
+file:"https://www.gutenberg.org/ebooks/2680"
 },
 
 {
-judul: "Operating System Concepts",
-penulis: "Abraham Silberschatz",
-tahun: "2018",
-kategori: "akademik",
-cover: "https://covers.openlibrary.org/b/id/8264743-L.jpg",
-file: "#"
-},
-
-
-/* ================= JURNAL ================= */
-
-{
-judul: "Nature Research Journal",
-penulis: "Nature Publishing Group",
-tahun: "2022",
-kategori: "jurnal",
-cover: "https://covers.openlibrary.org/b/id/11153223-L.jpg",
-file: "#"
+judul:"The Art of War",
+penulis:"Sun Tzu",
+tahun:"500 BC",
+kategori:"filsafat",
+cover:"https://covers.openlibrary.org/b/isbn/9781599869773-L.jpg",
+file:"https://www.gutenberg.org/ebooks/132"
 },
 
 {
-judul: "Science Journal",
-penulis: "American Association for the Advancement of Science",
-tahun: "2023",
-kategori: "jurnal",
-cover: "https://covers.openlibrary.org/b/id/11153225-L.jpg",
-file: "#"
+judul:"Thus Spoke Zarathustra",
+penulis:"Friedrich Nietzsche",
+tahun:"1883",
+kategori:"filsafat",
+cover:"https://covers.openlibrary.org/b/isbn/9780140441185-L.jpg",
+file:"https://www.gutenberg.org/ebooks/1998"
 },
-
-{
-judul: "IEEE Computer Society Journal",
-penulis: "IEEE",
-tahun: "2021",
-kategori: "jurnal",
-cover: "https://covers.openlibrary.org/b/id/11153226-L.jpg",
-file: "#"
-},
-
-{
-judul: "ACM Computing Surveys",
-penulis: "Association for Computing Machinery",
-tahun: "2020",
-kategori: "jurnal",
-cover: "https://covers.openlibrary.org/b/id/11153227-L.jpg",
-file: "#"
-},
-
-{
-judul: "Journal of Artificial Intelligence Research",
-penulis: "JAIR Organization",
-tahun: "2023",
-kategori: "jurnal",
-cover: "https://covers.openlibrary.org/b/id/11153228-L.jpg",
-file: "#"
-},
-
 
 /* ================= SEJARAH ================= */
 
 {
-judul: "Sapiens: A Brief History of Humankind",
-penulis: "Yuval Noah Harari",
-tahun: "2011",
-kategori: "sejarah",
-cover: "https://covers.openlibrary.org/b/id/8370226-L.jpg",
-file: "#"
+judul:"The Histories",
+penulis:"Herodotus",
+tahun:"440 BC",
+kategori:"sejarah",
+cover:"https://covers.openlibrary.org/b/isbn/9780140449082-L.jpg",
+file:"https://www.gutenberg.org/ebooks/2707"
 },
 
 {
-judul: "Guns, Germs, and Steel",
-penulis: "Jared Diamond",
-tahun: "1997",
-kategori: "sejarah",
-cover: "https://covers.openlibrary.org/b/id/8235116-L.jpg",
-file: "#"
+judul:"The History of the Peloponnesian War",
+penulis:"Thucydides",
+tahun:"431 BC",
+kategori:"sejarah",
+cover:"https://covers.openlibrary.org/b/isbn/9780140440393-L.jpg",
+file:"https://www.gutenberg.org/ebooks/7142"
 },
 
 {
-judul: "A History of the World",
-penulis: "Andrew Marr",
-tahun: "2012",
-kategori: "sejarah",
-cover: "https://covers.openlibrary.org/b/id/8234146-L.jpg",
-file: "#"
+judul:"The Decline and Fall of the Roman Empire",
+penulis:"Edward Gibbon",
+tahun:"1776",
+kategori:"sejarah",
+cover:"https://covers.openlibrary.org/b/isbn/9780140437645-L.jpg",
+file:"https://www.gutenberg.org/ebooks/25717"
 },
-
-{
-judul: "The Silk Roads",
-penulis: "Peter Frankopan",
-tahun: "2015",
-kategori: "sejarah",
-cover: "https://covers.openlibrary.org/b/id/8265101-L.jpg",
-file: "#"
-},
-
-{
-judul: "SPQR: A History of Ancient Rome",
-penulis: "Mary Beard",
-tahun: "2016",
-kategori: "sejarah",
-cover: "https://covers.openlibrary.org/b/id/8263330-L.jpg",
-file: "#"
-},
-
 
 /* ================= BIOGRAFI ================= */
 
 {
-judul: "Steve Jobs",
-penulis: "Walter Isaacson",
-tahun: "2011",
-kategori: "biografi",
-cover: "https://covers.openlibrary.org/b/id/8377051-L.jpg",
-file: "#"
+judul:"The Autobiography of Benjamin Franklin",
+penulis:"Benjamin Franklin",
+tahun:"1791",
+kategori:"biografi",
+cover:"https://covers.openlibrary.org/b/isbn/9780486264660-L.jpg",
+file:"https://www.gutenberg.org/ebooks/20203"
 },
 
 {
-judul: "Becoming",
-penulis: "Michelle Obama",
-tahun: "2018",
-kategori: "biografi",
-cover: "https://covers.openlibrary.org/b/id/9258844-L.jpg",
-file: "#"
+judul:"Life of Napoleon Bonaparte",
+penulis:"William Milligan Sloane",
+tahun:"1896",
+kategori:"biografi",
+cover:"https://covers.openlibrary.org/b/isbn/9781438500973-L.jpg",
+file:"https://www.gutenberg.org/ebooks/7170"
 },
 
 {
-judul: "Long Walk to Freedom",
-penulis: "Nelson Mandela",
-tahun: "1994",
-kategori: "biografi",
-cover: "https://covers.openlibrary.org/b/id/8231990-L.jpg",
-file: "#"
+judul:"The Life of Samuel Johnson",
+penulis:"James Boswell",
+tahun:"1791",
+kategori:"biografi",
+cover:"https://covers.openlibrary.org/b/isbn/9780140436624-L.jpg",
+file:"https://www.gutenberg.org/ebooks/1564"
+},
+
+/* ================= JURNAL / RESEARCH ================= */
+
+{
+judul:"Experimental Researches in Electricity",
+penulis:"Michael Faraday",
+tahun:"1839",
+kategori:"jurnal",
+cover:"https://covers.openlibrary.org/b/isbn/9780486443430-L.jpg",
+file:"https://www.gutenberg.org/ebooks/14985"
 },
 
 {
-judul: "Einstein: His Life and Universe",
-penulis: "Walter Isaacson",
-tahun: "2007",
-kategori: "biografi",
-cover: "https://covers.openlibrary.org/b/id/8235111-L.jpg",
-file: "#"
+judul:"The Structure of Scientific Revolutions",
+penulis:"Thomas Kuhn",
+tahun:"1962",
+kategori:"jurnal",
+cover:"https://covers.openlibrary.org/b/isbn/9780226458144-L.jpg",
+file:"https://archive.org/details/structureofscien0000kuhn"
 },
 
 {
-judul: "Elon Musk",
-penulis: "Ashlee Vance",
-tahun: "2015",
-kategori: "biografi",
-cover: "https://covers.openlibrary.org/b/id/8231992-L.jpg",
-file: "#"
+judul:"The Principles of Economics",
+penulis:"Alfred Marshall",
+tahun:"1890",
+kategori:"jurnal",
+cover:"https://covers.openlibrary.org/b/isbn/9781605200347-L.jpg",
+file:"https://www.gutenberg.org/ebooks/43561"
 }
 
 ];
