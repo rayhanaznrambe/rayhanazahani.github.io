@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,27 +10,30 @@
 
 <style>
 
+/* BODY */
+
 body{
 font-family:'Segoe UI',sans-serif;
-background:#faf6f0;
+background:#0f0f0f;
 margin:0;
 padding:40px;
+color:white;
 }
 
 /* HEADER */
 
 .header{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
 .header h1{
-color:#800000;
-font-size:32px;
+font-size:36px;
+margin-bottom:10px;
 }
 
 .back{
-background:#800000;
+background:#e50914;
 color:white;
 padding:8px 18px;
 border-radius:20px;
@@ -45,112 +50,93 @@ margin:30px 0;
 }
 
 .search-box input{
-
-width:400px;
+width:420px;
 max-width:90%;
-padding:12px 18px;
+padding:14px 20px;
 border-radius:30px;
-border:1px solid #ddd;
+border:none;
 font-size:15px;
+background:#1c1c1c;
+color:white;
+outline:none;
+}
 
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-
+.search-box input::placeholder{
+color:#888;
 }
 
 /* BOOK GRID */
 
 .book-container{
-
 display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-
-gap:25px;
-
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:28px;
 margin-top:40px;
-
 }
 
 /* CARD */
 
 .book-card{
-
-background:white;
-
-border-radius:12px;
-
-padding:15px;
-
-text-align:center;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-
-transition:0.3s;
-
+background:#1a1a1a;
+border-radius:10px;
+overflow:hidden;
+transition:0.35s;
+cursor:pointer;
 }
 
 .book-card:hover{
-
-transform:translateY(-6px);
-
+transform:scale(1.08);
+z-index:2;
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
 }
 
+/* COVER */
+
 .book-card img{
-
-width:120px;
-
-height:180px;
-
+width:100%;
+height:260px;
 object-fit:cover;
+}
 
-border-radius:6px;
+/* INFO */
 
-margin-bottom:10px;
-
+.book-info{
+padding:14px;
+text-align:center;
 }
 
 .book-title{
-
-font-weight:bold;
-
-color:#800000;
-
+font-weight:600;
+font-size:15px;
 margin-bottom:5px;
-
 }
 
 .book-author{
-
-font-size:14px;
-
-color:#555;
-
+font-size:13px;
+color:#aaa;
 }
 
 .book-year{
-
-font-size:13px;
-
+font-size:12px;
 color:#777;
-
 margin-bottom:10px;
-
 }
 
+/* BUTTON */
+
 .book-btn{
-
-background:#800000;
-
+background:#e50914;
 color:white;
-
 padding:6px 12px;
-
 border-radius:6px;
-
 text-decoration:none;
+font-size:12px;
+display:inline-block;
+margin-top:5px;
+}
 
-font-size:13px;
-
+.book-btn:hover{
+background:#ff1e28;
 }
 
 </style>
@@ -171,13 +157,12 @@ font-size:13px;
 
 <div class="search-box">
 
-<input type="text" id="search" placeholder="Cari buku, penulis, tahun...">
+<input type="text" id="search" placeholder="Cari judul buku, penulis, atau tahun...">
 
 </div>
 
 
 <div id="bookList" class="book-container"></div>
-
 
 
 <script src="books.js"></script>
@@ -193,7 +178,7 @@ const kategori = params.get("kategori");
 let filteredBooks = books;
 
 
-/* FILTER KATEGORI */
+/* FILTER BERDASARKAN KATEGORI */
 
 if(kategori){
 
@@ -219,7 +204,9 @@ list.innerHTML += `
 
 <div class="book-card">
 
-<img src="${book.cover}">
+<img src="${book.cover}" alt="${book.judul}">
+
+<div class="book-info">
 
 <div class="book-title">${book.judul}</div>
 
@@ -232,6 +219,8 @@ list.innerHTML += `
 Baca Buku
 
 </a>
+
+</div>
 
 </div>
 
@@ -265,4 +254,5 @@ displayBooks(results);
 </script>
 
 </body>
+
 </html>
