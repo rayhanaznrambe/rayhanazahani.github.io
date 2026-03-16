@@ -51,7 +51,7 @@ z-index:0;
 nav{
 position:sticky;
 top:0;
-z-index:100; /* dinaikkan agar di atas pameran */
+z-index:100;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -258,17 +258,17 @@ transform:translateY(-3px);
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ===== EVENT EXHIBITION ===== */
+/* ===== EVENT SECTION (AUTO GENERATED FROM BOOKS.JS) ===== */
 #bookEvent {
-    padding: 80px 20px;
-    background: rgba(255, 255, 255, 0.3);
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
     text-align: center;
     border-top: 1px solid #e6d5b8;
 }
 
 #bookEvent h2 {
     color: #800000;
-    font-size: 36px;
+    font-size: clamp(32px, 5vw, 42px);
     font-family: "Cinzel", serif;
     margin-bottom: 10px;
 }
@@ -279,41 +279,60 @@ box-shadow:0 10px 25px rgba(0,0,0,0.3);
     gap: 30px;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: 40px auto 0;
+    margin: 50px auto 0;
 }
 
 .event-card {
-    background: #fff;
-    width: 320px;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    width: 340px;
+    border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    transition: 0.4s ease;
-    border: 1px solid #e6d5b8;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(230, 213, 184, 0.5);
+    cursor: pointer;
     position: relative;
     text-align: left;
 }
 
-.event-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(128,0,0,0.15); }
+.event-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(128,0,0,0.15);
+    background: #fff;
+}
 
-.event-card img { width: 100%; height: 200px; object-fit: cover; }
+.event-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
 
 .event-badge {
     position: absolute;
-    top: 15px; right: 15px;
-    background: #800000; color: #fff;
-    padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    top: 20px; right: 20px;
+    background: #800000;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.event-content { padding: 25px; }
+.event-content { padding: 30px; }
+.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 10px; font-size: 20px; }
+.event-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 20px; height: 45px; overflow: hidden; }
 
-.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 10px; }
-
-.event-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 15px; }
-
-.event-tag { 
-    display: inline-block; background: #faf6f0; color: #800000; 
-    padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; border-left: 4px solid #800000;
+.event-tag {
+    display: inline-block;
+    background: #faf6f0;
+    color: #800000;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    border-left: 4px solid #800000;
 }
 
 /* ===== RECOMMENDED BOOKS ===== */
@@ -623,46 +642,18 @@ About Us
 </section>
 
 <section id="bookEvent">
-    <h2>Special Book Exhibition</h2>
-    <p style="color:#7b6b5d; margin-bottom:20px;">Jelajahi karya terbaik pilihan pustakawan kami bulan ini.</p>
+    <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px;">LIMITED EXHIBITION</span>
+    <h2>Special Book Event</h2>
+    <p style="color:#7b6b5d;">Koleksi unggulan bulan ini yang dapat langsung Anda baca.</p>
     
-    <div class="event-container">
-        <div class="event-card">
-            <div class="event-badge">Editor's Pick</div>
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80" alt="Exhibition 1">
-            <div class="event-content">
-                <h3>The Art of Knowledge</h3>
-                <p class="event-desc">Koleksi filsafat yang dirangkum untuk membantu Anda memahami dunia dengan cara yang lebih dalam.</p>
-                <div class="event-tag">✨ Paling Banyak Dicari</div>
-            </div>
+    <div class="event-container" id="eventContainer">
         </div>
-
-        <div class="event-card">
-            <div class="event-badge">New Arrival</div>
-            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Exhibition 2">
-            <div class="event-content">
-                <h3>Ancient Archives</h3>
-                <p class="event-desc">Akses digital ke manuskrip sejarah kuno yang kini bisa Anda baca dengan kualitas tinggi.</p>
-                <div class="event-tag">✨ Kualitas Arsip HD</div>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-badge">Trending</div>
-            <img src="https://images.unsplash.com/photo-1491843351663-8c43621d9a6c?auto=format&fit=crop&w=800&q=80" alt="Exhibition 3">
-            <div class="event-content">
-                <h3>Future Science</h3>
-                <p class="event-desc">Temukan riset terbaru mengenai teknologi AI dan masa depan eksplorasi luar angkasa.</p>
-                <div class="event-tag">✨ Riset Terkini</div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <section id="recommended">
 <h2>Recommended Books</h2>
 <div class="book-scroll" id="recommendContainer">
-    </div>
+    </div>
 </section>
 
 <div id="libraryMenu" class="library-menu">
@@ -747,13 +738,6 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Tutup menu saat link diklik (opsional)
-document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
-
 // --- HERO SLIDER ---
 const heroImages=document.querySelectorAll(".hero img");
 let current=0;
@@ -781,25 +765,50 @@ function closeLibrary(){
 document.getElementById("libraryMenu").classList.remove("active");
 }
 
-// --- RECOMMENDED BOOKS GENERATOR ---
-const recommendContainer=document.getElementById("recommendContainer");
+// --- BOOKS GENERATOR (EVENT & RECOMMENDED) ---
+const eventContainer = document.getElementById("eventContainer");
+const recommendContainer = document.getElementById("recommendContainer");
 
-if(typeof books !== "undefined"){
-    books.slice(0,10).forEach(book => {
-        const card = document.createElement("div");
-        card.className = "book-card";
-        card.innerHTML = `
-            <img src="${book.cover}" alt="${book.judul}">
-            <div class="book-info">
-                <h4>${book.judul}</h4>
-                <p>${book.penulis}</p>
-            </div>
-        `;
-        card.onclick = () => window.open(book.file, "_blank");
-        recommendContainer.appendChild(card);
-    });
+if(typeof books !== "undefined" && books.length > 0){
+    
+    // 1. ISI BAGIAN EVENT (Ambil 3 buku pertama dari koleksi Anda)
+    books.slice(0, 3).forEach((book, index) => {
+        const badges = ["Top Selection", "New Arrival", "Trending Now"];
+        const tags = ["✨ Best Quality", "✨ Editor Choice", "✨ Must Read"];
+        
+        const eventCard = document.createElement("div");
+        eventCard.className = "event-card";
+        eventCard.innerHTML = `
+            <div class="event-badge">${badges[index]}</div>
+            <img src="${book.cover}" alt="${book.judul}">
+            <div class="event-content">
+                <h3>${book.judul}</h3>
+                <p class="event-desc">Karya fenomenal oleh ${book.penulis}. Nikmati akses baca eksklusif sekarang juga.</p>
+                <div class="event-tag">${tags[index]}</div>
+            </div>
+        `;
+        eventCard.onclick = () => window.open(book.file, "_blank");
+        eventContainer.appendChild(eventCard);
+    });
+
+    // 2. ISI BAGIAN RECOMMENDED (Ambil sisanya)
+    books.slice(3, 13).forEach(book => {
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.innerHTML = `
+            <img src="${book.cover}" alt="${book.judul}">
+            <div class="book-info">
+                <h4>${book.judul}</h4>
+                <p>${book.penulis}</p>
+            </div>
+        `;
+        card.onclick = () => window.open(book.file, "_blank");
+        recommendContainer.appendChild(card);
+    });
+
 } else {
-    recommendContainer.innerHTML = "<p>Data buku tidak ditemukan. Pastikan books.js sudah benar.</p>";
+    eventContainer.innerHTML = "<p>Gagal memuat koleksi buku.</p>";
+    recommendContainer.innerHTML = "<p>Data buku tidak ditemukan.</p>";
 }
 </script>
 
