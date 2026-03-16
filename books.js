@@ -63,7 +63,7 @@ const books = [
     penulis: "Charles Darwin",
     tahun: "1859",
     kategori: "akademik",
-    cover: "https://books.google.com/books/content?id=vS9VAAAAYAAJ&printsec=frontcover&img=1&zoom=1",
+    cover: "https://www.gutenberg.org/cache/epub/1228/pg1228.cover.medium.jpg",
     file: "https://www.gutenberg.org/ebooks/1228"
 },
 
@@ -81,7 +81,7 @@ const books = [
     penulis: "William James",
     tahun: "1890",
     kategori: "akademik",
-    cover: "https://books.google.com/books/content?id=Yp_OAAAAMAAJ&printsec=frontcover&img=1&zoom=1",
+    cover: "https://www.gutenberg.org/cache/epub/57628/pg57628.cover.medium.jpg",
     file: "https://www.gutenberg.org/ebooks/57628"
 },
 
@@ -90,7 +90,7 @@ const books = [
     penulis: "Euclid",
     tahun: "300 BC",
     kategori: "akademik",
-    cover: "https://books.google.com/books/content?id=66NCAAAAYAAJ&printsec=frontcover&img=1&zoom=1",
+    cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Euclid-As_mucha_1570.jpg/400px-Euclid-As_mucha_1570.jpg",
     file: "https://www.gutenberg.org/ebooks/21076"
 },
 
