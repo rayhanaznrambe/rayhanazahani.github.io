@@ -346,6 +346,23 @@ box-shadow:0 10px 25px rgba(0,0,0,0.3);
     cursor: pointer;
 }
 
+.view-all-events {
+    margin-top: 40px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid #800000;
+    color: #800000;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-all-events:hover {
+    background: #800000;
+    color: #fff;
+}
+
 /* ===== RECOMMENDED BOOKS ===== */
 #recommended{
 background:#faf6f0;
@@ -621,7 +638,7 @@ color:#e6d5b8
 
 <ul id="navLinks">
 <li><a href="#beranda">Home</a></li>
-<li><a href="#bookEvent">Event</a></li>
+<li><a href="#bookEvent" id="menuEvent">Event</a></li>
 <li><a href="#recommended">Recommended</a></li>
 <li><a href="#about">About Us</a></li>
 <li><a href="admin.html">Admin</a></li>
@@ -654,16 +671,18 @@ About Us
 
 <section id="bookEvent">
     <div class="event-header">
-        <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Annual Digital Exhibition</span>
-        <h2>Pameran Buku Virtual 2026</h2>
-        <div class="schedule-info">
+        <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px; text-transform: uppercase;" id="eventBadge">Annual Digital Exhibition</span>
+        <h2 id="eventTitle">Pameran Buku Virtual 2026</h2>
+        <div class="schedule-info" id="eventSchedule">
             📅 Jadwal: 10 April - 20 April 2026 | 📍 Hall Literasi Digital
         </div>
-        <p style="color:#7b6b5d;">Menampilkan koleksi kurasi terbaik tahun ini. Temukan alasan mengapa karya-karya luar biasa ini wajib menghiasi daftar bacaan Anda.</p>
+        <p style="color:#7b6b5d;" id="eventDesc">Menampilkan koleksi kurasi terbaik tahun ini. Temukan alasan mengapa karya-karya luar biasa ini wajib menghiasi daftar bacaan Anda.</p>
     </div>
     
     <div class="event-container" id="eventContainer">
         </div>
+
+    <button class="view-all-events" id="btnViewAll" onclick="showAllEvents()">Lihat Semua Event</button>
 </section>
 
 <section id="recommended">
@@ -784,20 +803,22 @@ document.getElementById("libraryMenu").classList.remove("active");
 // --- BOOKS GENERATOR (EVENT & RECOMMENDED) ---
 const eventContainer = document.getElementById("eventContainer");
 const recommendContainer = document.getElementById("recommendContainer");
+const btnViewAll = document.getElementById("btnViewAll");
+const menuEventLink = document.getElementById("menuEvent");
 
-if(typeof books !== "undefined" && books.length > 0){
+const reasons = [
+    "Dipamerkan karena memenangkan penghargaan literatur internasional tahun ini.",
+    "Karya klasik yang telah direstorasi secara digital untuk generasi baru.",
+    "Buku dengan permintaan peminjaman tertinggi selama 3 bulan terakhir.",
+    "Menyajikan perspektif baru tentang sejarah yang jarang dibahas publik.",
+    "Terpilih sebagai buku paling inspiratif oleh komunitas pembaca kami."
+];
+
+function loadEvents(limit = 3) {
+    eventContainer.innerHTML = "";
+    const displayBooks = limit === -1 ? books : books.slice(0, limit);
     
-    // 1. ISI BAGIAN EVENT (MODIFIED: Menampilkan 5 Buku dengan Alasan Kurasi)
-    const reasons = [
-        "Dipamerkan karena memenangkan penghargaan literatur internasional tahun ini.",
-        "Karya klasik yang telah direstorasi secara digital untuk generasi baru.",
-        "Buku dengan permintaan peminjaman tertinggi selama 3 bulan terakhir.",
-        "Menyajikan perspektif baru tentang sejarah yang jarang dibahas publik.",
-        "Terpilih sebagai buku paling inspiratif oleh komunitas pembaca kami."
-    ];
-
-    // Mengambil 5 buku pertama untuk pameran
-    books.slice(0, 5).forEach((book, index) => {
+    displayBooks.forEach((book, index) => {
         const eventCard = document.createElement("div");
         eventCard.className = "event-card";
         eventCard.innerHTML = `
@@ -817,9 +838,28 @@ if(typeof books !== "undefined" && books.length > 0){
         `;
         eventContainer.appendChild(eventCard);
     });
+}
 
-    // 2. ISI BAGIAN RECOMMENDED (Buku mulai dari urutan ke-6)
-    books.slice(5, 15).forEach(book => {
+function showAllEvents() {
+    loadEvents(-1); // Memuat semua buku
+    btnViewAll.style.display = "none"; // Sembunyikan tombol lihat semua
+    document.getElementById("eventTitle").innerText = "Semua Koleksi Event";
+    document.getElementById("eventDesc").innerText = "Menampilkan seluruh koleksi buku pameran kami yang tersedia secara digital.";
+    document.getElementById("bookEvent").scrollIntoView({behavior:'smooth'});
+}
+
+// Handler untuk klik menu Event di Navbar
+menuEventLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    showAllEvents();
+});
+
+if(typeof books !== "undefined" && books.length > 0){
+    // 1. Inisialisasi awal (3 buku untuk homepage agar rapi)
+    loadEvents(3);
+
+    // 2. ISI BAGIAN RECOMMENDED (Buku mulai dari urutan ke-4)
+    books.slice(3, 13).forEach(book => {
         const card = document.createElement("div");
         card.className = "book-card";
         card.innerHTML = `
