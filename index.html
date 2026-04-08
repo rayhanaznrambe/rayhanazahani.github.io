@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Source Library</title>
+<title>Source Library | Exhibition</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 
@@ -258,92 +258,169 @@ transform:translateY(-3px);
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ===== EVENT SECTION (MODIFIED) ===== */
+/* ===== BEAUTIFIED EVENT SECTION ===== */
 #bookEvent {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
-    text-align: center;
-    border-top: 1px solid #e6d5b8;
+    padding: 120px 20px;
+    background: #faf6f0;
+    position: relative;
+    overflow: hidden;
 }
 
-.event-header {
-    max-width: 800px;
-    margin: 0 auto 50px;
-}
-
-#bookEvent h2 {
-    color: #800000;
-    font-size: clamp(32px, 5vw, 42px);
+/* Decorative Background Text */
+#bookEvent::before {
+    content: "EXHIBITION";
+    position: absolute;
+    top: 50px;
+    left: -50px;
     font-family: "Cinzel", serif;
-    margin-bottom: 10px;
+    font-size: 15vw;
+    font-weight: 900;
+    color: rgba(128, 0, 0, 0.03);
+    pointer-events: none;
+    z-index: 0;
 }
 
-.schedule-info {
-    display: inline-block;
+.event-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.event-intro h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(36px, 6vw, 54px);
+    color: #800000;
+    margin-bottom: 15px;
+}
+
+.event-intro .event-subtitle {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #6b5a45;
+    margin-bottom: 30px;
+}
+
+.event-date-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
     background: #800000;
     color: #fff;
-    padding: 10px 25px;
-    border-radius: 10px;
-    margin-bottom: 25px;
+    padding: 12px 30px;
+    border-radius: 50px;
     font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 5px 15px rgba(128,0,0,0.2);
+    letter-spacing: 1px;
+    box-shadow: 0 15px 35px rgba(128,0,0,0.25);
 }
 
-.event-container {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
     max-width: 1300px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
-.event-card {
+.event-item {
     background: #fff;
-    width: 300px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    transition: transform 0.4s ease;
+    border-radius: 2px; /* Square museum style */
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
     border: 1px solid #e6d5b8;
-    text-align: left;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
 }
 
-.event-card:hover {
+.event-item:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(128,0,0,0.1);
 }
 
-.event-card img {
+.event-img-wrapper {
     width: 100%;
-    height: 380px;
-    object-fit: cover;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
 }
 
-.event-content { padding: 20px; flex-grow: 1; }
-.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 8px; font-size: 18px; }
-.event-reason { font-size: 13px; color: #666; font-style: italic; margin-bottom: 15px; border-left: 3px solid #e6d5b8; padding-left: 10px; }
+.event-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
 
-.event-footer {
-    padding: 15px 20px;
+.event-item:hover .event-img-wrapper img {
+    transform: scale(1.08);
+}
+
+.exhibition-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #e6d5b8;
+    color: #800000;
+    padding: 8px 15px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.event-info {
+    flex-grow: 1;
+}
+
+.event-info h3 {
+    font-family: "Cinzel", serif;
+    color: #800000;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.event-author {
+    font-size: 14px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.curator-note {
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    padding: 15px;
     background: #faf6f0;
-    border-top: 1px solid #eee;
+    border-left: 2px solid #800000;
+    margin-bottom: 20px;
+}
+
+.event-action {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
 }
 
-.read-btn {
-    background: #800000;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 12px;
+.btn-view {
+    text-decoration: none;
+    color: #800000;
     font-weight: 700;
-    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 2px solid #800000;
+    transition: all 0.3s;
+}
+
+.btn-view:hover {
+    letter-spacing: 1px;
 }
 
 /* ===== RECOMMENDED BOOKS ===== */
@@ -603,10 +680,6 @@ color:#e6d5b8
 
 <body>
 
-<audio autoplay loop hidden>
-<source src="assets/music.mp3" type="audio/mpeg">
-</audio>
-
 <nav>
 <div class="logo-container">
 <img src="logorayhana.png" alt="Logo">
@@ -653,16 +726,16 @@ About Us
 </section>
 
 <section id="bookEvent">
-    <div class="event-header">
-        <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Annual Digital Exhibition</span>
-        <h2>Pameran Buku Virtual 2026</h2>
-        <div class="schedule-info">
-            📅 Jadwal: 10 April - 20 April 2026 | 📍 Hall Literasi Digital
+    <div class="event-intro">
+        <h2>Curated Exhibition</h2>
+        <p class="event-subtitle">"Membuka Jendela Dunia Melalui Halaman Digital"</p>
+        <div class="event-date-box">
+            <span>📅</span>
+            <span>15 APRIL — 30 APRIL 2026</span>
         </div>
-        <p style="color:#7b6b5d;">Menampilkan koleksi kurasi terbaik tahun ini. Temukan alasan mengapa karya-karya luar biasa ini wajib menghiasi daftar bacaan Anda.</p>
     </div>
-    
-    <div class="event-container" id="eventContainer">
+
+    <div class="event-grid" id="eventContainer">
         </div>
 </section>
 
@@ -781,44 +854,46 @@ function closeLibrary(){
 document.getElementById("libraryMenu").classList.remove("active");
 }
 
-// --- BOOKS GENERATOR (EVENT & RECOMMENDED) ---
+// --- DYNAMIC CONTENT GENERATOR ---
 const eventContainer = document.getElementById("eventContainer");
 const recommendContainer = document.getElementById("recommendContainer");
 
+// Exhibition Reasons / Curators Note
+const exhibitionNotes = [
+    "Karya ini dipilih karena kedalaman analisisnya terhadap fenomena sosial modern yang jarang tersentuh literatur umum.",
+    "Visualisasi dan narasi dalam buku ini memberikan standar baru dalam pengalaman membaca digital interaktif.",
+    "Buku ini merupakan arsip sejarah penting yang baru saja didigitalisasi agar dapat diakses oleh publik secara luas.",
+    "Sebuah mahakarya sastra yang mengeksplorasi batas imajinasi manusia dengan gaya bahasa yang sangat puitis.",
+    "Buku edukatif yang menyederhanakan konsep sains kompleks menjadi bacaan yang menyenangkan bagi segala usia."
+];
+
 if(typeof books !== "undefined" && books.length > 0){
     
-    // 1. ISI BAGIAN EVENT (MODIFIED: Menampilkan 5 Buku dengan Alasan Kurasi)
-    const reasons = [
-        "Dipamerkan karena memenangkan penghargaan literatur internasional tahun ini.",
-        "Karya klasik yang telah direstorasi secara digital untuk generasi baru.",
-        "Buku dengan permintaan peminjaman tertinggi selama 3 bulan terakhir.",
-        "Menyajikan perspektif baru tentang sejarah yang jarang dibahas publik.",
-        "Terpilih sebagai buku paling inspiratif oleh komunitas pembaca kami."
-    ];
-
-    // Mengambil 5 buku pertama untuk pameran
+    // 1. EXHIBITION SECTION (Show 5 Books)
     books.slice(0, 5).forEach((book, index) => {
-        const eventCard = document.createElement("div");
-        eventCard.className = "event-card";
-        eventCard.innerHTML = `
-            <img src="${book.cover}" alt="${book.judul}">
-            <div class="event-content">
+        const eventItem = document.createElement("div");
+        eventItem.className = "event-item";
+        eventItem.innerHTML = `
+            <div class="event-img-wrapper">
+                <img src="${book.cover}" alt="${book.judul}">
+                <div class="exhibition-tag">ITEM #${index + 1}</div>
+            </div>
+            <div class="event-info">
+                <p class="event-author">${book.penulis}</p>
                 <h3>${book.judul}</h3>
-                <p style="font-size:12px; color:#800000; font-weight:bold; margin-bottom:5px;">Oleh: ${book.penulis}</p>
-                <div class="event-reason">
-                    <strong>Curator's Note:</strong><br>
-                    ${reasons[index] || "Buku pilihan tim kurator karena nilai edukasinya yang tinggi."}
+                <div class="curator-note">
+                    "${exhibitionNotes[index] || "Buku pilihan tim kurator Source Library."}"
                 </div>
             </div>
-            <div class="event-footer">
-                <span style="font-size:11px; color:#999;">Kategori: ${book.kategori || 'Umum'}</span>
-                <button class="read-btn" onclick="window.open('${book.file}', '_blank')">LIHAT BUKU</button>
+            <div class="event-action">
+                <span style="font-size:12px; color:#999;">Digital Copy Available</span>
+                <a href="${book.file}" target="_blank" class="btn-view">READ ENTRY →</a>
             </div>
         `;
-        eventContainer.appendChild(eventCard);
+        eventContainer.appendChild(eventItem);
     });
 
-    // 2. ISI BAGIAN RECOMMENDED (Buku mulai dari urutan ke-6)
+    // 2. RECOMMENDED SECTION
     books.slice(5, 15).forEach(book => {
         const card = document.createElement("div");
         card.className = "book-card";
@@ -834,8 +909,7 @@ if(typeof books !== "undefined" && books.length > 0){
     });
 
 } else {
-    eventContainer.innerHTML = "<p>Gagal memuat koleksi pameran.</p>";
-    recommendContainer.innerHTML = "<p>Data buku tidak ditemukan.</p>";
+    eventContainer.innerHTML = "<p>Data pameran tidak tersedia.</p>";
 }
 </script>
 
