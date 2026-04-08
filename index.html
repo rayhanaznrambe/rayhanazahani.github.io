@@ -6,7 +6,7 @@
 <title>Source Library</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 
@@ -110,7 +110,7 @@ color:#e6d5b8;
 text-shadow:0 0 6px rgba(230,213,184,.8)
 }
 
-/* HAMBURGER */
+/* HAMBURGER MENU STYLE */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -124,6 +124,31 @@ text-shadow:0 0 6px rgba(230,213,184,.8)
     height: 3px;
     background: #e6d5b8;
     border-radius: 2px;
+}
+
+/* RESPONSIVE NAVBAR */
+@media (max-width: 850px) {
+    nav { padding: 14px 20px; }
+    .hamburger { display: flex; }
+    nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #6b0000;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        border-bottom: 0px solid #e6d5b8;
+    }
+    nav ul.active {
+        max-height: 400px;
+        border-bottom: 5px solid #e6d5b8;
+        padding: 10px 0;
+    }
+    nav ul li { width: 100%; text-align: center; }
+    nav ul li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 }
 
 /* HERO */
@@ -204,6 +229,7 @@ transition:transform .22s
 transform:translateY(-4px) scale(1.05)
 }
 
+/* SUB BUTTONS */
 .sub-actions{
 margin-top:18px;
 display:flex;
@@ -225,56 +251,61 @@ backdrop-filter:blur(4px);
 text-decoration:none;
 }
 
-/* ===== BEAUTIFIED EVENT SECTION ===== */
+.ghost:hover{
+background:#e6d5b8;
+color:#800000;
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ===== EVENT SECTION (MODIFIED) ===== */
 #bookEvent {
-    padding: 120px 20px;
-    background: #faf6f0;
-    position: relative;
-    overflow: hidden;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
+    text-align: center;
+    border-top: 1px solid #e6d5b8;
 }
 
 .event-header {
     max-width: 800px;
-    margin: 0 auto 60px;
-    text-align: center;
+    margin: 0 auto 50px;
 }
 
 #bookEvent h2 {
     color: #800000;
-    font-size: clamp(36px, 6vw, 50px);
+    font-size: clamp(32px, 5vw, 42px);
     font-family: "Cinzel", serif;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
 
 .schedule-info {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-block;
     background: #800000;
-    color: #e6d5b8;
-    padding: 12px 30px;
-    border-radius: 50px;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
     margin-bottom: 25px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 14px;
-    box-shadow: 0 10px 25px rgba(128,0,0,0.25);
+    box-shadow: 0 5px 15px rgba(128,0,0,0.2);
 }
 
 .event-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
     max-width: 1300px;
     margin: 0 auto;
 }
 
 .event-card {
     background: #fff;
-    border-radius: 0; /* Square museum style */
+    width: 300px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: transform 0.4s ease;
     border: 1px solid #e6d5b8;
     text-align: left;
     display: flex;
@@ -282,51 +313,23 @@ text-decoration:none;
 }
 
 .event-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 30px 60px rgba(128,0,0,0.12);
+    transform: translateY(-10px);
 }
 
 .event-card img {
     width: 100%;
-    height: 450px;
+    height: 380px;
     object-fit: cover;
-    transition: transform 0.6s ease;
 }
 
-.event-card:hover img {
-    transform: scale(1.05);
-}
-
-.event-content { 
-    padding: 25px; 
-    flex-grow: 1; 
-    position: relative;
-    background: white;
-}
-
-.event-content h3 { 
-    font-family: "Cinzel", serif; 
-    color: #800000; 
-    margin-bottom: 10px; 
-    font-size: 22px; 
-}
-
-.event-reason { 
-    font-family: "Playfair Display", serif;
-    font-size: 15px; 
-    color: #555; 
-    font-style: italic; 
-    margin-top: 15px;
-    padding: 15px;
-    background: #faf6f0;
-    border-left: 3px solid #800000;
-    line-height: 1.6;
-}
+.event-content { padding: 20px; flex-grow: 1; }
+.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 8px; font-size: 18px; }
+.event-reason { font-size: 13px; color: #666; font-style: italic; margin-bottom: 15px; border-left: 3px solid #e6d5b8; padding-left: 10px; }
 
 .event-footer {
-    padding: 20px 25px;
-    background: #fff;
-    border-top: 1px solid #f3e9dd;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-top: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -336,61 +339,273 @@ text-decoration:none;
     background: #800000;
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    font-size: 13px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-.read-btn:hover {
-    background: #000;
-    color: #e6d5b8;
+/* ===== RECOMMENDED BOOKS ===== */
+#recommended{
+background:#faf6f0;
+text-align:center;
+padding:80px 20px;
 }
 
-/* RECOMMENDED & OTHERS */
-#recommended{ background:#faf6f0; text-align:center; padding:80px 20px; }
-#recommended h2{ color:#800000; font-size:36px; font-family:"Cinzel",serif; margin-bottom:30px; }
-.book-scroll{ display:flex; gap:20px; overflow-x:auto; padding:20px 40px; scrollbar-width: thin; scrollbar-color: #800000 #f3e9dd; }
-.book-card{ min-width:180px; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.15); cursor:pointer; transition:.25s; flex-shrink: 0; }
-.book-card:hover{ transform:translateY(-6px); }
-.book-card img{ width:100%; height:250px; object-fit:cover; }
-.book-info{ padding:12px; text-align:left; }
-.book-info h4{ font-size:15px; color:#800000; margin-bottom: 4px; }
-.book-info p{ font-size:13px; color:#555; }
+#recommended h2{
+color:#800000;
+font-size:36px;
+font-family:"Cinzel",serif;
+margin-bottom:30px
+}
 
-/* MODAL & ABOUT */
-.library-menu{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:200; }
-.library-menu.active{ display:flex; animation:fade .3s ease; }
-.library-box{ background:#fff; padding:40px; border-radius:18px; max-width:600px; width:90%; text-align:center; border:2px solid #e6d5b8; box-shadow:0 30px 70px rgba(0,0,0,0.4); }
-.library-box h2{ color:#800000; font-family:"Cinzel",serif; margin-bottom:30px; }
-.library-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; }
-.library-grid a{ text-decoration:none; padding:18px; border-radius:12px; background:#faf6f0; border:1px solid #e6d5b8; color:#800000; font-weight:600; transition:.25s; }
-.library-grid a:hover{ background:#800000; color:#fff; transform:translateY(-4px); }
-.close-library{ margin-top:20px; padding:10px 22px; border:none; background:#800000; color:#fff; border-radius:8px; cursor:pointer; }
+.book-scroll{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:20px 40px;
+scrollbar-width: thin;
+scrollbar-color: #800000 #f3e9dd;
+}
 
+.book-card{
+min-width:180px;
+background:#fff;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+cursor:pointer;
+transition:.25s;
+flex-shrink: 0;
+}
+
+.book-card:hover{
+transform:translateY(-6px)
+}
+
+.book-card img{
+width:100%;
+height:250px;
+object-fit:cover
+}
+
+.book-info{
+padding:12px;
+text-align:left
+}
+
+.book-info h4{
+font-size:15px;
+color:#800000;
+margin-bottom: 4px;
+}
+
+.book-info p{
+font-size:13px;
+color:#555
+}
+
+/* ===== EXPLORE LIBRARY MODAL ===== */
+.library-menu{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(6px);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:200;
+}
+
+.library-menu.active{
+display:flex;
+animation:fade .3s ease;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+.library-box{
+background:#fff;
+padding:40px;
+border-radius:18px;
+max-width:600px;
+width:90%;
+text-align:center;
+border:2px solid #e6d5b8;
+box-shadow:0 30px 70px rgba(0,0,0,0.4);
+}
+
+.library-box h2{
+color:#800000;
+font-family:"Cinzel",serif;
+margin-bottom:30px;
+}
+
+.library-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:14px;
+}
+
+.library-grid a{
+text-decoration:none;
+padding:18px;
+border-radius:12px;
+background:#faf6f0;
+border:1px solid #e6d5b8;
+color:#800000;
+font-weight:600;
+transition:.25s;
+}
+
+.library-grid a:hover{
+background:#800000;
+color:#fff;
+transform:translateY(-4px);
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+}
+
+.close-library{
+margin-top:20px;
+padding:10px 22px;
+border:none;
+background:#800000;
+color:#fff;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* ===== ABOUT ===== */
 section{padding:80px 20px}
-#about{ background:#fff; text-align:center; }
-#about h2{ color:#800000; font-size:36px; font-family:"Cinzel",serif; margin-bottom:18px; }
-#about p{ max-width:880px; margin:0 auto; line-height:1.75; color:#333; font-size:17px; }
-.profile-toggle{ margin-top:20px; padding:12px 28px; border-radius:30px; border:2px solid #800000; background:transparent; color:#800000; font-weight:700; cursor:pointer; transition:.25s; }
-.profile-toggle:hover{ background:#800000; color:#fff; }
-.library-profile{ max-width:900px; margin:30px auto 0; padding:24px; border-radius:16px; background:#faf6f0; border:1px solid #e6d5b8; display:none; opacity:0; transform:translateY(20px); transition:.5s; }
-.library-profile.show{ display:block; opacity:1; transform:translateY(0); }
+
+#about{
+background:#fff;
+text-align:center
+}
+
+#about h2{
+color:#800000;
+font-size:36px;
+font-family:"Cinzel",serif;
+margin-bottom:18px
+}
+
+#about p{
+max-width:880px;
+margin:0 auto;
+line-height:1.75;
+color:#333;
+font-size:17px
+}
+
+.profile-toggle{
+margin-top:20px;
+padding:12px 28px;
+border-radius:30px;
+border:2px solid #800000;
+background:transparent;
+color:#800000;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+}
+
+.profile-toggle:hover{
+background:#800000;
+color:#fff;
+}
+
+.library-profile{
+max-width:900px;
+margin:30px auto 0;
+padding:24px;
+border-radius:16px;
+background:#faf6f0;
+border:1px solid #e6d5b8;
+display:none;
+opacity:0;
+transform:translateY(20px);
+transition:.5s;
+}
+
+.library-profile.show{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
 
 /* FOOTER */
-footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; padding:50px 20px 30px; border-top:6px solid #e6d5b8; margin-top:auto; }
-.footer-grid{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; }
-.footer-col h3{ color:#fff; margin-bottom:12px; font-size:18px; font-family:"Cinzel",serif; border-bottom:2px solid rgba(230,213,184,0.35); display:inline-block; padding-bottom:6px; }
-.footer-col ul{ list-style:none; margin-top:10px; }
-.footer-col a{ color:#f2e4cc; text-decoration:none; font-weight:600; }
-.footer-bottom{ text-align:center; color:#fff; font-size:13px; margin-top:22px; }
+footer{
+background:linear-gradient(180deg,#4d0000,#800000);
+color:#e6d5b8;
+padding:50px 20px 30px;
+border-top:6px solid #e6d5b8;
+margin-top:auto
+}
+
+.footer-grid{
+max-width:1100px;
+margin:0 auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:28px
+}
+
+.footer-col h3{
+color:#fff;
+margin-bottom:12px;
+font-size:18px;
+font-family:"Cinzel",serif;
+border-bottom:2px solid rgba(230,213,184,0.35);
+display:inline-block;
+padding-bottom:6px
+}
+
+.footer-col ul{
+list-style:none;
+margin-top:10px
+}
+
+.footer-col li{
+margin-bottom:8px
+}
+
+.footer-col a{
+color:#f2e4cc;
+text-decoration:none;
+font-weight:600
+}
+
+.footer-col a:hover{
+text-shadow:0 0 8px #e6d5b8;
+color:#fff
+}
+
+.footer-bottom{
+text-align:center;
+color:#fff;
+font-size:13px;
+margin-top:22px;
+}
+
+.footer-bottom strong{
+color:#e6d5b8
+}
 </style>
 </head>
 
 <body>
+
+<audio autoplay loop hidden>
+<source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
 <nav>
 <div class="logo-container">
@@ -439,12 +654,12 @@ About Us
 
 <section id="bookEvent">
     <div class="event-header">
-        <span style="color: #800000; font-weight: 700; letter-spacing: 3px; font-size: 14px; text-transform: uppercase;">The 2026 Virtual Exhibition</span>
-        <h2>Curated Gallery</h2>
+        <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Annual Digital Exhibition</span>
+        <h2>Pameran Buku Virtual 2026</h2>
         <div class="schedule-info">
-            📅 10 April — 20 April 2026 | Hall Literasi Digital
+            📅 Jadwal: 10 April - 20 April 2026 | 📍 Hall Literasi Digital
         </div>
-        <p style="color:#7b6b5d; font-family: 'Playfair Display', serif; font-size: 18px;">"Membuka Jendela Dunia Melalui Halaman Digital."</p>
+        <p style="color:#7b6b5d;">Menampilkan koleksi kurasi terbaik tahun ini. Temukan alasan mengapa karya-karya luar biasa ini wajib menghiasi daftar bacaan Anda.</p>
     </div>
     
     <div class="event-container" id="eventContainer">
@@ -475,14 +690,54 @@ About Us
 <section id="about">
 <h2>About Source Library</h2>
 <p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
+
 <button class="profile-toggle" id="profileToggle">Library Profile</button>
+
 <div class="library-profile" id="libraryProfile">
-    <h3 style="color:#800000;margin-bottom:10px;">Our Vision & Mission</h3>
-    <p>Menjadi perpustakaan digital yang inklusif dan terpercaya.</p>
+<h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+<div style="background:#fff;padding:12px;border-radius:10px;">
+<h4 style="color:#800000">Vision</h4>
+<p>Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya dalam menyediakan informasi dan literasi bagi masyarakat digital.</p>
+</div>
+<div style="background:#fff;padding:12px;border-radius:10px;">
+<h4 style="color:#800000">Mission</h4>
+<ol style="text-align:left; padding-left:20px; line-height:1.7; color:#333;">
+<li>Menyediakan akses literasi yang terbuka dan mudah dijangkau oleh masyarakat umum melalui platform digital.</li>
+<li>Menyajikan koleksi digital yang aktual, tematik, dan relevan dengan tren literasi masyarakat.</li>
+<li>Menggabungkan sumber pengetahuan masa kini dan lintas waktu untuk mendukung pembelajaran sepanjang hayat.</li>
+<li>Meningkatkan minat baca masyarakat melalui pengemasan informasi yang menarik, ringkas, dan interaktif.</li>
+<li>Mengembangkan budaya literasi digital berbasis teknologi terbuka yang dapat dikembangkan lebih lanjut oleh generasi berikutnya.</li>
+</ol>
+</div>
+</div>
 </div>
 </section>
 
 <footer>
+<div class="footer-grid">
+<div class="footer-col">
+<h3>About Source Library</h3>
+<p style="color:#f2e4cc;font-size:14px;line-height:1.7;">Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.</p>
+</div>
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#beranda">🏠 Home</a></li>
+<li><a href="#about">📚 About</a></li>
+<li><a href="admin.html">👩‍💻 Admin</a></li>
+<li><a href="kontak.html" target="_blank">✉️ Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Collections</h3>
+<ul>
+<li><a href="#">E-Books</a></li>
+<li><a href="#">Research</a></li>
+<li><a href="#">Archives</a></li>
+</ul>
+</div>
+</div>
 <div class="footer-bottom">
 <p>© 2026 <strong>Source Library</strong> — All rights reserved.</p>
 </div>
@@ -491,62 +746,79 @@ About Us
 <script src="books.js"></script>
 
 <script>
-// --- KEEPING ALL YOUR ORIGINAL LOGIC ---
+// --- HAMBURGER MENU HANDLER ---
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// --- HERO SLIDER ---
 const heroImages=document.querySelectorAll(".hero img");
 let current=0;
+
 setInterval(()=>{
-    heroImages[current].classList.remove("active");
-    current=(current+1)%heroImages.length;
-    heroImages[current].classList.add("active");
+heroImages[current].classList.remove("active");
+current=(current+1)%heroImages.length;
+heroImages[current].classList.add("active");
 },5000);
 
+// --- PROFILE TOGGLE ---
 const profileToggle=document.getElementById("profileToggle");
 const libraryProfile=document.getElementById("libraryProfile");
-profileToggle.addEventListener("click",()=>{ libraryProfile.classList.toggle("show"); });
 
-function openLibrary(){ document.getElementById("libraryMenu").classList.add("active"); }
-function closeLibrary(){ document.getElementById("libraryMenu").classList.remove("active"); }
+profileToggle.addEventListener("click",()=>{
+libraryProfile.classList.toggle("show");
+});
 
+// --- LIBRARY MODAL ---
+function openLibrary(){
+document.getElementById("libraryMenu").classList.add("active");
+}
+
+function closeLibrary(){
+document.getElementById("libraryMenu").classList.remove("active");
+}
+
+// --- BOOKS GENERATOR (EVENT & RECOMMENDED) ---
 const eventContainer = document.getElementById("eventContainer");
 const recommendContainer = document.getElementById("recommendContainer");
 
 if(typeof books !== "undefined" && books.length > 0){
+    
+    // 1. ISI BAGIAN EVENT (MODIFIED: Menampilkan 5 Buku dengan Alasan Kurasi)
     const reasons = [
-        "Karya masterpiece yang memenangkan penghargaan literatur internasional tahun ini.",
-        "Arsip sejarah langka yang telah direstorasi secara digital untuk publik.",
-        "Analisis mendalam tentang fenomena sosial modern yang sangat aktual.",
-        "Perspektif baru dalam dunia sains yang dikemas secara populer dan menarik.",
-        "Koleksi paling inspiratif yang dipilih langsung oleh komunitas pembaca kami."
+        "Dipamerkan karena memenangkan penghargaan literatur internasional tahun ini.",
+        "Karya klasik yang telah direstorasi secara digital untuk generasi baru.",
+        "Buku dengan permintaan peminjaman tertinggi selama 3 bulan terakhir.",
+        "Menyajikan perspektif baru tentang sejarah yang jarang dibahas publik.",
+        "Terpilih sebagai buku paling inspiratif oleh komunitas pembaca kami."
     ];
 
-    // EXHIBITION RENDERING
+    // Mengambil 5 buku pertama untuk pameran
     books.slice(0, 5).forEach((book, index) => {
         const eventCard = document.createElement("div");
         eventCard.className = "event-card";
         eventCard.innerHTML = `
             <img src="${book.cover}" alt="${book.judul}">
             <div class="event-content">
-                <p style="font-size:12px; color:#800000; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Featured Exhibit</p>
                 <h3>${book.judul}</h3>
-                <p style="font-size:14px; color:#999; margin-bottom:10px;">By ${book.penulis}</p>
+                <p style="font-size:12px; color:#800000; font-weight:bold; margin-bottom:5px;">Oleh: ${book.penulis}</p>
                 <div class="event-reason">
                     <strong>Curator's Note:</strong><br>
-                    "${reasons[index] || "Buku pilihan tim kurator karena nilai edukasinya yang sangat tinggi."}"
+                    ${reasons[index] || "Buku pilihan tim kurator karena nilai edukasinya yang tinggi."}
                 </div>
             </div>
             <div class="event-footer">
-                <span style="font-size:11px; color:#999; font-weight:600;">CODE: SL-${100+index}</span>
-                <button class="read-btn" onclick="window.open('${book.file}', '_blank')">EXPLORE ENTRY</button>
+                <span style="font-size:11px; color:#999;">Kategori: ${book.kategori || 'Umum'}</span>
+                <button class="read-btn" onclick="window.open('${book.file}', '_blank')">LIHAT BUKU</button>
             </div>
         `;
         eventContainer.appendChild(eventCard);
     });
 
-    // RECOMMENDED RENDERING
+    // 2. ISI BAGIAN RECOMMENDED (Buku mulai dari urutan ke-6)
     books.slice(5, 15).forEach(book => {
         const card = document.createElement("div");
         card.className = "book-card";
@@ -560,6 +832,10 @@ if(typeof books !== "undefined" && books.length > 0){
         card.onclick = () => window.open(book.file, "_blank");
         recommendContainer.appendChild(card);
     });
+
+} else {
+    eventContainer.innerHTML = "<p>Gagal memuat koleksi pameran.</p>";
+    recommendContainer.innerHTML = "<p>Data buku tidak ditemukan.</p>";
 }
 </script>
 
