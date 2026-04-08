@@ -258,12 +258,17 @@ transform:translateY(-3px);
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ===== EVENT SECTION (AUTO GENERATED FROM BOOKS.JS) ===== */
+/* ===== EVENT SECTION (MODIFIED) ===== */
 #bookEvent {
     padding: 100px 20px;
     background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
     text-align: center;
     border-top: 1px solid #e6d5b8;
+}
+
+.event-header {
+    max-width: 800px;
+    margin: 0 auto 50px;
 }
 
 #bookEvent h2 {
@@ -273,66 +278,72 @@ box-shadow:0 10px 25px rgba(0,0,0,0.3);
     margin-bottom: 10px;
 }
 
+.schedule-info {
+    display: inline-block;
+    background: #800000;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 5px 15px rgba(128,0,0,0.2);
+}
+
 .event-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 50px auto 0;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .event-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    width: 340px;
-    border-radius: 25px;
+    background: #fff;
+    width: 300px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(230, 213, 184, 0.5);
-    cursor: pointer;
-    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: transform 0.4s ease;
+    border: 1px solid #e6d5b8;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(128,0,0,0.15);
-    background: #fff;
+    transform: translateY(-10px);
 }
 
 .event-card img {
     width: 100%;
-    height: 240px;
+    height: 380px;
     object-fit: cover;
 }
 
-.event-badge {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: #800000;
-    color: #fff;
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-size: 11px;
-    font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.event-content { padding: 20px; flex-grow: 1; }
+.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 8px; font-size: 18px; }
+.event-reason { font-size: 13px; color: #666; font-style: italic; margin-bottom: 15px; border-left: 3px solid #e6d5b8; padding-left: 10px; }
+
+.event-footer {
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.event-content { padding: 30px; }
-.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 10px; font-size: 20px; }
-.event-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 20px; height: 45px; overflow: hidden; }
-
-.event-tag {
-    display: inline-block;
-    background: #faf6f0;
-    color: #800000;
-    padding: 6px 12px;
-    border-radius: 8px;
+.read-btn {
+    background: #800000;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
     font-size: 12px;
     font-weight: 700;
-    border-left: 4px solid #800000;
+    cursor: pointer;
 }
 
 /* ===== RECOMMENDED BOOKS ===== */
@@ -642,9 +653,14 @@ About Us
 </section>
 
 <section id="bookEvent">
-    <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px;">LIMITED EXHIBITION</span>
-    <h2>Special Book Event</h2>
-    <p style="color:#7b6b5d;">Koleksi unggulan bulan ini yang dapat langsung Anda baca.</p>
+    <div class="event-header">
+        <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Annual Digital Exhibition</span>
+        <h2>Pameran Buku Virtual 2026</h2>
+        <div class="schedule-info">
+            📅 Jadwal: 10 April - 20 April 2026 | 📍 Hall Literasi Digital
+        </div>
+        <p style="color:#7b6b5d;">Menampilkan koleksi kurasi terbaik tahun ini. Temukan alasan mengapa karya-karya luar biasa ini wajib menghiasi daftar bacaan Anda.</p>
+    </div>
     
     <div class="event-container" id="eventContainer">
         </div>
@@ -771,28 +787,39 @@ const recommendContainer = document.getElementById("recommendContainer");
 
 if(typeof books !== "undefined" && books.length > 0){
     
-    // 1. ISI BAGIAN EVENT (Ambil 3 buku pertama dari koleksi Anda)
-    books.slice(0, 3).forEach((book, index) => {
-        const badges = ["Top Selection", "New Arrival", "Trending Now"];
-        const tags = ["✨ Best Quality", "✨ Editor Choice", "✨ Must Read"];
-        
+    // 1. ISI BAGIAN EVENT (MODIFIED: Menampilkan 5 Buku dengan Alasan Kurasi)
+    const reasons = [
+        "Dipamerkan karena memenangkan penghargaan literatur internasional tahun ini.",
+        "Karya klasik yang telah direstorasi secara digital untuk generasi baru.",
+        "Buku dengan permintaan peminjaman tertinggi selama 3 bulan terakhir.",
+        "Menyajikan perspektif baru tentang sejarah yang jarang dibahas publik.",
+        "Terpilih sebagai buku paling inspiratif oleh komunitas pembaca kami."
+    ];
+
+    // Mengambil 5 buku pertama untuk pameran
+    books.slice(0, 5).forEach((book, index) => {
         const eventCard = document.createElement("div");
         eventCard.className = "event-card";
         eventCard.innerHTML = `
-            <div class="event-badge">${badges[index]}</div>
             <img src="${book.cover}" alt="${book.judul}">
             <div class="event-content">
                 <h3>${book.judul}</h3>
-                <p class="event-desc">Karya fenomenal oleh ${book.penulis}. Nikmati akses baca eksklusif sekarang juga.</p>
-                <div class="event-tag">${tags[index]}</div>
+                <p style="font-size:12px; color:#800000; font-weight:bold; margin-bottom:5px;">Oleh: ${book.penulis}</p>
+                <div class="event-reason">
+                    <strong>Curator's Note:</strong><br>
+                    ${reasons[index] || "Buku pilihan tim kurator karena nilai edukasinya yang tinggi."}
+                </div>
+            </div>
+            <div class="event-footer">
+                <span style="font-size:11px; color:#999;">Kategori: ${book.kategori || 'Umum'}</span>
+                <button class="read-btn" onclick="window.open('${book.file}', '_blank')">LIHAT BUKU</button>
             </div>
         `;
-        eventCard.onclick = () => window.open(book.file, "_blank");
         eventContainer.appendChild(eventCard);
     });
 
-    // 2. ISI BAGIAN RECOMMENDED (Ambil sisanya)
-    books.slice(3, 13).forEach(book => {
+    // 2. ISI BAGIAN RECOMMENDED (Buku mulai dari urutan ke-6)
+    books.slice(5, 15).forEach(book => {
         const card = document.createElement("div");
         card.className = "book-card";
         card.innerHTML = `
@@ -807,7 +834,7 @@ if(typeof books !== "undefined" && books.length > 0){
     });
 
 } else {
-    eventContainer.innerHTML = "<p>Gagal memuat koleksi buku.</p>";
+    eventContainer.innerHTML = "<p>Gagal memuat koleksi pameran.</p>";
     recommendContainer.innerHTML = "<p>Data buku tidak ditemukan.</p>";
 }
 </script>
