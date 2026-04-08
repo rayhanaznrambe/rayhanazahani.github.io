@@ -123,7 +123,7 @@ text-shadow:0 0 6px rgba(230,213,184,.8)
     nav ul li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 }
 
-/* SECTION VISIBILITY CONTROL */
+/* ===== SINGLE PAGE CONTROL ===== */
 .page-section { display: block; }
 .hidden { display: none !important; }
 
@@ -202,75 +202,38 @@ transition:transform .22s
 
 .btn:hover{ transform:translateY(-4px) scale(1.05) }
 
-/* ===== EVENT SECTION ===== */
+/* ===== EVENT SECTION (MASTERPIECE STYLE) ===== */
 #bookEvent {
     padding: 100px 20px;
     background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
     text-align: center;
-    border-top: 1px solid #e6d5b8;
 }
 
-.event-header { max-width: 900px; margin: 0 auto 50px; }
-
-#bookEvent h2 {
-    color: #800000;
-    font-size: clamp(32px, 5vw, 42px);
-    font-family: "Cinzel", serif;
-    margin-bottom: 10px;
-}
-
-.back-btn {
-    background: #800000;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.genre-section { margin-top: 50px; text-align: left; max-width: 1250px; margin-left: auto; margin-right: auto; }
+.genre-section { margin-top: 50px; text-align: left; max-width: 1200px; margin: 50px auto; }
 .genre-title { font-family: "Cinzel", serif; color: #800000; border-bottom: 2px solid #e6d5b8; padding-bottom: 10px; margin-bottom: 30px; font-size: 26px; }
 
-.event-container {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
+.event-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
 
 .event-card {
     background: #fff;
-    width: 310px;
+    width: 320px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    transition: transform 0.4s ease;
+    transition: 0.4s ease;
     border: 1px solid #e6d5b8;
     display: flex;
     flex-direction: column;
 }
 
-.event-card:hover { transform: translateY(-10px); }
 .event-card img { width: 100%; height: 380px; object-fit: cover; }
-.event-content { padding: 20px; flex-grow: 1; }
-.event-content h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 8px; font-size: 18px; }
+.event-content { padding: 25px; flex-grow: 1; }
+.event-content h3 { font-family: "Cinzel", serif; color: #800000; font-size: 19px; margin-bottom: 10px; }
 .event-reason { font-size: 13px; color: #555; line-height: 1.6; border-left: 3px solid #800000; padding-left: 12px; font-style: italic; }
 
 .read-btn {
-    background: #800000;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    width: 100%;
+    background: #800000; color: #fff; border: none; padding: 12px;
+    border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%;
 }
 
 /* ===== RECOMMENDED ===== */
@@ -282,21 +245,28 @@ transition:transform .22s
 .book-info{ padding:12px; text-align:left }
 .book-info h4{ font-size:15px; color:#800000; margin-bottom: 4px; }
 
-/* MODAL & ABOUT */
+/* MODAL */
 .library-menu{ position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:200; }
 .library-menu.active{ display:flex; }
 .library-box{ background:#fff; padding:40px; border-radius:18px; max-width:600px; width:90%; text-align:center; }
 .library-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; }
 .library-grid a{ text-decoration:none; padding:18px; border-radius:12px; background:#faf6f0; border:1px solid #e6d5b8; color:#800000; font-weight:600; }
 
+/* ABOUT SECTION */
 section{padding:80px 20px}
 #about{ background:#fff; text-align:center }
 #about h2{ color:#800000; font-size:36px; font-family:"Cinzel",serif; margin-bottom:18px }
 .profile-toggle{ margin-top:20px; padding:12px 28px; border-radius:30px; border:2px solid #800000; background:transparent; color:#800000; font-weight:700; cursor:pointer; }
-.library-profile{ max-width:900px; margin:30px auto 0; padding:24px; border-radius:16px; background:#faf6f0; display:none; }
+.library-profile{ max-width:900px; margin:30px auto 0; padding:24px; border-radius:16px; background:#faf6f0; border:1px solid #e6d5b8; display:none; }
 .library-profile.show{ display:block; }
 
+/* FOOTER */
 footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; padding:50px 20px 30px; border-top:6px solid #e6d5b8; margin-top:auto }
+.footer-grid{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px }
+.footer-col h3{ color:#fff; margin-bottom:12px; font-size:18px; font-family:"Cinzel",serif; border-bottom:2px solid rgba(230,213,184,0.35); display:inline-block; padding-bottom:6px }
+.footer-col ul{ list-style:none; margin-top:10px }
+.footer-col li{ margin-bottom:8px }
+.footer-col a{ color:#f2e4cc; text-decoration:none; font-weight:600 }
 .footer-bottom{ text-align:center; color:#fff; font-size:13px; margin-top:22px; }
 </style>
 </head>
@@ -351,10 +321,11 @@ footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; paddi
 
 <div id="eventPage" class="page-section hidden">
     <section id="bookEvent">
-        <div class="event-header">
-            <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
-            <h2>Event Buku Virtual: The Masterpiece Series</h2>
-            <p style="color:#7b6b5d; margin-top:15px;">Koleksi eksklusif mahakarya dunia yang telah dikurasi oleh tim pustakawan kami berdasarkan genre masterpiece terbaik.</p>
+        <div style="max-width:800px; margin:0 auto 40px;">
+            <span style="color: #800000; font-weight: 700; letter-spacing: 2px;">THE MASTERPIECE SERIES</span>
+            <h2 style="margin-top:10px;">Curated Special Exhibition</h2>
+            <p style="color:#7b6b5d;">Koleksi mahakarya pilihan yang kami kurasi khusus berdasarkan genre terbaik bulan ini.</p>
+            <button class="btn" style="padding:10px 25px; font-size:14px;" onclick="showPage('home')">Kembali ke Beranda</button>
         </div>
 
         <div class="genre-section">
@@ -368,16 +339,6 @@ footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; paddi
         </div>
     </section>
 </div>
-
-<section id="about">
-<h2>About Source Library</h2>
-<p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
-<button class="profile-toggle" id="profileToggle">Library Profile</button>
-<div class="library-profile" id="libraryProfile">
-    <h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
-    <p>Inovasi literasi tanpa batas untuk masyarakat digital Indonesia.</p>
-</div>
-</section>
 
 <div id="libraryMenu" class="library-menu">
 <div class="library-box">
@@ -394,7 +355,55 @@ footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; paddi
 </div>
 </div>
 
+<section id="about">
+<h2>About Source Library</h2>
+<p>Source Library adalah perpustakaan umum digital yang terbuka untuk semua masyarakat dalam mengakses informasi yang aktual.</p>
+<button class="profile-toggle" id="profileToggle">Library Profile</button>
+<div class="library-profile" id="libraryProfile">
+    <h3 style="color:#800000;margin-bottom:10px;">Profile — Source Library</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+        <div style="background:#fff;padding:12px;border-radius:10px;">
+            <h4 style="color:#800000">Vision</h4>
+            <p style="font-size:14px;">Menjadi perpustakaan umum digital yang inklusif, adaptif, dan terpercaya dalam menyediakan informasi dan literasi bagi masyarakat digital.</p>
+        </div>
+        <div style="background:#fff;padding:12px;border-radius:10px;">
+            <h4 style="color:#800000">Mission</h4>
+            <ol style="text-align:left; padding-left:20px; line-height:1.7; color:#333; font-size:13px;">
+                <li>Menyediakan akses literasi yang terbuka dan mudah dijangkau.</li>
+                <li>Menyajikan koleksi digital yang aktual dan tematik.</li>
+                <li>Menggabungkan sumber pengetahuan masa kini dan lintas waktu.</li>
+                <li>Meningkatkan minat baca melalui pengemasan informasi menarik.</li>
+                <li>Mengembangkan budaya literasi digital berbasis teknologi.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+</section>
+
 <footer>
+<div class="footer-grid">
+    <div class="footer-col">
+        <h3>About Source Library</h3>
+        <p style="color:#f2e4cc;font-size:14px;line-height:1.7;">Source Library adalah perpustakaan digital publik yang berfokus untuk menyebarkan pengetahuan kepada semua generasi.</p>
+    </div>
+    <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="#beranda">🏠 Home</a></li>
+            <li><a href="#about">📚 About</a></li>
+            <li><a href="admin.html">👩‍💻 Admin</a></li>
+            <li><a href="kontak.html">✉️ Contact</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h3>Collections</h3>
+        <ul>
+            <li><a href="#">E-Books</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Archives</a></li>
+        </ul>
+    </div>
+</div>
 <div class="footer-bottom">
 <p>© 2026 <strong>Source Library</strong> — All rights reserved.</p>
 </div>
@@ -407,7 +416,6 @@ footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; paddi
 function showPage(pageId) {
     const home = document.getElementById('homePage');
     const event = document.getElementById('eventPage');
-    
     if(pageId === 'event') {
         home.classList.add('hidden');
         event.classList.remove('hidden');
@@ -433,71 +441,59 @@ setInterval(()=>{
     heroImages[current].classList.add("active");
 },5000);
 
-// --- MODAL ---
+// --- MODAL & TOGGLE ---
 function openLibrary(){ document.getElementById("libraryMenu").classList.add("active"); }
 function closeLibrary(){ document.getElementById("libraryMenu").classList.remove("active"); }
-
-// --- DATA UNTUK EVENT ---
-const eventData = {
-    romantis: [
-        { id: 0, reason: "Buku ini mendefinisikan standar baru dalam narasi romantis modern abad ini." },
-        { id: 1, reason: "Penggambaran emosi yang mendalam menjadikannya koleksi masterpiece yang wajib dibaca." }
-    ],
-    klasik: [
-        { id: 2, reason: "Sebuah catatan sejarah yang memberikan perspektif unik tentang peradaban masa lalu." },
-        { id: 3, reason: "Karya klasik yang tetap relevan dan menjadi inspirasi bagi banyak penulis dunia." },
-        { id: 4, reason: "Mahakarya literasi bahasa Inggris yang menunjukkan kekuatan kata dalam perubahan sosial." }
-    ]
-};
-
-function createEventCard(book, reason) {
-    const card = document.createElement("div");
-    card.className = "event-card";
-    card.innerHTML = `
-        <img src="${book.cover}" alt="${book.judul}">
-        <div class="event-content">
-            <h3>${book.judul}</h3>
-            <p style="font-size:12px; color:#800000; font-weight:bold; margin-bottom:10px;">Author: ${book.penulis}</p>
-            <div class="event-reason"><strong>Kenapa Masuk Event?</strong><br>${reason}</div>
-        </div>
-        <div style="padding:15px; background:#faf6f0;">
-            <button class="read-btn" onclick="window.open('${book.file}', '_blank')">BACA SEKARANG</button>
-        </div>
-    `;
-    return card;
-}
-
-function initApp() {
-    if(typeof books !== "undefined" && books.length > 0) {
-        // Load Recommended
-        const recContainer = document.getElementById("recommendContainer");
-        books.slice(0, 10).forEach(book => {
-            const card = document.createElement("div");
-            card.className = "book-card";
-            card.innerHTML = `<img src="${book.cover}"> <div class="book-info"><h4>${book.judul}</h4><p>${book.penulis}</p></div>`;
-            card.onclick = () => window.open(book.file, "_blank");
-            recContainer.appendChild(card);
-        });
-
-        // Load Romantis Event
-        const romContainer = document.getElementById("romantisContainer");
-        eventData.romantis.forEach(item => {
-            if(books[item.id]) romContainer.appendChild(createEventCard(books[item.id], item.reason));
-        });
-
-        // Load Klasik Event
-        const klaContainer = document.getElementById("klasikContainer");
-        eventData.klasik.forEach(item => {
-            if(books[item.id]) klaContainer.appendChild(createEventCard(books[item.id], item.reason));
-        });
-    }
-}
-
-document.addEventListener("DOMContentLoaded", initApp);
-
 document.getElementById("profileToggle").addEventListener("click", () => {
     document.getElementById("libraryProfile").classList.toggle("show");
 });
+
+// --- LOAD DATA ---
+const eventMeta = {
+    romantis: [
+        { id: 0, reason: "Buku ini dipilih karena narasinya yang mendefinisikan standar baru genre romansa modern." },
+        { id: 1, reason: "Penggambaran emosi yang sangat kuat menjadikannya koleksi masterpiece yang wajib diapresiasi." }
+    ],
+    klasik: [
+        { id: 2, reason: "Sebuah mahakarya sejarah yang memberikan perspektif unik tentang peradaban masa lalu." },
+        { id: 3, reason: "Karya ikonik yang tetap relevan lintas zaman dan menjadi inspirasi literasi dunia." }
+    ]
+};
+
+function init() {
+    if(typeof books !== "undefined" && books.length > 0) {
+        // Load Recommended
+        const rec = document.getElementById("recommendContainer");
+        books.slice(4, 14).forEach(b => {
+            const c = document.createElement("div");
+            c.className = "book-card";
+            c.innerHTML = `<img src="${b.cover}"><div class="book-info"><h4>${b.judul}</h4><p>${b.penulis}</p></div>`;
+            c.onclick = () => window.open(b.file, "_blank");
+            rec.appendChild(c);
+        });
+
+        // Load Event Romantis
+        const rom = document.getElementById("romantisContainer");
+        eventMeta.romantis.forEach(m => {
+            const b = books[m.id];
+            const div = document.createElement("div");
+            div.className = "event-card";
+            div.innerHTML = `<img src="${b.cover}"><div class="event-content"><h3>${b.judul}</h3><div class="event-reason">${m.reason}</div></div><div style="padding:15px;"><button class="read-btn" onclick="window.open('${b.file}','_blank')">BACA SEKARANG</button></div>`;
+            rom.appendChild(div);
+        });
+
+        // Load Event Klasik
+        const kla = document.getElementById("klasikContainer");
+        eventMeta.klasik.forEach(m => {
+            const b = books[m.id];
+            const div = document.createElement("div");
+            div.className = "event-card";
+            div.innerHTML = `<img src="${b.cover}"><div class="event-content"><h3>${b.judul}</h3><div class="event-reason">${m.reason}</div></div><div style="padding:15px;"><button class="read-btn" onclick="window.open('${b.file}','_blank')">BACA SEKARANG</button></div>`;
+            kla.appendChild(div);
+        });
+    }
+}
+document.addEventListener("DOMContentLoaded", init);
 </script>
 
 </body>
