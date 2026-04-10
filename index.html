@@ -1,260 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Source Library | Digital Excellence</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Source Library | Digital Excellence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0}
 
-*{box-sizing:border-box;margin:0;padding:0}
+        html,body{
+            height:100%;
+            scroll-behavior:smooth;
+        }
 
-html,body{
-height:100%;
-scroll-behavior:smooth
-}
+        body{
+            font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto;
+            background:linear-gradient(180deg,#faf6f0,#f3e9dd);
+            color:#2a2a2a;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+            overflow-x:hidden;
+        }
 
-body{
-font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto;
-background:linear-gradient(180deg,#faf6f0,#f3e9dd);
-color:#2a2a2a;
-display:flex;
-flex-direction:column;
-min-height:100vh;
-overflow-x:hidden;
-}
+        /* --- ADVANCED TECH BACKGROUND --- */
+        body::before{
+            content:"";
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            pointer-events:none;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(128,0,0,0.05) 1px, transparent 1px),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size:80px 80px;
+            animation:particlesMove 100s linear infinite;
+            z-index:0;
+        }
 
-/* --- ADVANCED TECH BACKGROUND --- */
-body::before{
-content:"";
-position:fixed;
-top:0; left:0;
-width:100%; height:100%;
-pointer-events:none;
-background-image:
-radial-gradient(circle at 20% 30%, rgba(128,0,0,0.05) 1px, transparent 1px),
-radial-gradient(circle at 70% 60%, rgba(255,255,255,0.1) 1px, transparent 1px);
-background-size:80px 80px;
-animation:particlesMove 100s linear infinite;
-z-index:0;
-}
+        @keyframes particlesMove{
+            0%{background-position:0 0}
+            100%{background-position:1000px 1000px}
+        }
 
-@keyframes particlesMove{
-0%{background-position:0 0}
-100%{background-position:1000px 1000px}
-}
+        /* NAVBAR */
+        nav{
+            position:sticky;
+            top:0;
+            z-index:1000;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:14px 48px;
+            background:linear-gradient(180deg,#800000,#6b0000);
+            color:#fff;
+            border-bottom:6px solid #e6d5b8;
+            box-shadow:0 10px 40px rgba(0,0,0,0.3);
+        }
 
-/* NAVBAR */
-nav{
-position:sticky;
-top:0;
-z-index:1000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 48px;
-background:linear-gradient(180deg,#800000,#6b0000);
-color:#fff;
-border-bottom:6px solid #e6d5b8;
-box-shadow:0 10px 40px rgba(0,0,0,0.3);
-}
+        .logo-container{ display:flex; align-items:center; gap:12px; cursor:pointer; }
+        .logo-container img{ height:44px; width:44px; border-radius:8px; border:2px solid #e6d5b8; transition:0.3s ease; }
+        .logo-container h1{ font-size:22px; font-weight:700; font-family:"Cinzel",serif; color:#fff }
 
-.logo-container{ display:flex; align-items:center; gap:12px }
-.logo-container img{ height:44px; width:44px; border-radius:8px; border:2px solid #e6d5b8; transition:0.3s ease; }
-.logo-container h1{ font-size:22px; font-weight:700; font-family:"Cinzel",serif; color:#fff }
+        nav ul{ list-style:none; display:flex; gap:25px; align-items:center; }
+        nav a{ text-decoration:none; color:#f8f8f8; font-weight:600; transition:0.3s; cursor: pointer; }
+        nav a:hover{ color:#e6d5b8; text-shadow:0 0 10px rgba(230,213,184,0.5); }
 
-nav ul{ list-style:none; display:flex; gap:25px; align-items:center; }
-nav a{ text-decoration:none; color:#f8f8f8; font-weight:600; transition:0.3s; cursor: pointer; }
-nav a:hover{ color:#e6d5b8; text-shadow:0 0 10px rgba(230,213,184,0.5); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 25px; height: 3px; background: #e6d5b8; border-radius: 2px; }
 
-/* HAMBURGER */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-.hamburger span { width: 25px; height: 3px; background: #e6d5b8; border-radius: 2px; }
+        /* HERO SECTION */
+        .hero{
+            position:relative;
+            min-height:90vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            overflow:hidden;
+        }
 
-/* HERO SECTION */
-.hero{
-position:relative;
-min-height:90vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden;
-}
+        .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2s ease-in-out; z-index: 1; }
+        .hero img.active{ opacity:1; }
 
-.hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2s ease-in-out; z-index: 1; }
-.hero img.active{ opacity:1; }
+        .hero::after{
+            content:""; position:absolute; inset:0;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+            z-index:2;
+        }
 
-.hero::after{
-content:""; position:absolute; inset:0;
-background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
-z-index:2;
-}
+        .hero-content{
+            position:relative;
+            z-index:3;
+            max-width:920px;
+            padding:50px;
+            border-radius:30px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(230,213,184,0.3);
+            backdrop-filter:blur(20px);
+            box-shadow:0 30px 60px rgba(0,0,0,0.4);
+            animation: fadeInUp 1.2s ease;
+        }
 
-.hero-content{
-position:relative;
-z-index:3;
-max-width:920px;
-padding:50px;
-border-radius:30px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(230,213,184,0.3);
-backdrop-filter:blur(20px);
-box-shadow:0 30px 60px rgba(0,0,0,0.4);
-animation: fadeInUp 1.2s ease;
-}
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        .hero h2{ font-size: clamp(32px, 8vw, 65px); font-family:"Cinzel",serif; color:#fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p{ font-size:20px; color:#f2e4cc; margin: 20px 0; }
 
-.hero h2{ font-size: clamp(32px, 8vw, 65px); font-family:"Cinzel",serif; color:#fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-.hero p{ font-size:20px; color:#f2e4cc; margin: 20px 0; }
+        .btn{
+            padding:15px 45px; border-radius:50px; border:0;
+            background:linear-gradient(90deg,#e6d5b8,#fff);
+            color:#7b1f1f; font-weight:700; cursor:pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .btn:hover{ transform: scale(1.1); box-shadow: 0 15px 35px rgba(230,213,184,0.4); }
 
-.btn{
-padding:15px 45px; border-radius:50px; border:0;
-background:linear-gradient(90deg,#e6d5b8,#fff);
-color:#7b1f1f; font-weight:700; cursor:pointer;
-transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.btn:hover{ transform: scale(1.1); box-shadow: 0 15px 35px rgba(230,213,184,0.4); }
+        .ghost{
+            background:rgba(255,255,255,0.1); color:#f2e4cc; border:1px solid rgba(230,213,184,0.5);
+            padding:12px 25px; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s;
+            backdrop-filter:blur(5px); text-decoration:none; display:inline-block;
+        }
+        .ghost:hover{ background:#e6d5b8; color:#800000; }
 
-.ghost{
-background:rgba(255,255,255,0.1); color:#f2e4cc; border:1px solid rgba(230,213,184,0.5);
-padding:12px 25px; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s;
-backdrop-filter:blur(5px); text-decoration:none;
-}
-.ghost:hover{ background:#e6d5b8; color:#800000; }
+        /* SECTION STYLES */
+        section { padding: 100px 48px; }
+        .section-title-group { text-align: center; margin-bottom: 60px; }
+        .section-tag { color: #800000; font-weight: 800; letter-spacing: 3px; font-size: 13px; display: block; margin-bottom: 10px; }
+        .section-title { font-family: "Cinzel", serif; font-size: 42px; color: #800000; }
 
-/* ===== SECTION: LITERARY TRENDING NEWS (NEW) ===== */
-#trendingNews {
-    padding: 100px 48px;
-    background: #fff;
-}
+        /* NEWS GRID */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .news-card {
+            background: #faf6f0;
+            border-radius: 25px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.4s ease;
+            border: 1px solid #e6d5b8;
+        }
+        .news-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(128,0,0,0.15); }
+        .news-img { height: 230px; width: 100%; object-fit: cover; }
+        .news-info { padding: 30px; }
+        .news-info h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 15px; font-size: 20px; }
 
-.section-title-group { text-align: center; margin-bottom: 60px; }
-.section-tag { color: #800000; font-weight: 800; letter-spacing: 3px; font-size: 13px; display: block; margin-bottom: 10px; }
-.section-title { font-family: "Cinzel", serif; font-size: 42px; color: #800000; }
+        /* RECOMMENDED BOOKS */
+        .book-scroll {
+            display: flex; gap: 30px; overflow-x: auto; padding: 30px 10px;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .book-scroll::-webkit-scrollbar { display: none; }
+        .book-card {
+            min-width: 250px; background: #fff; border-radius: 20px;
+            scroll-snap-align: center; transition: 0.5s;
+            border: 1px solid #eee; overflow: hidden; cursor: pointer;
+        }
+        .book-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .book-card img { width: 100%; height: 350px; object-fit: cover; }
 
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
+        /* EVENT SECTION */
+        .event-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .tab-btn { padding: 10px 25px; border-radius: 20px; border: 1px solid #800000; background: none; color: #800000; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #800000; color: #fff; }
 
-.news-card {
-    background: #faf6f0;
-    border-radius: 25px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.4s ease;
-    border: 1px solid #e6d5b8;
-    position: relative;
-}
+        .event-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px; max-width: 1250px; margin: 0 auto;
+        }
+        .event-card { border-radius: 25px; background: #faf6f0; overflow: hidden; text-align: left; border: 1px solid #e6d5b8; transition: 0.3s; }
 
-.news-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(128,0,0,0.15); }
+        /* MODALS */
+        .news-modal, .library-menu {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10000;
+            display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px);
+        }
+        .active { display: flex !important; }
+        .modal-content, .library-box {
+            background: #fff; max-width: 800px; width: 100%; border-radius: 30px; padding: 50px;
+            position: relative; max-height: 90vh; overflow-y: auto;
+        }
 
-.news-img { height: 230px; width: 100%; object-fit: cover; }
+        /* FOOTER */
+        footer {
+            background: linear-gradient(180deg, #4d0000, #2b0000);
+            color: #e6d5b8; padding: 80px 48px 40px; border-top: 8px solid #e6d5b8;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px; max-width: 1300px; margin: 0 auto;
+        }
+        .footer-col a { color: #f2e4cc; text-decoration: none; transition: 0.3s; display: block; margin-bottom: 10px; }
+        .footer-col a:hover { color: #fff; transform: translateX(5px); }
 
-.news-info { padding: 30px; }
-.news-info h3 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 15px; font-size: 22px; }
-.news-info p { font-size: 15px; color: #666; line-height: 1.7; }
+        #aboutContent, #allEventsContent { display: none; }
 
-/* MODAL STYLE FOR NEWS */
-.news-modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999;
-    display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px);
-}
-.news-modal.active { display: flex; animation: fadeIn 0.4s ease; }
-.modal-content {
-    background: #fff; max-width: 800px; width: 100%; border-radius: 30px; padding: 50px;
-    position: relative; max-height: 90vh; overflow-y: auto;
-}
-.close-modal { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; color: #800000; }
-
-/* ===== RECOMMENDED BOOKS (SMOOTH SCROLL) ===== */
-#recommended { padding: 100px 48px; background: #fdfaf5; text-align: center; }
-.book-scroll {
-    display: flex; gap: 30px; overflow-x: auto; padding: 30px 10px;
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-}
-.book-scroll::-webkit-scrollbar { display: none; }
-.book-card {
-    min-width: 250px; background: #fff; border-radius: 20px;
-    scroll-snap-align: center; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid #eee; overflow: hidden;
-}
-.book-card:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-.book-card img { width: 100%; height: 350px; object-fit: cover; }
-
-/* ===== EVENT SECTION (REFINED) ===== */
-#bookEvent { padding: 100px 48px; background: #fff; text-align: center; }
-.event-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 30px; max-width: 1250px; margin: 40px auto;
-}
-.event-card {
-    border-radius: 25px; background: #faf6f0; overflow: hidden; text-align: left;
-    transition: 0.4s ease; border: 1px solid #e6d5b8;
-}
-.event-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-
-/* ===== EXPLORE MODAL (TECH LOOK) ===== */
-.library-menu {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px);
-    z-index: 10000; display: none; align-items: center; justify-content: center;
-}
-.library-menu.active { display: flex; }
-.library-box {
-    background: linear-gradient(135deg, #fff 0%, #faf6f0 100%);
-    padding: 60px; border-radius: 40px; width: 90%; max-width: 800px;
-    border: 2px solid #e6d5b8; box-shadow: 0 50px 100px rgba(0,0,0,0.5);
-}
-
-/* FOOTER (PROFESSIONAL & RICH) */
-footer {
-    background: linear-gradient(180deg, #4d0000, #2b0000);
-    color: #e6d5b8; padding: 80px 48px 40px; border-top: 8px solid #e6d5b8;
-}
-.footer-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 50px; max-width: 1300px; margin: 0 auto;
-}
-.footer-col h3 { font-family: "Cinzel", serif; color: #fff; margin-bottom: 25px; font-size: 22px; position: relative; }
-.footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; background: #e6d5b8; }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 15px; }
-.footer-col a { color: #f2e4cc; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-.footer-col a:hover { color: #fff; transform: translateX(8px); }
-
-/* PAGES TOGGLE */
-#aboutContent, #allEventsContent { display: none; min-height: 80vh; padding: 100px 48px; background: #fff; }
-
-@media (max-width: 850px) {
-    nav { padding: 14px 20px; }
-    .hamburger { display: flex; }
-    nav ul {
-        position: absolute; top: 100%; left: 0; width: 100%; background: #6b0000;
-        flex-direction: column; max-height: 0; overflow: hidden; transition: 0.4s;
-    }
-    nav ul.active { max-height: 600px; padding: 20px 0; border-bottom: 5px solid #e6d5b8; }
-    .hero-content { padding: 30px; }
-}
-
-</style>
+        @media (max-width: 850px) {
+            nav { padding: 14px 20px; }
+            .hamburger { display: flex; }
+            nav ul {
+                position: absolute; top: 100%; left: 0; width: 100%; background: #6b0000;
+                flex-direction: column; max-height: 0; overflow: hidden; transition: 0.4s;
+            }
+            nav ul.active { max-height: 600px; padding: 20px 0; border-bottom: 5px solid #e6d5b8; }
+        }
+    </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo-container">
-        <img src="logorayhana.png" alt="Logo">
-        <h1 onclick="showPage('home')" style="cursor:pointer">Source Library</h1>
+    <div class="logo-container" onclick="showPage('home')">
+        <img src="logorayhana.png" alt="Logo" onerror="this.src='https://via.placeholder.com/44'">
+        <h1>Source Library</h1>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     <ul id="navLinks">
@@ -276,7 +243,7 @@ footer {
             <h2>Infinite Wisdom in Every Byte</h2>
             <p>Pusat literasi digital dengan standar kurasi terbaik di dunia.</p>
             <button class="btn" onclick="openLibrary()">Explore Digital Archives</button>
-            <div class="sub-actions">
+            <div style="margin-top:20px;">
                 <button class="ghost" onclick="showPage('about')">Our Legacy</button>
                 <a class="ghost" href="admin.html">System Control</a>
             </div>
@@ -293,7 +260,7 @@ footer {
                 <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800" class="news-img">
                 <div class="news-info">
                     <h3>Harry Potter: Warisan Sihir yang Tetap Hidup</h3>
-                    <p>Mengkaji pengaruh J.K. Rowling terhadap minat baca generasi Alpha di tahun 2026...</p>
+                    <p>Mengkaji pengaruh J.K. Rowling terhadap minat baca generasi Alpha...</p>
                 </div>
             </div>
             <div class="news-card" onclick="openNewsModal('best')">
@@ -307,7 +274,7 @@ footer {
                 <img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800" class="news-img">
                 <div class="news-info">
                     <h3>Implementasi UU No. 43 Tahun 2009</h3>
-                    <p>Bagaimana Source Library menjaga naskah kuno tetap aman dalam format digital nasional.</p>
+                    <p>Menjaga naskah kuno tetap aman dalam format digital nasional sesuai regulasi.</p>
                 </div>
             </div>
         </div>
@@ -327,38 +294,31 @@ footer {
             <span class="section-tag">HAPPENING NOW</span>
             <h2 class="section-title">Library Activities</h2>
         </div>
-        <div class="event-tabs" id="eventTabsMain">
-            <button class="tab-btn active" onclick="renderEventCards('all')">All Agenda</button>
-            <button class="tab-btn" onclick="renderEventCards('Pameran')">Exhibition</button>
-            <button class="tab-btn" onclick="renderEventCards('Bedah Buku')">Review</button>
+        <div class="event-tabs">
+            <button class="tab-btn active" onclick="changeEventTab(this, 'all')">All Agenda</button>
+            <button class="tab-btn" onclick="changeEventTab(this, 'Pameran')">Exhibition</button>
+            <button class="tab-btn" onclick="changeEventTab(this, 'Bedah Buku')">Review</button>
         </div>
         <div class="event-container" id="eventContainer">
             </div>
-        <button class="btn" onclick="showPage('all-events')" style="background:transparent; border:2px solid #800000; color:#800000; margin-top:40px;">View Full Calendar</button>
+        <div style="text-align:center; margin-top:50px;">
+            <button class="btn" onclick="showPage('all-events')" style="background:transparent; border:2px solid #800000; color:#800000;">View Full Calendar</button>
+        </div>
     </section>
 </main>
 
-<div id="newsModal" class="news-modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeNewsModal()">&times;</span>
-        <h2 id="mTitle" style="font-family:'Cinzel'; color:#800000; margin-bottom:20px;"></h2>
-        <p id="mDesc" style="line-height:1.8; color:#333; margin-bottom:30px; font-size:17px;"></p>
-        <p id="mSource" style="font-weight:700; color:#888; border-top:1px solid #eee; padding-top:20px; font-size:14px;"></p>
-    </div>
-</div>
-
 <section id="aboutContent">
     <div style="max-width:1000px; margin:0 auto; text-align:center;">
-        <h2 style="font-family:'Cinzel'; font-size:48px; color:#800000;">About Our Mission</h2>
+        <h2 class="section-title">About Our Mission</h2>
         <p style="margin:20px 0 50px; font-size:19px; color:#555;">Melestarikan memori kolektif bangsa melalui teknologi kearsipan tercanggih.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px; text-align:left;">
             <div style="background:#faf6f0; padding:40px; border-radius:20px; border-left:8px solid #800000;">
-                <h3 style="font-family:'Cinzel'; color:#800000; margin-bottom:15px;">Visi Digital</h3>
-                <p>Menjadi mercusuar literasi di Asia Tenggara, menyediakan akses tanpa batas bagi ilmu pengetahuan klasik dan modern.</p>
+                <h3 style="font-family:'Cinzel'; color:#800000; margin-bottom:15px;">Integritas Arsip</h3>
+                <p>Koleksi dikurasi dengan akurasi tinggi merujuk standar ANRI dan DDC.</p>
             </div>
             <div style="background:#faf6f0; padding:40px; border-radius:20px; border-left:8px solid #800000;">
-                <h3 style="font-family:'Cinzel'; color:#800000; margin-bottom:15px;">Integritas Arsip</h3>
-                <p>Koleksi kami dikurasi dengan akurasi tinggi, merujuk pada standar ANRI dan Dewey Decimal Classification (DDC).</p>
+                <h3 style="font-family:'Cinzel'; color:#800000; margin-bottom:15px;">Visi Digital 2026</h3>
+                <p>Menjadi mercusuar literasi digital di Asia Tenggara dengan aksesibilitas cloud 24/7.</p>
             </div>
         </div>
         <button class="btn" onclick="showPage('home')" style="margin-top:50px;">Return to Home</button>
@@ -366,160 +326,162 @@ footer {
 </section>
 
 <section id="allEventsContent">
-    <h2 style="font-family:'Cinzel'; text-align:center; color:#800000; font-size:42px;">Full Event Calendar</h2>
+    <h2 class="section-title" style="text-align:center; margin-bottom:40px;">Full Event Calendar</h2>
     <div class="event-container" id="fullEventContainer"></div>
-    <center><button class="btn" onclick="showPage('home')" style="margin-top:50px;">Back to Home</button></center>
+    <div style="text-align:center; margin-top:50px;">
+        <button class="btn" onclick="showPage('home')">Back to Home</button>
+    </div>
 </section>
+
+<div id="newsModal" class="news-modal">
+    <div class="modal-content">
+        <span style="position:absolute; top:20px; right:20px; font-size:30px; cursor:pointer;" onclick="closeNewsModal()">&times;</span>
+        <h2 id="mTitle" style="font-family:'Cinzel'; color:#800000; margin-bottom:20px;"></h2>
+        <p id="mDesc" style="line-height:1.8; margin-bottom:20px;"></p>
+        <small id="mSource" style="color:#888;"></small>
+    </div>
+</div>
 
 <div id="libraryMenu" class="library-menu">
     <div class="library-box">
-        <h2 style="font-family:'Cinzel'; color:#800000; margin-bottom:40px; text-align:center;">Pilih Kategori Digital</h2>
+        <h2 style="font-family:'Cinzel'; color:#800000; margin-bottom:30px; text-align:center;">Pilih Kategori Digital</h2>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
-            <a href="katalog.html?cat=novel" style="padding:25px; background:#fff; border:1px solid #e6d5b8; border-radius:20px; text-align:center; text-decoration:none; color:#800000; font-weight:700; transition:0.3s;">📖 Novel & Sastra</a>
-            <a href="katalog.html?cat=jurnal" style="padding:25px; background:#fff; border:1px solid #e6d5b8; border-radius:20px; text-align:center; text-decoration:none; color:#800000; font-weight:700; transition:0.3s;">🎓 Jurnal Riset</a>
-            <a href="katalog.html?cat=arsip" style="padding:25px; background:#fff; border:1px solid #e6d5b8; border-radius:20px; text-align:center; text-decoration:none; color:#800000; font-weight:700; transition:0.3s;">🏛️ Arsip Nasional</a>
-            <a href="katalog.html" style="grid-column:span 2; background:#800000; color:#fff; padding:20px; border-radius:20px; text-align:center; text-decoration:none; font-weight:700;">📚 Lihat Semua Koleksi</a>
+            <a href="katalog.html?kategori=novel" class="ghost" style="text-align:center; padding:20px; color:#800000;">📖 Novel & Sastra</a>
+            <a href="katalog.html?kategori=jurnal" class="ghost" style="text-align:center; padding:20px; color:#800000;">🎓 Jurnal Riset</a>
+            <a href="katalog.html?kategori=sejarah" class="ghost" style="text-align:center; padding:20px; color:#800000;">🏛️ Arsip & Sejarah</a>
+            <a href="katalog.html" style="grid-column:span 2; background:#800000; color:#fff; padding:15px; border-radius:15px; text-align:center; text-decoration:none; font-weight:700;">📚 Lihat Semua Koleksi</a>
         </div>
-        <center><button onclick="closeLibrary()" style="margin-top:30px; border:none; background:none; color:#888; cursor:pointer; font-weight:700;">CLOSE PANEL</button></center>
+        <center><button onclick="closeLibrary()" style="margin-top:20px; border:none; background:none; cursor:pointer; color:#888;">CLOSE</button></center>
     </div>
 </div>
 
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
-            <h3>Source Library</h3>
-            <p style="line-height:1.8; opacity:0.8;">Pusat keunggulan literasi digital yang mengintegrasikan koleksi fisik legendaris dengan kemudahan akses cloud modern.</p>
-            <div style="margin-top:20px; font-size:20px;">🌐 📧 📱</div>
+            <h3 style="font-family:'Cinzel'; margin-bottom:20px;">Source Library</h3>
+            <p>Pusat literasi digital yang mengintegrasikan koleksi klasik dengan kemudahan akses modern.</p>
         </div>
         <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a onclick="showPage('home')">Beranda Utama</a></li>
-                <li><a onclick="showPage('about')">Tentang Kami</a></li>
-                <li><a href="admin.html">Portal Pengelola</a></li>
-                <li><a href="kontak.html">Hubungi Pustakawan</a></li>
-            </ul>
+            <h3 style="font-family:'Cinzel'; margin-bottom:20px;">Quick Links</h3>
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About Us</a>
+            <a href="admin.html">System Control</a>
         </div>
         <div class="footer-col">
-            <h3>Koleksi Digital</h3>
-            <ul>
-                <li><a href="#">E-Books Best Seller</a></li>
-                <li><a href="#">Arsip G30S/PKI & Sejarah</a></li>
-                <li><a href="#">Regulasi ANRI (UU 43/2009)</a></li>
-                <li><a href="#">Database DDC 621.3</a></li>
-            </ul>
+            <h3 style="font-family:'Cinzel'; margin-bottom:20px;">Koleksi Khusus</h3>
+            <a href="katalog.html?kategori=sejarah">Arsip G30S/PKI</a>
+            <a href="katalog.html?kategori=akademik">Database DDC 621.3</a>
+            <a href="katalog.html?kategori=jurnal">Regulasi ANRI</a>
         </div>
     </div>
-    <div style="text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); font-size:14px; opacity:0.6;">
-        <p>© 2026 <strong>Source Library Digital System</strong>. Preserving Heritage, Empowering Minds.</p>
-    </div>
+    <p style="text-align:center; margin-top:50px; opacity:0.6; font-size:13px;">© 2026 Source Library Digital System. Preserving Heritage.</p>
 </footer>
 
 <script src="books.js"></script>
 <script>
-// --- NAVIGATION (SPA LOGIC) ---
-function showPage(p) {
-    const pages = ['homeContent', 'aboutContent', 'allEventsContent'];
-    pages.forEach(id => document.getElementById(id).style.display = 'none');
-    
-    if(p === 'home') document.getElementById('homeContent').style.display = 'block';
-    else if(p === 'about') document.getElementById('aboutContent').style.display = 'block';
-    else if(p === 'all-events') {
-        document.getElementById('allEventsContent').style.display = 'block';
-        renderFullEvents();
-    }
-    window.scrollTo(0,0);
-    document.getElementById('navLinks').classList.remove('active');
-}
-
-// --- MODAL NEWS LOGIC ---
-const newsItems = {
-    'hp': { title: "Harry Potter & Dampak Literasi Dunia", desc: "Serial Harry Potter bukan sekadar buku anak; ia adalah fenomena sosiokultural yang menyelamatkan industri penerbitan fisik di awal milenium. Dengan lebih dari 500 juta kopi terjual, J.K. Rowling menciptakan standar baru dalam world-building yang menginspirasi jutaan orang untuk mulai menulis.", source: "Source: Pottermore & British Library" },
-    'best': { title: "Tren Buku Terlaris 2026", desc: "Tahun ini, pembaca global beralih ke genre 'Hope-Punk'—fiksi yang menawarkan solusi optimis atas krisis iklim dan sosial. Di kategori non-fiksi, memoar berbasis kecerdasan buatan menjadi topik paling hangat di New York Times Best Seller.", source: "Source: Publishers Weekly" },
-    'anri': { title: "UU No. 43 Tahun 2009: Masa Depan Kearsipan", desc: "Digitalisasi bukan hanya soal memindai kertas, tapi soal integritas data jangka panjang. Source Library mengadopsi protokol enkripsi militer untuk memastikan dokumen sejarah tetap autentik dan tidak termodifikasi oleh AI generatif di masa depan.", source: "Source: ANRI Official Gazette" }
-};
-
-function openNewsModal(key) {
-    const item = newsItems[key];
-    document.getElementById('mTitle').innerText = item.title;
-    document.getElementById('mDesc').innerText = item.desc;
-    document.getElementById('mSource').innerText = item.source;
-    document.getElementById('newsModal').classList.add('active');
-}
-function closeNewsModal() { document.getElementById('newsModal').classList.remove('active'); }
-
-// --- HAMBURGER ---
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-// --- HERO SLIDER ---
-const heroImgs = document.querySelectorAll(".hero img");
-let curHero = 0;
-setInterval(() => {
-    heroImgs[curHero].classList.remove("active");
-    curHero = (curHero + 1) % heroImgs.length;
-    heroImgs[curHero].classList.add("active");
-}, 5000);
-
-// --- LIBRARY MODAL ---
-function openLibrary() { document.getElementById('libraryMenu').classList.add('active'); }
-function closeLibrary() { document.getElementById('libraryMenu').classList.remove('active'); }
-
-// --- EVENT SYSTEM (RESTORED) ---
-const libraryEvents = [
-    { judul: "Exhibisi Naskah Kuno 1945", kategori: "Pameran", desc: "Menampilkan replika digital naskah asli proklamasi dan korespondensi diplomatik.", tgl: "12 Juli 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80", tag: "Sejarah" },
-    { judul: "Bedah Buku: Future of AI", kategori: "Bedah Buku", desc: "Diskusi terbuka tentang peran pustakawan di dunia yang didominasi algoritma.", tgl: "20 Juli 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80", tag: "Teknologi" }
-];
-
-function renderEventCards(filter = 'all') {
-    const container = document.getElementById("eventContainer");
-    container.innerHTML = "";
-    libraryEvents.forEach(ev => {
-        if(filter === 'all' || ev.kategori === filter) {
-            const card = document.createElement("div");
-            card.className = "event-card";
-            card.innerHTML = `<img src="${ev.img}" style="width:100%; height:200px; object-fit:cover;">
-                <div style="padding:25px;">
-                    <span style="background:#800000; color:#fff; padding:4px 10px; border-radius:5px; font-size:11px;">${ev.kategori}</span>
-                    <h3 style="font-family:'Cinzel'; margin-top:10px;">${ev.judul}</h3>
-                    <p style="font-size:14px; color:#666; margin:10px 0;">${ev.desc}</p>
-                    <small>📅 ${ev.tgl} | 🏷️ ${ev.tag}</small>
-                </div>`;
-            container.appendChild(card);
+    // --- SPA ENGINE ---
+    function showPage(p) {
+        const pages = ['homeContent', 'aboutContent', 'allEventsContent'];
+        pages.forEach(id => document.getElementById(id).style.display = 'none');
+        
+        if(p === 'home') document.getElementById('homeContent').style.display = 'block';
+        else if(p === 'about') document.getElementById('aboutContent').style.display = 'block';
+        else if(p === 'all-events') {
+            document.getElementById('allEventsContent').style.display = 'block';
+            renderFullEvents();
         }
-    });
-}
+        window.scrollTo(0,0);
+        document.getElementById('navLinks').classList.remove('active');
+    }
 
-function renderFullEvents() {
-    const container = document.getElementById("fullEventContainer");
-    container.innerHTML = "";
-    libraryEvents.forEach(ev => {
-        const card = document.createElement("div");
-        card.className = "event-card";
-        card.innerHTML = `<img src="${ev.img}" style="width:100%; height:200px; object-fit:cover;">
-            <div style="padding:25px;"><h3>${ev.judul}</h3><p>${ev.desc}</p></div>`;
-        container.appendChild(card);
+    // Auto-fix for anchor links when on SPA mode
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function() { showPage('home'); });
     });
-}
 
-// --- INIT ---
-document.addEventListener("DOMContentLoaded", () => {
-    const recContainer = document.getElementById("recommendContainer");
-    if(typeof books !== "undefined") {
-        books.forEach(b => {
-            const card = document.createElement("div");
-            card.className = "book-card";
-            card.innerHTML = `<img src="${b.cover}"><div style="padding:15px; text-align:left;">
-                <h4 style="color:#800000; font-size:15px;">${b.judul}</h4>
-                <p style="font-size:12px; color:#777;">${b.penulis}</p>
-            </div>`;
-            card.onclick = () => window.open(b.file, "_blank");
-            recContainer.appendChild(card);
+    // --- NEWS MODAL ---
+    const newsData = {
+        'hp': { title: "Harry Potter & Literasi", desc: "Mengkaji bagaimana dunia sihir memicu minat baca masif di seluruh dunia.", source: "Source: British Library" },
+        'best': { title: "Global Best Seller", desc: "List buku paling berpengaruh di tahun 2026.", source: "Source: NY Times" },
+        'anri': { title: "Arsip Digital Nasional", desc: "Penerapan UU No. 43 Tahun 2009 dalam ekosistem digital.", source: "Source: ANRI" }
+    };
+    function openNewsModal(key) {
+        const d = newsData[key];
+        document.getElementById('mTitle').innerText = d.title;
+        document.getElementById('mDesc').innerText = d.desc;
+        document.getElementById('mSource').innerText = d.source;
+        document.getElementById('newsModal').classList.add('active');
+    }
+    function closeNewsModal() { document.getElementById('newsModal').classList.remove('active'); }
+
+    // --- HERO SLIDER ---
+    const imgs = document.querySelectorAll(".hero img");
+    let idx = 0;
+    setInterval(() => {
+        imgs[idx].classList.remove("active");
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add("active");
+    }, 5000);
+
+    // --- LIBRARY MENU ---
+    function openLibrary() { document.getElementById('libraryMenu').classList.add('active'); }
+    function closeLibrary() { document.getElementById('libraryMenu').classList.remove('active'); }
+
+    // --- EVENT SYSTEM ---
+    const events = [
+        { title: "Exhibisi Naskah Kuno", cat: "Pameran", desc: "Replika digital naskah asli Proklamasi.", date: "12 Juli 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80" },
+        { title: "Diskusi Masa Depan AI", cat: "Bedah Buku", desc: "Peran pustakawan di era otomasi.", date: "20 Juli 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80" }
+    ];
+
+    function renderEventCards(f = 'all') {
+        const container = document.getElementById("eventContainer");
+        container.innerHTML = "";
+        events.forEach(e => {
+            if(f === 'all' || e.cat === f) {
+                container.innerHTML += `
+                <div class="event-card">
+                    <img src="${e.img}" style="width:100%; height:200px; object-fit:cover;">
+                    <div style="padding:25px;">
+                        <span style="background:#800000; color:#fff; padding:4px 10px; border-radius:5px; font-size:11px;">${e.cat}</span>
+                        <h3 style="font-family:'Cinzel'; margin:10px 0;">${e.title}</h3>
+                        <p style="font-size:14px; color:#666; margin-bottom:10px;">${e.desc}</p>
+                        <small>📅 ${e.date}</small>
+                    </div>
+                </div>`;
+            }
         });
     }
-    renderEventCards('all');
-});
+
+    function changeEventTab(btn, cat) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderEventCards(cat);
+    }
+
+    function renderFullEvents() {
+        const container = document.getElementById("fullEventContainer");
+        container.innerHTML = "";
+        events.forEach(e => {
+            container.innerHTML += `<div class="event-card"><img src="${e.img}" style="width:100%; height:200px; object-fit:cover;"><div style="padding:20px;"><h3>${e.title}</h3><p>${e.desc}</p></div></div>`;
+        });
+    }
+
+    // --- INIT ---
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+
+    window.onload = () => {
+        const rec = document.getElementById("recommendContainer");
+        if(typeof books !== 'undefined') {
+            books.slice(0, 8).forEach(b => {
+                const div = document.createElement('div');
+                div.className = "book-card";
+                div.innerHTML = `<img src="${b.cover}" onerror="this.src='https://via.placeholder.com/250x350'"><div style="padding:15px;"><h4>${b.judul}</h4><p style="font-size:12px;">${b.penulis}</p></div>`;
+                div.onclick = () => window.open(b.file, '_blank');
+                rec.appendChild(div);
+            });
+        }
+        renderEventCards('all');
+    };
 </script>
 
 </body>
