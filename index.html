@@ -6,15 +6,18 @@
 <title>Source Library | Digital Excellence</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 
-html,body{ height:100%; scroll-behavior:smooth }
+html,body{
+height:100%;
+scroll-behavior:smooth
+}
 
 body{
-font-family:"Outfit", sans-serif;
-background:#faf6f0;
+font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto;
+background:linear-gradient(180deg,#faf6f0,#f3e9dd);
 color:#2a2a2a;
 display:flex;
 flex-direction:column;
@@ -22,453 +25,393 @@ min-height:100vh;
 overflow-x:hidden;
 }
 
-/* --- KREATIVITAS BARU: AMBIENT TEXTURE --- */
-.bg-texture {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    opacity: 0.4;
-    pointer-events: none;
-    z-index: -1;
+/* Ambient Particles - Menambah kesan magis/elegan */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+background-image:
+radial-gradient(circle at 20% 30%, rgba(230,213,184,0.15) 1px, transparent 1px),
+radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08) 1px, transparent 1px);
+background-size:120px 120px;
+animation:particlesMove 60s linear infinite;
+z-index:0;
 }
 
-/* --- NAVBAR UPGRADE --- */
+@keyframes particlesMove{
+0%{background-position:0 0,0 0}
+100%{background-position:1000px 1000px,-1000px -1000px}
+}
+
+/* NAVBAR */
 nav{
 position:sticky;
 top:0;
-z-index:1000;
+z-index:100;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 60px;
-background: rgba(128, 0, 0, 0.95);
-backdrop-filter: blur(10px);
+padding:14px 48px;
+background:linear-gradient(180deg,#800000,#6b0000);
 color:#fff;
-border-bottom:4px solid #e6d5b8;
-box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+border-bottom:6px solid #e6d5b8;
+box-shadow:0 10px 30px rgba(0,0,0,0.35);
 }
 
-.logo-container{ display:flex; align-items:center; gap:12px; cursor: pointer; }
-.logo-container img{ height:45px; border-radius:8px; border:2px solid #e6d5b8; }
-.logo-container h1{ font-family:"Cinzel", serif; font-size:22px; letter-spacing:1px; }
+.logo-container{
+display:flex;
+align-items:center;
+gap:12px
+}
 
-nav ul{ list-style:none; display:flex; gap:25px; align-items:center; }
-nav a{ text-decoration:none; color:#fff; font-weight:600; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
-nav a:hover{ color:#e6d5b8; }
+.logo-container img{
+height:44px;
+width:44px;
+border-radius:8px;
+object-fit:contain;
+background:rgba(255,255,255,0.12);
+border:2px solid #e6d5b8;
+padding:3px;
+transition:transform .25s ease
+}
 
-/* --- HERO SECTION --- */
+.logo-container h1{
+font-size:22px;
+font-weight:700;
+font-family:"Cinzel",serif;
+color:#fff
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:28px;
+align-items:center;
+}
+
+nav a{
+text-decoration:none;
+color:#f8f8f8;
+font-weight:600;
+transition:all .22s;
+cursor: pointer;
+}
+
+nav a:hover{
+color:#e6d5b8;
+text-shadow:0 0 6px rgba(230,213,184,.8)
+}
+
+/* HERO SECTION */
 .hero{
 position:relative;
-height:80vh;
+min-height:85vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color: #fff;
-overflow:hidden;
+overflow:hidden
 }
 
 .hero img{
 position:absolute;
 inset:0;
-width:100%; height:100%;
+width:100%;
+height:100%;
 object-fit:cover;
 opacity:0;
-transition: 1.5s ease-in-out;
-filter: brightness(0.6);
+transition:opacity 1.6s ease-in-out
 }
-.hero img.active{ opacity:1; transform: scale(1.05); }
+
+.hero img.active{opacity:1}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.7));
+z-index:2;
+}
 
 .hero-content{
 position:relative;
-z-index:10;
-max-width:800px;
-padding:40px;
+z-index:3;
+max-width:920px;
+padding:48px;
+border-radius:20px;
+background:rgba(255,255,255,0.06);
+border:2px solid rgba(230,213,184,0.28);
+backdrop-filter:blur(14px);
 }
 
-.hero h2{ font-family:"Cinzel", serif; font-size: 56px; margin-bottom:20px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.hero h2{
+font-size: clamp(32px, 8vw, 60px);
+font-family:"Cinzel",serif;
+background:linear-gradient(90deg,#fff,#e6d5b8);
+-webkit-background-clip:text;
+color:transparent
+}
 
-/* --- NEW SECTION: LITERARY NEWS (BERKELAS) --- */
-#literaryNews {
-    padding: 100px 60px;
+/* ===== NEW SECTION: LITERARY NEWS & BEST SELLERS ===== */
+#newsSection {
+    padding: 100px 20px;
     background: #fff;
+    text-align: center;
 }
 
 .news-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 25px;
-    max-width: 1300px;
-    margin: 40px auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
 }
 
 .news-card {
-    position: relative;
-    border-radius: 20px;
+    background: #faf6f0;
+    border-radius: 15px;
     overflow: hidden;
-    height: 450px;
     cursor: pointer;
-    transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: 0.3s ease;
+    border: 1px solid #e6d5b8;
+    text-align: left;
 }
 
-.news-card:hover { transform: scale(1.02); }
-.news-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.news-card:hover img { filter: scale(1.1) brightness(0.7); }
-
-.news-overlay {
-    position: absolute;
-    bottom: 0; left: 0; width: 100%;
-    padding: 40px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    color: #fff;
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(128,0,0,0.1);
 }
 
-.news-overlay span {
-    background: #e6d5b8; color: #800000;
-    padding: 5px 12px; font-weight: 700; font-size: 12px;
-    border-radius: 4px; text-transform: uppercase;
+.news-img-box {
+    height: 200px;
+    overflow: hidden;
 }
 
-.news-overlay h3 { font-family: "Playfair Display", serif; font-size: 24px; margin: 15px 0; }
+.news-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-/* --- NEWS MODAL --- */
-.news-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    z-index: 3000;
-    display: none;
-    align-items: center; justify-content: center;
+.news-body {
     padding: 20px;
 }
 
-.news-modal-content {
-    background: #fff;
-    max-width: 800px;
-    width: 100%;
-    max-height: 90vh;
-    border-radius: 25px;
-    overflow-y: auto;
-    position: relative;
-    padding: 50px;
-}
-
-.news-modal-content h2 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 20px; }
-.news-modal-content p { line-height: 1.8; color: #444; margin-bottom: 20px; }
-.source-tag { display: inline-block; padding: 10px 20px; background: #faf6f0; border-left: 4px solid #800000; font-weight: 600; font-style: italic; }
-
-/* --- FEATURED LEGENDS (HARRY POTTER STYLE) --- */
-#legends {
-    padding: 100px 60px;
-    background: #800000;
-    color: #e6d5b8;
-}
-
-.legend-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 40px;
-    padding: 40px 0;
-    scrollbar-width: none;
-}
-
-.legend-card {
-    min-width: 300px;
-    text-align: center;
-}
-
-.legend-card img {
-    width: 220px;
-    height: 330px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    border: 3px solid #e6d5b8;
-    transition: 0.4s;
-}
-
-.legend-card:hover img { transform: rotate(-3deg) translateY(-10px); }
-
-/* --- PREMIUM FOOTER --- */
-footer {
-    background: #1a0000;
-    color: #e6d5b8;
-    padding: 100px 60px 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-footer::before {
-    content: "SOURCE";
-    position: absolute;
-    top: -50px; right: -50px;
-    font-size: 250px;
-    font-family: "Cinzel", serif;
-    opacity: 0.03;
-    font-weight: 700;
-}
-
-.footer-main {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
-    max-width: 1300px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.footer-logo h2 { font-family: "Cinzel", serif; font-size: 32px; color: #fff; margin-bottom: 20px; }
-.footer-logo p { line-height: 1.8; opacity: 0.7; font-size: 15px; }
-
-.footer-links h4 { font-family: "Cinzel", serif; color: #fff; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 15px; }
-.footer-links a { color: #e6d5b8; text-decoration: none; transition: 0.3s; font-size: 14px; opacity: 0.8; }
-.footer-links a:hover { opacity: 1; padding-left: 10px; color: #fff; }
-
-.footer-bottom {
-    max-width: 1300px;
-    margin: 80px auto 0;
-    padding-top: 40px;
-    border-top: 1px solid rgba(230,213,184,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    opacity: 0.6;
-}
-
-/* --- BUTTONS --- */
-.btn-gold {
-    padding: 15px 35px;
-    background: #e6d5b8;
+.news-body span {
     color: #800000;
-    border: none;
-    border-radius: 50px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.4s;
 }
-.btn-gold:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1000px) {
-    .news-grid { grid-template-columns: 1fr; }
-    .footer-main { grid-template-columns: 1fr 1fr; }
-    nav { padding: 15px 30px; }
+.news-body h3 {
+    margin: 10px 0;
+    font-family: "Cinzel", serif;
+    font-size: 18px;
 }
+
+/* ===== MODAL NEWS STYLE ===== */
+.news-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.news-modal.active { display: flex; }
+
+.modal-content {
+    background: #fff;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 20px;
+    overflow-y: auto;
+    position: relative;
+    padding: 40px;
+}
+
+.modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+    color: #800000;
+}
+
+.modal-content h2 { font-family: "Cinzel", serif; color: #800000; margin-bottom: 20px; }
+.modal-content p { line-height: 1.8; color: #444; margin-bottom: 20px; }
+.modal-source { font-size: 14px; color: #888; border-top: 1px solid #eee; padding-top: 10px; }
+
+/* RECOMMENDED & EVENTS (ORIGINAL STYLE PRESERVED) */
+#recommended, #bookEvent { padding: 80px 20px; text-align: center; }
+.book-scroll { display: flex; gap: 25px; overflow-x: auto; padding: 20px; }
+.book-card { min-width: 200px; background: #fff; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+/* FOOTER */
+footer{ background: #6b0000; color: #fff; padding: 50px 20px; text-align: center; border-top: 6px solid #e6d5b8; }
 
 </style>
 </head>
 
 <body>
 
-<div class="bg-texture"></div>
-
 <nav>
-    <div class="logo-container" onclick="showPage('home')">
-        <img src="logorayhana.png" alt="Logo">
-        <h1>Source Library</h1>
-    </div>
-    <ul>
-        <li><a onclick="showPage('home')">Beranda</a></li>
-        <li><a href="#literaryNews">Berita</a></li>
-        <li><a href="#legends">Legenda</a></li>
-        <li><a onclick="showPage('about')">Tentang</a></li>
-        <li><a href="login.html" class="btn-gold" style="padding: 8px 20px; font-size: 12px;">Login</a></li>
-    </ul>
+<div class="logo-container">
+<img src="logorayhana.png" alt="Logo">
+<h1 onclick="location.reload()" style="cursor:pointer">Source Library</h1>
+</div>
+<ul id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#newsSection">Literary News</a></li>
+<li><a href="#recommended">Best Sellers</a></li>
+<li><a href="#bookEvent">Events</a></li>
+<li><a href="login.html" style="background:#e6d5b8; color:#800000; padding:8px 15px; border-radius:5px;">Login</a></li>
+</ul>
 </nav>
 
 <main id="homeContent">
-    <section class="hero">
-        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80" class="active">
-        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
+    <section class="hero" id="home">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600" class="active">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600">
         <div class="hero-content">
-            <h2>Eksplorasi Tanpa Batas</h2>
-            <p>Menyatukan arsip sejarah dunia dan literasi modern dalam ekosistem digital cerdas.</p>
-            <button class="btn-gold" onclick="alert('Membuka Koleksi...')">Jelajahi Sekarang</button>
+            <h2>Preserving Legacy, Empowering Future</h2>
+            <p>Akses arsip digital, literatur klasik, hingga koleksi modern terbaik dunia.</p>
+            <button class="btn" onclick="document.getElementById('newsSection').scrollIntoView()">Start Exploring</button>
         </div>
     </section>
 
-    <section id="literaryNews">
-        <div style="text-align:center; margin-bottom:50px">
-            <h4 style="color:#800000; letter-spacing:5px; margin-bottom:10px">WARTA LITERASI</h4>
-            <h2 style="font-family:'Cinzel',serif; font-size:36px">Berita & Tren Buku Terkini</h2>
-        </div>
-
+    <section id="newsSection">
+        <span style="color:#800000; font-weight:700; letter-spacing:3px;">THE LITERARY JOURNAL</span>
+        <h2 style="font-family:'Cinzel', serif; font-size:36px; margin-top:10px;">Berita Literasi & Ikon Dunia</h2>
+        
         <div class="news-grid">
-            <div class="news-card" onclick="openNews(0)">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80">
-                <div class="news-overlay">
-                    <span>Trending</span>
-                    <h3>Kebangkitan Minat Baca Generasi Z di Era Digital 2026</h3>
+            <div class="news-card" onclick="openNews('hp')">
+                <div class="news-img-box">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800" alt="Harry Potter">
+                </div>
+                <div class="news-body">
+                    <span>Legendary Series</span>
+                    <h3>Harry Potter: Fenomena Global yang Tak Lekang Waktu</h3>
+                    <p style="font-size:14px; color:#666;">Bagaimana J.K. Rowling mengubah wajah literatur anak selamanya...</p>
                 </div>
             </div>
-            <div class="news-card" onclick="openNews(1)">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80">
-                <div class="news-overlay">
-                    <span>Best Seller</span>
-                    <h3>The Midnight Library: Mengapa Buku Ini Kembali Viral?</h3>
+
+            <div class="news-card" onclick="openNews('trends')">
+                <div class="news-img-box">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=800" alt="Book Trends">
+                </div>
+                <div class="news-body">
+                    <span>Market Trends</span>
+                    <h3>Tren Buku Terlaris 2026: Fiksi Spekulatif Mendominasi</h3>
+                    <p style="font-size:14px; color:#666;">Pembaca global kini lebih melirik tema distopia dan harapan baru...</p>
                 </div>
             </div>
-            <div class="news-card" onclick="openNews(2)">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80">
-                <div class="news-overlay">
-                    <span>Award</span>
-                    <h3>Nobel Sastra 2026: Penghargaan Untuk Narasi Kemanusiaan</h3>
+
+            <div class="news-card" onclick="openNews('anri')">
+                <div class="news-img-box">
+                    <img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800" alt="Archives">
+                </div>
+                <div class="news-body">
+                    <span>Historical Archive</span>
+                    <h3>Pentingnya Digitalisasi Arsip UU No. 43 Tahun 2009</h3>
+                    <p style="font-size:14px; color:#666;">Menelusuri jejak hukum kearsipan Indonesia dalam format digital...</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="legends">
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; max-width:1300px; margin:0 auto">
-            <div>
-                <h4 style="letter-spacing:3px">HALL OF FAME</h4>
-                <h2 style="font-family:'Cinzel',serif; font-size:40px">Buku Legendaris & Best Seller</h2>
+    <section id="recommended">
+        <span class="section-tag" style="color:#800000; font-weight:700;">CURATED SELECTION</span>
+        <h2 style="font-family:'Cinzel', serif; font-size:36px;">Recommended Best Sellers</h2>
+        <div class="book-scroll" id="recommendContainer">
             </div>
-            <p style="max-width:400px; opacity:0.8; font-style:italic">Karya-karya monumental yang telah mengubah cara dunia berpikir dan berimajinasi.</p>
-        </div>
-
-        <div class="legend-container">
-            <div class="legend-card">
-                <img src="https://m.media-amazon.com/images/I/81YOuOGFCJL._AC_UF1000,1000_QL80_.jpg">
-                <h3 style="margin-top:20px">Harry Potter</h3>
-                <p style="font-size:14px; opacity:0.7">J.K. Rowling</p>
-            </div>
-            <div class="legend-card">
-                <img src="https://m.media-amazon.com/images/I/71jLBjtW9LL._AC_UF1000,1000_QL80_.jpg">
-                <h3 style="margin-top:20px">The Alchemist</h3>
-                <p style="font-size:14px; opacity:0.7">Paulo Coelho</p>
-            </div>
-            <div class="legend-card">
-                <img src="https://m.media-amazon.com/images/I/81WojUxbbFL._AC_UF1000,1000_QL80_.jpg">
-                <h3 style="margin-top:20px">Laskar Pelangi</h3>
-                <p style="font-size:14px; opacity:0.7">Andrea Hirata</p>
-            </div>
-            <div class="legend-card">
-                <img src="https://m.media-amazon.com/images/I/71KSR7QCzPL._AC_UF1000,1000_QL80_.jpg">
-                <h3 style="margin-top:20px">Atomic Habits</h3>
-                <p style="font-size:14px; opacity:0.7">James Clear</p>
-            </div>
-            <div class="legend-card">
-                <img src="https://m.media-amazon.com/images/I/91pZEozf9qL._AC_UF1000,1000_QL80_.jpg">
-                <h3 style="margin-top:20px">The Great Gatsby</h3>
-                <p style="font-size:14px; opacity:0.7">F. Scott Fitzgerald</p>
-            </div>
-        </div>
     </section>
 </main>
 
-<div id="newsModal" class="news-modal" onclick="event.target == this && closeNews()">
-    <div class="news-modal-content">
-        <span id="modalCategory" style="color:#800000; font-weight:700; text-transform:uppercase; letter-spacing:2px">Kategori</span>
+<div id="newsModal" class="news-modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeNews()">&times;</span>
         <h2 id="modalTitle">Judul Berita</h2>
-        <div id="modalBody">
-            </div>
-        <div class="source-tag">Sumber Terpercaya: <span id="modalSource">The New York Times / Gramedia</span></div>
-        <br><br>
-        <button class="btn-gold" onclick="closeNews()">Tutup Berita</button>
+        <p id="modalDesc">Deskripsi lengkap akan muncul di sini...</p>
+        <div class="modal-source" id="modalSource">Sumber: The New York Times / ANRI Digital</div>
     </div>
 </div>
 
 <footer>
-    <div class="footer-main">
-        <div class="footer-logo">
-            <h2>Source Library</h2>
-            <p>Kami adalah mercusuar bagi para pencari ilmu. Mengelola ribuan koleksi digital dengan standar internasional untuk mendukung kemajuan literasi Indonesia di mata dunia.</p>
-            <div style="margin-top:25px; display:flex; gap:15px">
-                <span style="font-size:24px">📘</span>
-                <span style="font-size:24px">🏛️</span>
-                <span style="font-size:24px">🛡️</span>
-            </div>
-        </div>
-        <div class="footer-links">
-            <h4>Navigasi</h4>
-            <ul>
-                <li><a onclick="showPage('home')">Beranda Utama</a></li>
-                <li><a href="#literaryNews">Warta Terbaru</a></li>
-                <li><a href="#legends">Koleksi Legenda</a></li>
-                <li><a href="katalog.html">Katalog Digital</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h4>Layanan</h4>
-            <ul>
-                <li><a href="#">Peminjaman Online</a></li>
-                <li><a href="#">Akses Jurnal Internasional</a></li>
-                <li><a href="#">Arsip Digital ANRI</a></li>
-                <li><a href="#">Ruang Baca AI</a></li>
-            </ul>
-        </div>
-        <div class="footer-links">
-            <h4>Hubungi Kami</h4>
-            <p style="font-size:14px; opacity:0.7; line-height:2">
-                Jl. Perpustakaan No. 01<br>
-                Universitas Sumatera Utara<br>
-                Medan, Indonesia<br>
-                support@sourcelib.id
-            </p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Source Library System — Excellence in Digital Literacy. Dirancang oleh Rayhana.</p>
-        <p>Privacy Policy | Terms of Service</p>
-    </div>
+    <p>© 2026 <strong>Source Library System</strong>. Dirancang untuk Keunggulan Literasi.</p>
 </footer>
 
+<script src="books.js"></script>
 <script>
-// --- NEWS DATA ---
-const newsData = [
-    {
-        cat: "Trending",
-        title: "Kebangkitan Minat Baca Generasi Z di Era Digital 2026",
-        content: "Penelitian terbaru menunjukkan bahwa 65% anak muda kini lebih memilih membaca buku fisik dan e-book berkualitas tinggi dibandingkan konten instan. Hal ini dipicu oleh tren 'Slow Living' yang mengedepankan kualitas informasi dibandingkan kecepatan.",
-        source: "Literary Hub & Global Education Report"
+// --- LOGIC BERITA (MODAL) ---
+const newsData = {
+    'hp': {
+        title: "Harry Potter & Dampak Budaya Literasi",
+        desc: "Sejak peluncuran 'The Philosopher's Stone' pada 1997, Harry Potter telah terjual lebih dari 500 juta kopi di seluruh dunia. Serial ini bukan hanya tentang sihir, tetapi tentang persahabatan, keberanian, dan melawan penindasan. J.K. Rowling berhasil menciptakan ekosistem literasi yang membuat generasi muda kembali mencintai buku fisik di tengah gempuran teknologi digital.",
+        source: "Sumber: Britannica & Pottermore Official"
     },
-    {
-        cat: "Best Seller",
-        title: "The Midnight Library: Mengapa Buku Ini Kembali Viral?",
-        content: "Matt Haig berhasil menyentuh sisi emosional pembaca melalui konsep perpustakaan di antara hidup dan mati. Di tahun 2026, buku ini kembali menduduki peringkat satu karena relevansinya dengan kesehatan mental pasca-digitalisasi besar-besaran.",
-        source: "The Guardian Books Section"
+    'trends': {
+        title: "Daftar Best Seller & Tren Bacaan 2026",
+        desc: "Laporan terbaru menunjukkan peningkatan sebesar 40% pada genre fiksi spekulatif dan sejarah alternatif. Penulis-penulis baru dari Asia dan Afrika mulai mendominasi tangga lagu New York Times Best Seller, membuktikan bahwa keberagaman cerita menjadi kunci utama minat baca global saat ini.",
+        source: "Sumber: Publishers Weekly & NYT Books"
     },
-    {
-        cat: "Award",
-        title: "Nobel Sastra 2026: Penghargaan Untuk Narasi Kemanusiaan",
-        content: "Komite Nobel mengumumkan pemenang tahun ini yang fokus pada tema pelestarian budaya lokal di tengah globalisasi. Karya ini sekarang telah tersedia dalam bentuk arsip digital terproteksi di Source Library.",
-        source: "Official Nobel Prize Organization"
+    'anri': {
+        title: "Digitalisasi Nasional: UU No. 43 Tahun 2009",
+        desc: "Undang-Undang Kearsipan No. 43 Tahun 2009 adalah pilar utama perlindungan memori kolektif bangsa Indonesia. Source Library berkomitmen mengimplementasikan standar keamanan data sesuai regulasi ANRI untuk memastikan dokumen sejarah seperti naskah Proklamasi hingga arsip G30S/PKI dapat dipelajari dengan akurat oleh generasi mendatang.",
+        source: "Sumber: JDIH ANRI (Arsip Nasional Republik Indonesia)"
     }
-];
+};
 
-function openNews(index) {
-    const data = newsData[index];
-    document.getElementById('modalCategory').innerText = data.cat;
+function openNews(id) {
+    const data = newsData[id];
     document.getElementById('modalTitle').innerText = data.title;
-    document.getElementById('modalBody').innerHTML = `<p>${data.content}</p>`;
+    document.getElementById('modalDesc').innerText = data.desc;
     document.getElementById('modalSource').innerText = data.source;
-    document.getElementById('newsModal').style.display = 'flex';
+    document.getElementById('newsModal').classList.add('active');
 }
 
 function closeNews() {
-    document.getElementById('newsModal').style.display = 'none';
+    document.getElementById('newsModal').classList.remove('active');
 }
 
 // --- HERO SLIDER ---
-let currentHero = 0;
-const heroImgs = document.querySelectorAll('.hero img');
+const heroImages = document.querySelectorAll(".hero img");
+let current = 0;
 setInterval(() => {
-    heroImgs[currentHero].classList.remove('active');
-    currentHero = (currentHero + 1) % heroImgs.length;
-    heroImgs[currentHero].classList.add('active');
-}, 6000);
+    heroImages[current].classList.remove("active");
+    current = (current + 1) % heroImages.length;
+    heroImages[current].classList.add("active");
+}, 5000);
 
-function showPage(id) {
-    // Logika pindah halaman tetap sama dengan kodingan sebelumnya
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
+// --- LOAD BOOKS FROM JS ---
+document.addEventListener("DOMContentLoaded", () => {
+    const recContainer = document.getElementById("recommendContainer");
+    if(typeof books !== "undefined") {
+        books.forEach(book => {
+            const card = document.createElement("div");
+            card.className = "book-card";
+            card.innerHTML = `
+                <img src="${book.cover}" style="width:100%; height:250px; object-fit:cover; border-radius:12px 12px 0 0;">
+                <div style="padding:15px; text-align:left;">
+                    <h4 style="font-size:15px; color:#800000;">${book.judul}</h4>
+                    <p style="font-size:12px; color:#777;">${book.penulis}</p>
+                </div>
+            `;
+            recContainer.appendChild(card);
+        });
+    }
+});
 </script>
 
 </body>
