@@ -1,544 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Source Library | Digital Excellence</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Source Library | Digital Excellence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cinzel:wght@500;600&display=swap');
+        :root {
+            --primary: #800000;
+            --secondary: #e6d5b8;
+            --accent: #f3e9dd;
+            --dark: #2a2a2a;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
 
-*{box-sizing:border-box;margin:0;padding:0}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; scroll-behavior: smooth; }
+        body {
+            font-family: "Outfit", sans-serif;
+            background: linear-gradient(180deg, #faf6f0, #f3e9dd);
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-html,body{
-height:100%;
-scroll-behavior:smooth
-}
+        /* Particles Animation */
+        body::before {
+            content: ""; position: fixed; inset: 0; pointer-events: none;
+            background-image: radial-gradient(circle at 20% 30%, rgba(230,213,184,0.15) 1px, transparent 1px);
+            background-size: 80px 80px; z-index: 0;
+        }
 
-body{
-font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto;
-background:linear-gradient(180deg,#faf6f0,#f3e9dd);
-color:#2a2a2a;
-display:flex;
-flex-direction:column;
-min-height:100vh;
-overflow-x:hidden;
-}
+        /* NAVIGATION */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 10%; background: linear-gradient(180deg, #800000, #6b0000);
+            border-bottom: 5px solid var(--secondary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
 
-/* Ambient Particles */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-background-image:
-radial-gradient(circle at 20% 30%, rgba(230,213,184,0.15) 1px, transparent 1px),
-radial-gradient(circle at 70% 60%, rgba(255,255,255,0.08) 1px, transparent 1px);
-background-size:120px 120px;
-animation:particlesMove 60s linear infinite;
-z-index:0;
-}
+        .logo-container { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .logo-container h1 { font-family: "Cinzel", serif; color: var(--white); font-size: 1.5rem; }
+        
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav a { text-decoration: none; color: #f8f8f8; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        nav a:hover { color: var(--secondary); text-shadow: 0 0 8px rgba(230,213,184,0.5); }
 
-@keyframes particlesMove{
-0%{background-position:0 0,0 0}
-100%{background-position:1000px 1000px,-1000px -1000px}
-}
+        /* SECTIONS DISPLAY LOGIC */
+        section.page-content { display: none; animation: fadeIn 0.6s ease; }
+        section.page-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* NAVBAR & DROPDOWN */
-nav{
-position:sticky;
-top:0;
-z-index:1000;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 48px;
-background:linear-gradient(180deg,#800000,#6b0000);
-color:#fff;
-border-bottom:6px solid #e6d5b8;
-box-shadow:0 10px 30px rgba(0,0,0,0.35);
-}
+        /* HERO SECTION */
+        .hero {
+            height: 85vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .hero-bg { position: absolute; inset: 0; z-index: -1; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
 
-.logo-container{
-display:flex;
-align-items:center;
-gap:12px;
-cursor: pointer;
-}
+        .hero-card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            padding: 3rem; border-radius: 20px; border: 1px solid rgba(230, 213, 184, 0.3);
+            max-width: 800px; margin: 0 20px;
+        }
+        .hero-card h2 { font-family: "Cinzel", serif; font-size: 3.5rem; color: var(--white); margin-bottom: 1rem; }
+        .hero-card p { color: var(--accent); font-size: 1.2rem; }
 
-.logo-container img{
-height:44px;
-width:44px;
-border-radius:8px;
-object-fit:contain;
-background:rgba(255,255,255,0.12);
-border:2px solid #e6d5b8;
-padding:3px;
-transition:transform .25s ease
-}
+        /* BUTTONS */
+        .btn-gold {
+            background: linear-gradient(90deg, var(--secondary), #fff);
+            color: var(--primary); padding: 12px 35px; border-radius: 50px;
+            border: none; font-weight: 700; cursor: pointer; margin-top: 2rem;
+            transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0,0,0,0.3); }
 
-.logo-container h1{
-font-size:22px;
-font-weight:700;
-font-family:"Cinzel",serif;
-color:#fff
-}
+        /* CARDS GRID */
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; padding: 50px 10%;
+        }
+        .info-card {
+            background: var(--white); padding: 2.5rem; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--primary);
+        }
+        .info-card h3 { font-family: "Cinzel", serif; color: var(--primary); margin-bottom: 1rem; }
 
-nav ul{
-list-style:none;
-display:flex;
-gap:28px;
-align-items:center;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    text-decoration: none;
-    color: #f8f8f8;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .22s;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 12px;
-    overflow: hidden;
-    top: 100%;
-    margin-top: 10px;
-    border: 1px solid #e6d5b8;
-}
-
-.dropdown-content a {
-    color: #800000 !important;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.dropdown-content a:hover {
-    background-color: #faf6f0;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-nav a{
-text-decoration:none;
-color:#f8f8f8;
-font-weight:600;
-transition:all .22s;
-cursor: pointer;
-}
-
-nav a:hover{
-color:#e6d5b8;
-text-shadow:0 0 6px rgba(230,213,184,.8)
-}
-
-/* HERO */
-.hero{
-position:relative;
-min-height:80vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden
-}
-
-.hero img{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:opacity 1.6s ease-in-out
-}
-
-.hero img.active{opacity:1}
-
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.7));
-z-index:2;
-}
-
-.hero-content{
-position:relative;
-z-index:3;
-max-width:920px;
-width:calc(100% - 60px);
-padding:48px;
-border-radius:20px;
-background:rgba(255,255,255,0.06);
-border:2px solid rgba(230,213,184,0.28);
-backdrop-filter:blur(14px);
-box-shadow:0 20px 50px rgba(0,0,0,0.5);
-}
-
-.hero h2{
-font-size: clamp(32px, 8vw, 60px);
-font-family:"Cinzel",serif;
-background:linear-gradient(90deg,#fff,#e6d5b8);
--webkit-background-clip:text;
-color:transparent
-}
-
-/* STATS SECTION (ANTI-EMPTY) */
-.stats-bar {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: -50px auto 50px;
-    position: relative;
-    z-index: 10;
-    padding: 0 20px;
-}
-
-.stat-item {
-    background: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(128,0,0,0.1);
-    border-bottom: 4px solid #800000;
-}
-
-.stat-item h3 { font-size: 32px; color: #800000; font-family: "Cinzel", serif; }
-.stat-item p { font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; }
-
-/* RECOMMENDED BOOKS */
-#recommended{
-background:#fff;
-text-align:center;
-padding:100px 20px;
-}
-
-#recommended h2{
-color:#800000;
-font-size:42px;
-font-family:"Cinzel",serif;
-margin-bottom:40px
-}
-
-.book-scroll{
-display:flex;
-gap:25px;
-overflow-x:auto;
-padding:20px 40px;
-}
-
-.book-card{
-min-width:220px;
-background:#fff;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-cursor:pointer;
-transition:all .4s ease;
-border: 1px solid #f0f0f0;
-}
-
-.book-card img{ width:100%; height:300px; object-fit:cover }
-
-/* EVENT SECTION */
-#bookEvent {
-    padding: 100px 20px;
-    background: #faf6f0;
-    text-align: center;
-}
-
-.event-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.event-card {
-    background: #fff;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    text-align: left;
-}
-
-/* QUOTE SECTION (VISUAL FILLER) */
-.quote-section {
-    padding: 80px 20px;
-    background: linear-gradient(rgba(128,0,0,0.9), rgba(128,0,0,0.9)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80');
-    background-attachment: fixed;
-    background-size: cover;
-    color: #e6d5b8;
-    text-align: center;
-}
-
-.quote-section blockquote {
-    font-family: "Cinzel", serif;
-    font-size: clamp(20px, 4vw, 32px);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* FOOTER */
-footer{
-background:linear-gradient(180deg,#4d0000,#800000);
-color:#e6d5b8;
-padding:60px 20px 30px;
-border-top:6px solid #e6d5b8;
-}
-
-.footer-grid{
-max-width:1100px;
-margin:0 auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px
-}
-
-/* Responsivity */
-@media (max-width: 850px) {
-    nav { padding: 14px 20px; }
-    nav ul { display: none; } /* Simplified for this demo, usually needs mobile drawer */
-}
-
-/* Pages Display */
-#aboutContent, #allEventsContent { display: none; }
-
-</style>
+        /* FOOTER */
+        footer {
+            background: var(--primary); color: var(--secondary);
+            padding: 4rem 10% 2rem; border-top: 5px solid var(--secondary); margin-top: auto;
+        }
+        .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+    </style>
 </head>
-
 <body>
 
 <nav>
-<div class="logo-container" onclick="showPage('home')">
-<img src="logorayhana.png" alt="Logo">
-<h1>Source Library</h1>
-</div>
-
-<ul id="navLinks">
-    <li><a onclick="showPage('home')">Home</a></li>
-    <li class="dropdown">
-        <a class="dropbtn">Koleksi ▼</a>
-        <div class="dropdown-content">
-            <a href="katalog.html?kategori=novel">📖 Novel & Sastra</a>
-            <a href="katalog.html?kategori=akademik">🎓 Jurnal Akademik</a>
-            <a href="katalog.html?kategori=sejarah">🌍 Arsip Sejarah</a>
-            <a href="katalog.html?kategori=biografi">👤 Biografi Tokoh</a>
-        </div>
-    </li>
-    <li><a onclick="showPage('all-events')">Event</a></li>
-    <li><a onclick="showPage('about')">About Us</a></li>
-    <li><a href="kontak.html">Contact</a></li>
-    <li><a href="login.html" style="background:#e6d5b8; color:#800000; padding:8px 20px; border-radius:20px;">Login</a></li>
-</ul>
+    <div class="logo-container" onclick="showPage('home')">
+        <h1>Source Library</h1>
+    </div>
+    <ul id="navLinks">
+        <li><a onclick="showPage('home')">Beranda</a></li>
+        <li><a onclick="showPage('about')">Tentang Kami</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li><a href="login.html" style="color: var(--secondary)">Login</a></li>
+    </ul>
 </nav>
 
-<main id="homeContent">
-    <section class="hero">
-        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
-        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
-        <div class="hero-content">
-            <h2>The Gateway to Knowledge</h2>
-            <p>Akses ribuan literatur digital secara inklusif dan modern.</p>
-            <button class="btn" onclick="openLibrary()" style="margin-top:28px; padding:14px 40px; border-radius:50px; background:#e6d5b8; color:#800000; border:none; font-weight:bold; cursor:pointer;">Mulai Menjelajah</button>
-        </div>
-    </section>
-
-    <section class="stats-bar">
-        <div class="stat-item">
-            <h3>15K+</h3>
-            <p>Koleksi Digital</p>
-        </div>
-        <div class="stat-item">
-            <h3>8K+</h3>
-            <p>Anggota Aktif</p>
-        </div>
-        <div class="stat-item">
-            <h3>24/7</h3>
-            <p>Akses Layanan</p>
-        </div>
-        <div class="stat-item">
-            <h3>500+</h3>
-            <p>Arsip Sejarah</p>
-        </div>
-    </section>
-
-    <section id="recommended">
-        <span style="color:#800000; font-weight:bold; letter-spacing:2px;">TOP PICK</span>
-        <h2>Rekomendasi Pekan Ini</h2>
-        <div class="book-scroll" id="recommendContainer">
-            </div>
-    </section>
-
-    <section class="quote-section">
-        <blockquote>
-            "Perpustakaan adalah tempat di mana waktu berhenti dan ilmu abadi."
-        </blockquote>
-    </section>
-
-    <section id="bookEvent">
-        <div style="margin-bottom:50px;">
-            <h2>Agenda Mendatang</h2>
-            <p>Jangan lewatkan kegiatan literasi seru di perpustakaan kami.</p>
-        </div>
-        <div class="event-container" id="eventContainer">
-            </div>
-        <div style="margin-top:50px;">
-            <button onclick="showPage('all-events')" style="padding:12px 30px; border:2px solid #800000; background:none; color:#800000; font-weight:bold; cursor:pointer; border-radius:50px;">Lihat Seluruh Kalender Event</button>
-        </div>
-    </section>
-</main>
-
-<section id="allEventsContent" style="padding: 100px 20px;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="font-family: 'Cinzel', serif; color: #800000; font-size: 42px; margin-bottom: 40px; text-align: center;">Kalender Event Lengkap</h2>
-        <div class="event-container" id="fullEventContainer"></div>
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn" onclick="showPage('home')" style="padding:12px 30px; border:none; background:#800000; color:#fff; cursor:pointer; border-radius:50px;">Kembali ke Beranda</button>
+<section id="home" class="page-content active">
+    <div class="hero">
+        <div class="hero-bg"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600" alt="Library"></div>
+        <div class="hero-card">
+            <h2>Gateway to Wisdom</h2>
+            <p>Akses arsip digital, jurnal akademik, dan literatur klasik dalam satu platform terintegrasi.</p>
+            <button class="btn-gold" onclick="location.href='katalog.html'">Mulai Penelusuran</button>
         </div>
     </div>
 </section>
 
-<section id="aboutContent" style="padding:100px 20px;">
-    <div style="max-width:1000px; margin:0 auto; text-align:center;">
-        <h2 style="font-family:'Cinzel',serif; color:#800000; font-size:48px;">Tentang Source Library</h2>
-        <p style="margin:20px 0; line-height:1.8;">Kami adalah pionir perpustakaan digital yang fokus pada pelestarian naskah berharga dan penyediaan akses informasi berkualitas.</p>
-        <button onclick="showPage('home')" style="padding:10px 25px; cursor:pointer;">Tutup</button>
+<section id="about" class="page-content">
+    <div style="text-align:center; padding: 80px 10% 0;">
+        <h2 style="font-family:'Cinzel'; font-size: 3rem; color: var(--primary);">Profil Institusi</h2>
+        <p style="color: #666; max-width: 700px; margin: 1rem auto;">Membangun masa depan literasi Indonesia melalui digitalisasi naskah sejarah dan akses informasi terbuka.</p>
+    </div>
+    <div class="grid-container">
+        <div class="info-card">
+            <h3>Visi Digital</h3>
+            <p>Menjadi pusat referensi digital utama yang menjembatani naskah klasik dengan teknologi masa depan.</p>
+        </div>
+        <div class="info-card">
+            <h3>Misi Literasi</h3>
+            <p>Mempermudah aksesibilitas data bagi peneliti, mahasiswa, dan masyarakat umum secara inklusif.</p>
+        </div>
+        <div class="info-card">
+            <h3>Standardisasi</h3>
+            <p>Mengacu pada standar UU No. 43 Tahun 2009 tentang Kearsipan dan manajemen perpustakaan modern.</p>
+        </div>
     </div>
 </section>
 
 <footer>
-<div class="footer-grid">
-    <div class="footer-col">
-        <h3>Source Library</h3>
-        <p style="font-size:14px; line-height:1.6;">Menjaga peradaban melalui literasi digital yang terpercaya.</p>
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        <div style="max-width: 400px;">
+            <h3 style="font-family:'Cinzel'; color: white; margin-bottom: 1rem;">Source Library</h3>
+            <p>Pusat Unggul Literasi Digital. Mengelola ilmu pengetahuan dengan integritas dan inovasi.</p>
+        </div>
+        <div>
+            <h4 style="color: white; margin-bottom: 1rem;">Tautan Cepat</h4>
+            <p><a onclick="showPage('home')" style="cursor:pointer">Beranda</a></p>
+            <p><a onclick="showPage('about')" style="cursor:pointer">Tentang</a></p>
+            <p><a href="admin.html">Sistem Manajemen</a></p>
+        </div>
     </div>
-    <div class="footer-col">
-        <h3>Link Cepat</h3>
-        <ul style="list-style:none;">
-            <li><a onclick="showPage('home')">Beranda</a></li>
-            <li><a href="katalog.html">Katalog</a></li>
-            <li><a onclick="showPage('all-events')">Event</a></li>
-        </ul>
+    <div class="footer-bottom">
+        <p>© 2026 <strong>Source Library System</strong>. Designed for Academic Excellence.</p>
     </div>
-    <div class="footer-col">
-        <h3>Kontak</h3>
-        <p style="font-size:14px;">📧 support@sourcelib.id<br>📍 Medan, Indonesia</p>
-    </div>
-</div>
-<div style="text-align:center; margin-top:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-    <p>© 2026 Source Library Digital. All Rights Reserved.</p>
-</div>
 </footer>
 
-<script src="books.js"></script>
 <script>
-// --- NAVIGATION SYSTEM ---
-function showPage(pageId) {
-    const pages = ['homeContent', 'aboutContent', 'allEventsContent'];
-    pages.forEach(p => document.getElementById(p).style.display = 'none');
-
-    if(pageId === 'home') {
-        document.getElementById('homeContent').style.display = 'block';
-    } else if(pageId === 'about') {
-        document.getElementById('aboutContent').style.display = 'block';
-    } else if(pageId === 'all-events') {
-        document.getElementById('allEventsContent').style.display = 'block';
-        renderFullEvents();
-    }
-    window.scrollTo(0,0);
-}
-
-// --- HERO SLIDER ---
-let currentImg = 0;
-const images = document.querySelectorAll('.hero img');
-setInterval(() => {
-    images[currentImg].classList.remove('active');
-    currentImg = (currentImg + 1) % images.length;
-    images[currentImg].classList.add('active');
-}, 5000);
-
-// --- DATA EVENTS ---
-const libraryEvents = [
-    { judul: "Pameran Naskah Kuno", kategori: "Pameran", desc: "Menelusuri sejarah melalui tulisan tangan abad ke-18.", tgl: "20 Mei 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=500", tag: "Sejarah" },
-    { judul: "Bedah Buku Digital", kategori: "Bedah Buku", desc: "Membahas dampak AI pada dunia kepustakawanan.", tgl: "25 Mei 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=500", tag: "Teknologi" },
-    { judul: "Workshop Literasi", kategori: "Workshop", desc: "Cara efektif mengelola referensi menggunakan sistem OPAC.", tgl: "02 Juni 2026", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500", tag: "Edukasi" },
-    { judul: "Malam Puisi Virtual", kategori: "Seni", desc: "Apresiasi sastra bersama penulis muda berbakat.", tgl: "10 Juni 2026", img: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=500", tag: "Sastra" }
-];
-
-function createEventCard(ev) {
-    return `
-        <div class="event-card">
-            <img src="${ev.img}" style="width:100%; height:200px; object-fit:cover;">
-            <div style="padding:20px;">
-                <span style="font-size:12px; color:#800000; font-weight:bold;">${ev.kategori}</span>
-                <h3 style="margin:10px 0; font-family:'Cinzel';">${ev.judul}</h3>
-                <p style="font-size:14px; color:#666; margin-bottom:15px;">${ev.desc}</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#999;">
-                    <span>📅 ${ev.tgl}</span>
-                    <span style="background:#faf6f0; padding:4px 10px; border-radius:5px; color:#800000;">${ev.tag}</span>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function renderHomeEvents() {
-    const container = document.getElementById('eventContainer');
-    container.innerHTML = libraryEvents.slice(0, 3).map(ev => createEventCard(ev)).join('');
-}
-
-function renderFullEvents() {
-    const container = document.getElementById('fullEventContainer');
-    container.innerHTML = libraryEvents.map(ev => createEventCard(ev)).join('');
-}
-
-// --- INITIALIZE ---
-document.addEventListener("DOMContentLoaded", () => {
-    // Render Books
-    const recContainer = document.getElementById("recommendContainer");
-    if(typeof books !== "undefined") {
-        books.slice(0, 8).forEach(book => {
-            const card = document.createElement("div");
-            card.className = "book-card";
-            card.innerHTML = `<img src="${book.cover}"><div style="padding:15px;"><h4>${book.judul}</h4><p>${book.penulis}</p></div>`;
-            card.onclick = () => window.open(book.file, "_blank");
-            recContainer.appendChild(card);
+    // Logic Navigasi Pintar (SPA Style)
+    function showPage(pageId) {
+        // Cari semua elemen dengan class page-content
+        const pages = document.querySelectorAll('.page-content');
+        
+        // Sembunyikan semua halaman
+        pages.forEach(page => {
+            page.classList.remove('active');
         });
+
+        // Tampilkan halaman yang dipilih
+        const activePage = document.getElementById(pageId);
+        if (activePage) {
+            activePage.classList.add('active');
+            window.scrollTo(0, 0);
+        }
     }
-    renderHomeEvents();
-});
 </script>
 
 </body>
