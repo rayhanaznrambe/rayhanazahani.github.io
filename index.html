@@ -16,22 +16,22 @@
             --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; scroll-behavior: smooth; }
         body { font-family: "Outfit", sans-serif; background: #faf6f0; color: #2a2a2a; overflow-x: hidden; }
 
-        /* UI ELEMENTS */
+        /* --- BACKGROUND & SEPARATORS --- */
         .cyber-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(var(--neon-red) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.1; }
         
-        /* PERBAIKAN SEPARATOR FOOTER */
-        .footer-separator { 
-            height: 120px; 
-            background: linear-gradient(to bottom, var(--dark-bg), #0f0000); 
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 40%); 
-            margin-bottom: -2px;
+        /* PERBAIKAN: Pembatas Berita ke Footer (Hitam ke Hitam) */
+        .section-divider { 
+            height: 100px; 
+            background: var(--dark-bg); 
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%); 
+            margin-top: -1px; 
         }
 
+        /* --- NAVBAR --- */
         nav {
             position: sticky; top: 0; z-index: 2000;
             display: flex; justify-content: space-between; align-items: center;
@@ -45,18 +45,27 @@
 
         nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
         nav a { text-decoration: none; color: #fff; font-weight: 600; font-size: 12px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
-        
+        nav a:hover { color: var(--gold); }
+
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .hamburger span { width: 25px; height: 3px; background: white; border-radius: 2px; }
 
-        /* HERO */
+        @media (max-width: 992px) {
+            .hamburger { display: flex; }
+            nav ul { position: absolute; top: 100%; left: -100%; width: 100%; height: 100vh; background: var(--primary); flex-direction: column; padding-top: 50px; transition: 0.5s; }
+            nav ul.active { left: 0; }
+        }
+
+        /* --- HERO --- */
         .hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; overflow: hidden; }
         .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 2s; filter: brightness(0.35); z-index: -1; }
         .hero img.active { opacity: 1; transform: scale(1.05); }
+        .hero h2 { font-family: "Cinzel", serif; font-size: clamp(32px, 8vw, 60px); margin-bottom: 20px; }
 
-        /* BOOK TRACK */
+        /* --- BOOK TRACK --- */
         .book-marquee { overflow: hidden; padding: 40px 0; background: white; }
         .book-track { display: flex; gap: 40px; width: max-content; animation: scrollBooks 40s linear infinite; }
+        .book-track:hover { animation-play-state: paused; }
         @keyframes scrollBooks { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         .book-container { width: 220px; height: 320px; perspective: 1000px; cursor: pointer; }
@@ -64,28 +73,31 @@
         .book-container:hover .book-inner { transform: rotateY(180deg); }
         .book-front, .book-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; overflow: hidden; }
         .book-back { background: var(--primary); color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 20px; text-align: center; border: 2px solid var(--gold); }
+        .book-front img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* NEWS & EVENTS */
+        /* --- EVENTS & NEWS --- */
         .event-grid, .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .event-card { background: white; border-radius: 20px; overflow: hidden; border-bottom: 5px solid var(--gold); transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .news-card-v { background: var(--glass-white); border: 1px solid rgba(230,213,184,0.1); border-radius: 25px; overflow: hidden; transition: 0.4s; }
         .news-header-img { width: 100%; height: 180px; object-fit: cover; }
         .news-body { padding: 30px; }
 
-        /* FOOTER 3D */
-        footer { background: #0f0000; color: #fff; padding: 80px 60px 40px; border-top: 5px solid var(--primary); }
+        /* --- LOGIN & CONTACT STYLE (Sesuai File Kamu) --- */
+        .form-wrapper { background: rgba(128, 0, 0, 0.95); backdrop-filter: blur(10px); border: 2px solid #e6d5b8; border-radius: 25px; padding: 50px 40px; width: 100%; max-width: 480px; color: #fff; margin: 0 auto; }
+        .form-wrapper h2 { font-size: 30px; margin-bottom: 10px; font-family: 'Cinzel'; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 14px; margin-bottom: 6px; }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #e6d5b8; border-radius: 10px; background: #fffaf4; color: #2a2a2a; outline: none; font-family: 'Outfit'; }
+        
+        /* --- SPA PAGES --- */
+        .spa-page { display: none; padding: 120px 60px; min-height: 100vh; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .btn-gold { padding: 12px 30px; background: var(--gold); color: var(--primary); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; text-align: center; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark-bg); color: #fff; padding: 100px 60px 40px; position: relative; border-top: 10px solid var(--primary); margin-top: -1px; }
         .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; }
         .footer-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-
-        /* SPA PAGES */
-        .spa-page { display: none; padding: 120px 20px; min-height: 100vh; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .btn-gold { padding: 12px 30px; background: var(--gold); color: var(--primary); border: none; border-radius: 50px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
-
-        /* CONTACT STYLE ASLI */
-        .contact-container { width:100%; max-width:750px; background:white; padding:40px; border-radius:18px; border:2px solid #e6d5b8; margin: 0 auto; box-shadow:0 15px 40px rgba(0,0,0,0.15); }
-        .avatar { width:40px; height:40px; border-radius:50%; background:#800000; color:white; display:flex; align-items:center; justify-content:center; font-weight:600; }
-        .comment { display:flex; gap:12px; background:#fff; padding:15px; border-radius:12px; border:1px solid #eee; margin-bottom:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-        input, textarea { width:100%; padding:12px; margin-top:12px; border-radius:8px; border:1px solid #ddd; font-family:"Outfit"; }
 
         /* MODAL */
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
@@ -100,6 +112,9 @@
     <div class="logo-container" onclick="showPage('home')">
         <img src="logorayhana.png" alt="Logo" onerror="this.src='https://via.placeholder.com/45'">
         <h1>Source Library</h1>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
     </div>
     <ul id="navMenu">
         <li><a onclick="showPage('home')">Beranda</a></li>
@@ -116,157 +131,188 @@
         <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600" class="active">
         <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600">
         <div class="hero-content">
-            <h4 style="letter-spacing:5px; color:var(--gold)">BEYOND DIGITAL LIMITS</h4>
-            <h2 style="font-family:'Cinzel'; font-size: 50px;">Eksplorasi Tanpa Batas</h2>
+            <h4 style="letter-spacing:5px; margin-bottom:10px; color:var(--gold)">BEYOND DIGITAL LIMITS</h4>
+            <h2>Eksplorasi Tanpa Batas</h2>
             <div style="margin-top:30px;">
                 <a href="katalog.html" class="btn-gold">Jelajahi Katalog</a>
+                <a onclick="showPage('about')" class="btn-gold" style="background:transparent; border:1px solid #fff; color:#fff; margin-left:15px;">Our Legacy</a>
             </div>
         </div>
     </section>
 
     <section id="recommended" style="padding: 80px 0;">
+        <div style="text-align:center; margin-bottom:50px">
+            <h4 style="color:var(--primary); letter-spacing:5px;">PREMIUM SELECTION</h4>
+            <h2 style="font-family:'Cinzel',serif; font-size:32px">Recommended Collections</h2>
+        </div>
         <div class="book-marquee"><div class="book-track" id="bookTrack"></div></div>
     </section>
 
-    <section id="literaryNews" style="padding: 100px 60px; background: var(--dark-bg); color: white;">
+    <section id="libraryEvent" style="padding: 100px 60px; background: #fff;">
         <div style="text-align:center;">
+            <h4 style="color:var(--primary); letter-spacing:5px;">AGENDA HISTORIS</h4>
+            <h2 style="font-family:'Cinzel',serif; font-size:32px">Event Perpustakaan</h2>
+        </div>
+        <div class="event-grid" id="homeEventGrid"></div>
+    </section>
+
+    <section id="literaryNews" style="padding: 100px 60px; background: var(--dark-bg); color: white;">
+        <div style="text-align:center; margin-bottom:50px;">
             <h4 style="color:var(--gold); letter-spacing:5px;">LATEST UPDATES</h4>
             <h2 style="font-family:'Cinzel',serif; font-size:32px; color:white;">Berita Literasi</h2>
         </div>
         <div class="news-grid" id="homeNewsGrid"></div>
     </section>
-
-    <div class="footer-separator"></div>
+    <div class="section-divider"></div>
 </main>
 
 <main id="aboutPage" class="spa-page">
-    <div style="max-width: 900px; margin: 0 auto; background:white; padding:60px; border-radius:30px; border:1px solid var(--gold);">
-        <h2 style="font-family:'Cinzel'; color:var(--primary); margin-bottom:20px;">About Source Library</h2>
-        <p style="line-height:2; margin-bottom:30px;">
-            Source Library adalah institusi literasi digital yang berdedikasi untuk melestarikan pengetahuan lama 
-            dan menyebarkan inovasi baru kepada masyarakat luas secara inklusif.
+    <div style="background:white; padding:60px; border-radius:30px; border:2px solid var(--gold); max-width:800px; margin:0 auto;">
+        <h2 style="font-family:'Cinzel'; color:var(--primary); margin-bottom:30px;">About Source Library</h2>
+        <p style="line-height:2; font-size:18px;">
+            Source Library adalah pusat digitalisasi warisan sejarah Universitas Sumatera Utara. Fokus utama kami adalah pelestarian arsip nasional dan penyediaan akses literasi bagi peneliti global melalui teknologi modern.
         </p>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
-            <div>
-                <h3 style="color:var(--primary);">Visi Kami</h3>
-                <p>Menjadi pusat dokumentasi digital yang paling adaptif dan terpercaya di Indonesia, menjebatani kesenjangan akses informasi antar generasi.</p>
+        <hr style="margin:30px 0; opacity:0.1;">
+        <button class="btn-gold" onclick="showPage('home')">← Kembali</button>
+    </div>
+</main>
+
+<main id="loginPage" class="spa-page">
+    <div class="form-wrapper">
+        <div id="loginContent">
+            <h2>Login</h2>
+            <p style="color:#f5e9d7; margin-bottom:20px;">Masuk ke akun Digital Library</p>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Masukkan email Anda">
             </div>
-            <div>
-                <h3 style="color:var(--primary);">Misi Utama</h3>
-                <ul style="padding-left: 20px; margin-top: 10px;">
-                    <li>Digitalisasi naskah dan buku bersejarah.</li>
-                    <li>Penyediaan akses informasi yang inklusif.</li>
-                    <li>Membangun ekosistem riset yang modern.</li>
-                </ul>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="Masukkan password">
             </div>
+            <button class="btn-gold" style="width:100%; margin-top:10px;">Login</button>
+            <p style="margin-top:20px; font-size:14px;">Belum punya akun? <a onclick="toggleAuth(true)" style="color:var(--gold); cursor:pointer; font-weight:700;">Daftar sekarang</a></p>
+        </div>
+        <div id="registerContent" style="display:none;">
+            <h2>Daftar Anggota</h2>
+            <p style="color:#f5e9d7; margin-bottom:20px;">Buat akun baru untuk akses koleksi</p>
+            <div class="input-group"><label>Nama Lengkap</label><input type="text" placeholder="Nama Anda"></div>
+            <div class="input-group"><label>Email</label><input type="email" placeholder="Email aktif"></div>
+            <div class="input-group"><label>Password</label><input type="password" placeholder="Buat password"></div>
+            <button class="btn-gold" style="width:100%; margin-top:10px;">Daftar</button>
+            <p style="margin-top:20px; font-size:14px;">Sudah punya akun? <a onclick="toggleAuth(false)" style="color:var(--gold); cursor:pointer; font-weight:700;">Login</a></p>
         </div>
     </div>
 </main>
 
 <main id="contactPage" class="spa-page">
-    <div class="contact-container">
-        <h1>Contact & Feedback</h1>
-        <p>Silakan kirim komentar atau masukan untuk <strong>Source Library</strong>.</p>
-        <input type="text" id="name" placeholder="Nama Anda">
-        <textarea id="message" rows="4" placeholder="Tulis komentar..."></textarea>
-        <button onclick="addComment()" class="btn-gold" style="background:var(--primary); color:white; width:100%; border-radius:10px;">Kirim</button>
-        <div class="comment-section" style="margin-top:40px;">
-            <div class="comment-header" style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                <h2 style="color:var(--primary)">Komentar Pengunjung</h2>
-                <span id="commentCount">0 komentar</span>
-            </div>
-            <div id="commentList"></div>
+    <div class="form-wrapper" style="background:white; color:#2a2a2a; border-color:var(--primary);">
+        <h2 style="color:var(--primary)">Hubungi Kami</h2>
+        <p style="margin-bottom:25px; opacity:0.7;">Punya pertanyaan mengenai koleksi naskah kuno kami?</p>
+        <div class="input-group">
+            <label style="color:var(--primary)">Nama</label>
+            <input type="text" placeholder="Nama Anda" style="border-color:#ddd">
         </div>
-    </div>
-</main>
-
-<main id="loginPage" class="spa-page">
-    <div class="contact-container" style="max-width:450px; text-align:center;">
-        <h1 style="font-family:'Cinzel'">Member Login</h1>
-        <p>Akses koleksi eksklusif Source Library</p>
-        <input type="text" placeholder="Username / Email">
-        <input type="password" placeholder="Password">
-        <button class="btn-gold" style="width:100%; margin-top:20px;">Sign In</button>
+        <div class="input-group">
+            <label style="color:var(--primary)">Pesan</label>
+            <textarea rows="5" placeholder="Tuliskan pesan..." style="border-color:#ddd; width:100%; border-radius:10px; padding:12px;"></textarea>
+        </div>
+        <button class="btn-gold" style="width:100%; background:var(--primary); color:white;">Kirim Pesan</button>
     </div>
 </main>
 
 <main id="newsFullPage" class="spa-page">
-    <h2 style="font-family:'Cinzel'; text-align:center;">Portal Berita Lengkap</h2>
+    <h2 style="font-family:'Cinzel'; text-align:center; margin-bottom:50px;">Portal Berita Lengkap</h2>
     <div class="news-grid" id="fullNewsGrid"></div>
 </main>
-
 <main id="eventFullPage" class="spa-page">
-    <h2 style="font-family:'Cinzel'; text-align:center;">Archive & History Events</h2>
+    <h2 style="font-family:'Cinzel'; text-align:center; margin-bottom:50px;">Archive & History Events</h2>
     <div class="event-grid" id="fullEventGrid"></div>
 </main>
 
 <footer>
     <div class="footer-main">
         <div class="footer-card">
-            <h2 style="font-family:'Cinzel'; color:var(--gold);">Source Library</h2>
-            <p style="font-size:14px; opacity:0.8;">Mengintegrasikan teknologi masa depan dengan kearifan masa lalu.</p>
+            <h2 style="font-family:'Cinzel'; color:var(--gold); margin-bottom:20px;">Source Library</h2>
+            <p style="font-size:14px; opacity:0.8; line-height:1.8;">Mercusuar ilmu pengetahuan digital di Sumatera Utara. Mengintegrasikan teknologi masa depan dengan kearifan masa lalu.</p>
         </div>
         <div class="footer-card">
-            <h4 style="font-family:'Cinzel'; color:var(--gold);">Quick Links</h4>
+            <h4 style="font-family:'Cinzel'; margin-bottom:20px; color:var(--gold);">Quick Links</h4>
             <ul style="list-style:none; font-size:14px; color:white;">
-                <li onclick="showPage('home')" style="cursor:pointer">Beranda</li>
-                <li onclick="showPage('about')" style="cursor:pointer">Tentang Kami</li>
+                <li style="margin-bottom:10px; cursor:pointer" onclick="showPage('home')">Beranda</li>
+                <li style="margin-bottom:10px; cursor:pointer" onclick="showPage('eventFull')">Event & Sejarah</li>
+                <li style="margin-bottom:10px; cursor:pointer" onclick="showPage('about')">Tentang Kami</li>
             </ul>
         </div>
         <div class="footer-card">
-            <h4 style="font-family:'Cinzel'; color:var(--gold);">Contact</h4>
-            <p style="font-size:13px; opacity:0.7;">📍 USU, Medan<br>📧 support@sourcelib.id</p>
+            <h4 style="font-family:'Cinzel'; margin-bottom:20px; color:var(--gold);">Contact Info</h4>
+            <p style="font-size:13px; opacity:0.7;">📍 Gedung Perpustakaan USU<br>📧 support@sourcelib.id</p>
         </div>
     </div>
-    <div style="text-align:center; margin-top:50px; opacity:0.3; font-size:12px;">
-        &copy; 2026 Source Library System. Designed by Rayhana.
+    <div style="text-align:center; margin-top:60px; font-size:12px; opacity:0.4;">
+        &copy; 2026 Source Library System — Excellence in Digital Literacy. Designed by Rayhana.
     </div>
 </footer>
 
 <div id="newsModal" class="modal" onclick="if(event.target==this) closeNews()">
     <div class="modal-content">
-        <h2 id="mTitle" style="font-family:'Cinzel'; color:var(--primary);"></h2>
-        <div id="mBody" style="line-height:1.8; margin-top:20px;"></div>
-        <button class="btn-gold" onclick="closeNews()" style="margin-top:20px;">Tutup</button>
+        <h2 id="mTitle" style="font-family:'Cinzel'; color:var(--primary); margin-bottom:20px;"></h2>
+        <div id="mBody" style="line-height:1.8; color:#444;"></div>
+        <button class="btn-gold" style="margin-top:30px;" onclick="closeNews()">Tutup</button>
     </div>
 </div>
 
 <script src="books.js"></script>
 <script>
-// --- DATA BERITA ---
 const newsData = [
-    { title: "Misteri Naskah G30S/PKI", img: "https://images.unsplash.com/photo-1532012197367-bb8af70d6521?q=80", desc: "Digitalisasi arsip sensitif kini bisa diakses publik secara terbatas sesuai regulasi ANRI.", content: "Konten lengkap restorasi arsip nasional..." },
-    { title: "Bibliografi Coupling di USU", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80", desc: "Metode baru penelitian jurnal akademik bagi mahasiswa Universitas Sumatera Utara.", content: "Detail teknis bibliografi coupling..." }
+    { title: "Misteri Naskah G30S/PKI", img: "https://images.unsplash.com/photo-1532012197367-bb8af70d6521?q=80", desc: "Digitalisasi arsip sensitif kini bisa diakses publik secara terbatas.", content: "Konten lengkap mengenai naskah bersejarah ANRI..." },
+    { title: "Bibliografi Coupling di USU", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80", desc: "Metode baru penelitian jurnal akademik bagi mahasiswa.", content: "Detail algoritma coupling bibliografi perpustakaan..." }
 ];
 
 const eventData = [
-    { title: "Exhibisi: Surat Proklamasi", img: "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80", desc: "Melihat naskah asli melalui mikroskop digital." }
+    { title: "Exhibisi: Surat Proklamasi", img: "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80", desc: "Melihat naskah asli melalui mikroskop digital khusus." }
 ];
 
-// --- SPA NAVIGATION ---
 function showPage(id) {
-    const pages = ['homePage', 'aboutPage', 'newsFullPage', 'eventFullPage', 'loginPage', 'contactPage'];
-    pages.forEach(p => document.getElementById(p).style.display = 'none');
+    const p = ['homePage', 'aboutPage', 'newsFullPage', 'eventFullPage', 'loginPage', 'contactPage'];
+    p.forEach(x => document.getElementById(x).style.display = 'none');
     document.getElementById(id + 'Page').style.display = 'block';
     window.scrollTo(0,0);
 }
 
-// --- RENDER NEWS DENGAN PERBAIKAN SUMBER ---
-function renderNews() {
+function toggleAuth(isReg) {
+    document.getElementById('loginContent').style.display = isReg ? 'none' : 'block';
+    document.getElementById('registerContent').style.display = isReg ? 'block' : 'none';
+}
+
+function init() {
+    const track = document.getElementById('bookTrack');
+    const displayBooks = [...books.slice(0, 10), ...books.slice(0, 10)];
+    displayBooks.forEach(b => {
+        track.innerHTML += `
+            <div class="book-container" onclick="window.open('${b.file}', '_blank')">
+                <div class="book-inner">
+                    <div class="book-front"><img src="${b.cover}" onerror="this.src='https://via.placeholder.com/220x320'"></div>
+                    <div class="book-back">
+                        <h4>${b.judul}</h4>
+                        <p style="font-size:11px; margin-top:10px;">${b.penulis}</p>
+                    </div>
+                </div>
+            </div>`;
+    });
+
     const hNews = document.getElementById('homeNewsGrid');
     const fNews = document.getElementById('fullNewsGrid');
-    hNews.innerHTML = ""; fNews.innerHTML = "";
-
     newsData.forEach((n, i) => {
         const html = `
         <div class="news-card-v" onclick="openNews(${i})" style="cursor:pointer">
             <img src="${n.img}" class="news-header-img">
             <div class="news-body">
-                <h3 style="font-family:'Playfair Display'; color:var(--gold); margin-bottom:15px;">${n.title}</h3>
-                <p style="font-size:14px; opacity:0.8; line-height:1.6; margin-bottom:10px;">${n.desc}</p>
-                <div style="padding-top:15px; border-top:1px solid rgba(230,213,184,0.2);">
+                <h3 style="font-family:'Playfair Display'; color:var(--gold); margin-bottom:10px;">${n.title}</h3>
+                <p style="font-size:14px; opacity:0.8; line-height:1.6; margin-bottom:15px;">${n.desc}</p>
+                <div style="border-top:1px solid rgba(230,213,184,0.2); padding-top:10px;">
                     <p style="font-size:11px; color:var(--gold); font-style:italic;">
-                        <span style="display:inline-block; width:8px; height:8px; background:var(--gold); border-radius:50%; margin-right:5px;"></span>
+                        <span style="display:inline-block; width:7px; height:7px; background:var(--gold); border-radius:50%; margin-right:5px;"></span>
                         Sumber Terpercaya: Source Digital Archive
                     </p>
                 </div>
@@ -275,38 +321,12 @@ function renderNews() {
         if(i < 3) hNews.innerHTML += html;
         fNews.innerHTML += html;
     });
-}
 
-// --- LOGIC KOMENTAR (ASLI) ---
-let comments = JSON.parse(localStorage.getItem("comments")) || [];
-function addComment(){
-    let name=document.getElementById("name").value;
-    let message=document.getElementById("message").value;
-    if(!name || !message) return alert("Isi data!");
-    comments.push({name, message, time: new Date()});
-    localStorage.setItem("comments", JSON.stringify(comments));
-    showComments();
-    document.getElementById("name").value=""; document.getElementById("message").value="";
-}
-function showComments(){
-    let list = document.getElementById("commentList");
-    list.innerHTML="";
-    comments.forEach((c, idx) => {
-        list.innerHTML += `
-        <div class="comment">
-            <div class="avatar">${c.name.charAt(0).toUpperCase()}</div>
-            <div style="flex:1">
-                <div style="display:flex; justify-content:space-between">
-                    <span style="font-weight:600; color:var(--primary)">${c.name}</span>
-                    <button onclick="deleteComment(${idx})" style="background:none; border:none; color:#999; cursor:pointer">hapus</button>
-                </div>
-                <p style="font-size:14px; color:#444">${c.message}</p>
-            </div>
-        </div>`;
+    const hEvent = document.getElementById('homeEventGrid');
+    eventData.forEach(e => {
+        hEvent.innerHTML += `<div class="event-card"><img src="${e.img}" class="news-header-img"><div style="padding:20px;"><h3>${e.title}</h3><p>${e.desc}</p></div></div>`;
     });
-    document.getElementById("commentCount").innerText = comments.length + " komentar";
 }
-function deleteComment(i){ comments.splice(i,1); localStorage.setItem("comments", JSON.stringify(comments)); showComments(); }
 
 function openNews(i) {
     document.getElementById('mTitle').innerText = newsData[i].title;
@@ -315,11 +335,15 @@ function openNews(i) {
 }
 function closeNews() { document.getElementById('newsModal').style.display = 'none'; }
 
-window.onload = () => {
-    renderNews();
-    showComments();
-    // Logic render bookTrack dsb tetap di sini...
-};
+let cur = 0;
+setInterval(() => {
+    const imgs = document.querySelectorAll('.hero img');
+    imgs[cur].classList.remove('active');
+    cur = (cur + 1) % imgs.length;
+    imgs[cur].classList.add('active');
+}, 5000);
+
+window.onload = init;
 </script>
 </body>
 </html>
