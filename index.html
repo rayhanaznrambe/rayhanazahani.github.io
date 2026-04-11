@@ -112,10 +112,7 @@ text-shadow:0 0 6px rgba(230,213,184,.8)
 }
 
 /* DROPDOWN MENU */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+.dropdown { position: relative; display: inline-block; }
 .dropdown-content {
     display: none;
     position: absolute;
@@ -127,35 +124,13 @@ text-shadow:0 0 6px rgba(230,213,184,.8)
     border-radius: 12px;
     margin-top: 10px;
 }
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    display: block;
-    font-size: 14px;
-}
-.dropdown-content a:hover {
-    background: #800000;
-    border-radius: 10px;
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+.dropdown-content a { color: white; padding: 12px 16px; display: block; font-size: 14px; }
+.dropdown-content a:hover { background: #800000; border-radius: 10px; }
+.dropdown:hover .dropdown-content { display: block; }
 
 /* HAMBURGER MENU */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #e6d5b8;
-    border-radius: 2px;
-}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 25px; height: 3px; background: #e6d5b8; border-radius: 2px; }
 
 @media (max-width: 850px) {
     nav { padding: 14px 20px; }
@@ -171,10 +146,7 @@ text-shadow:0 0 6px rgba(230,213,184,.8)
         max-height: 0;
         overflow: hidden;
     }
-    nav ul.active {
-        max-height: 600px;
-        padding: 10px 0;
-    }
+    nav ul.active { max-height: 600px; padding: 10px 0; }
 }
 
 /* HERO */
@@ -234,14 +206,7 @@ margin-bottom: 10px;
 
 .hero p { color: #fff; font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
 
-/* Tombol Hero Sejajar */
-.sub-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 25px;
-    align-items: center;
-}
+.sub-actions { display: flex; justify-content: center; gap: 20px; margin-top: 25px; align-items: center; }
 .sub-actions .ghost {
     background: transparent;
     border: 1px solid rgba(230,213,184,0.5);
@@ -253,294 +218,63 @@ margin-bottom: 10px;
     font-weight: 600;
     transition: 0.3s;
 }
-.sub-actions .ghost:hover {
-    background: rgba(230,213,184,0.1);
-    border-color: #fff;
-}
 
 /* RECOMMENDED SECTION */
-#recommended{
-background:#fff;
-text-align:center;
-padding:100px 20px;
-overflow:hidden;
-}
+#recommended{ background:#fff; text-align:center; padding:100px 20px; overflow:hidden; }
+.book-scroll-wrapper { overflow: hidden; width: 100%; }
+.book-scroll{ display:flex; gap:30px; padding:30px; animation: autoScroll 40s linear infinite; }
+.book-scroll:hover { animation-play-state: paused; }
+@keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-.book-scroll-wrapper {
-    overflow: hidden;
-    width: 100%;
-}
-
-.book-scroll{
-display:flex;
-gap:30px;
-padding:30px;
-animation: autoScroll 40s linear infinite;
-}
-
-.book-scroll:hover {
-    animation-play-state: paused;
-}
-
-@keyframes autoScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.book-card{
-min-width:240px;
-height: 360px;
-perspective: 1000px;
-cursor:pointer;
-flex-shrink: 0;
-}
-
-.book-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-}
-
-.book-card:hover .book-card-inner {
-    transform: rotateY(180deg);
-}
-
-.book-front, .book-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
+.book-card{ min-width:240px; height: 360px; perspective: 1000px; cursor:pointer; flex-shrink: 0; }
+.book-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
+.book-card:hover .book-card-inner { transform: rotateY(180deg); }
+.book-front, .book-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 .book-front img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
+.book-back { background: #800000; color: #fff; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 20px; border: 2px solid #e6d5b8; text-align: center; }
 
-.book-back {
-    background: #800000;
-    color: #fff;
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    border: 2px solid #e6d5b8;
-    text-align: center;
-}
+/* EVENT SECTION IMPROVED */
+#bookEvent { padding: 100px 20px; background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%); text-align: center; }
+.event-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px 0; }
+.event-card { background: #fff; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.06); transition: 0.4s; border: 1px solid rgba(230, 213, 184, 0.4); text-align: left; display: flex; flex-direction: column; }
+.event-card:hover { transform: translateY(-10px); box-shadow: 0 20px 45px rgba(128,0,0,0.1); }
 
-/* EVENT SECTION - FIXED LAYOUT */
-#bookEvent {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
-    text-align: center;
-}
-
-.event-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0; /* Memberi ruang agar tidak terpotong bayangan */
-}
-
-.event-card {
-    background: #fff;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-    transition: 0.4s;
-    border: 1px solid rgba(230, 213, 184, 0.4);
-    text-align: left;
-    display: flex;
-    flex-direction: column; /* Memastikan konten mengisi vertikal */
-}
-
-.event-card:hover { transform: translateY(-10px); }
-
-/* NEWS SECTION - FIXED GRID */
-#literacyNews {
-    padding: 100px 20px;
-    background: #faf6f0;
-    text-align: center;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-.news-item {
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    border: 1px solid #f0f0f0;
-    text-align: left;
-    height: 100%;
-}
-
-.news-item:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 25px 50px rgba(128,0,0,0.15); 
-    border-color: #e6d5b8;
-}
-
+/* NEWS SECTION IMPROVED */
+#literacyNews { padding: 100px 20px; background: #faf6f0; text-align: center; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto; }
+.news-item { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid #f0f0f0; text-align: left; height: 100%; position: relative;}
+.news-item:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(128,0,0,0.15); border-color: #e6d5b8; }
 .news-img { width: 100%; height: 220px; object-fit: cover; transition: 0.5s; }
-.news-item:hover .news-img { transform: scale(1.05); }
-
 .news-content { padding: 25px; background: #fff; }
 .news-content h3 { color: #800000; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem; }
 .news-tag { display: inline-block; padding: 4px 12px; background: #fdfaf5; color: #800000; border-radius: 5px; font-size: 11px; font-weight: 700; margin-bottom: 10px; border: 1px solid #e6d5b8; }
-
-.news-full { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e6d5b8; line-height: 1.6; animation: fadeIn 0.4s ease; }
-
+.news-full { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e6d5b8; line-height: 1.6; animation: fadeIn 0.4s ease; color: #444;}
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* ABOUT SECTION */
-#aboutContent {
-    display: none;
-    padding: 100px 20px;
-    background: #fff;
-    min-height: 100vh;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-    text-align: left;
-}
-
-.about-card {
-    background: #faf6f0;
-    padding: 35px;
-    border-radius: 20px;
-    border-left: 5px solid #800000;
-}
-
-/* MODAL FIX */
-.library-menu{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:200;
-}
-
-.library-box{
-background:#fff;
-padding:40px;
-border-radius:24px;
-max-width:700px;
-width:90%;
-text-align:center;
-border:3px solid #e6d5b8;
-}
-
-.library-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    margin: 25px 0;
-}
-
-.library-grid a {
-    text-decoration: none;
-    padding: 15px;
-    background: #faf6f0;
-    color: #800000;
-    border-radius: 12px;
-    font-weight: 700;
-    border: 1px solid #e6d5b8;
-    transition: 0.3s;
-}
-
-.library-grid a:hover { background: #800000; color: #fff; }
-
-/* ALL EVENTS/NEWS CONTENT */
-#allEventsContent, #allNewsContent { display: none; padding: 100px 20px; background: #fff; min-height: 100vh; }
-
-.back-nav {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: #800000;
-    text-decoration: none;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 40px;
-    transition: 0.3s;
-}
+/* PAGES & MODALS */
+#aboutContent, #allEventsContent, #allNewsContent { display: none; padding: 100px 20px; background: #fff; min-height: 100vh; }
+.back-nav { display: inline-flex; align-items: center; gap: 10px; color: #800000; text-decoration: none; font-weight: 700; cursor: pointer; margin-bottom: 40px; transition: 0.3s; }
 .back-nav:hover { transform: translateX(-10px); }
 
-/* BUTTONS */
-.btn{
-margin-top:28px;
-padding:14px 40px;
-border-radius:50px;
-border:0;
-background:linear-gradient(90deg,#e6d5b8,#fff);
-color:#7b1f1f;
-font-weight:700;
-cursor:pointer;
-font-size:16px;
-box-shadow:0 10px 30px rgba(0,0,0,0.36);
-transition:transform .22s
-}
+.library-menu{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter:blur(10px); display:none; align-items:center; justify-content:center; z-index:200; }
+.library-box{ background:#fff; padding:40px; border-radius:24px; max-width:700px; width:90%; text-align:center; border:3px solid #e6d5b8; }
+.library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 25px 0; }
+.library-grid a { text-decoration: none; padding: 15px; background: #faf6f0; color: #800000; border-radius: 12px; font-weight: 700; border: 1px solid #e6d5b8; transition: 0.3s; }
+.library-grid a:hover { background: #800000; color: #fff; }
 
+/* ABOUT SECTION */
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; text-align: left; }
+.about-card { background: #faf6f0; padding: 35px; border-radius: 20px; border-left: 5px solid #800000; }
+
+.btn{ margin-top:28px; padding:14px 40px; border-radius:50px; border:0; background:linear-gradient(90deg,#e6d5b8,#fff); color:#7b1f1f; font-weight:700; cursor:pointer; font-size:16px; box-shadow:0 10px 30px rgba(0,0,0,0.36); transition:transform .22s }
 .btn:hover{ transform:translateY(-4px) scale(1.05) }
 
-/* FOOTER */
-footer{
-background:linear-gradient(180deg,#4d0000,#800000);
-color:#e6d5b8;
-padding:60px 20px 30px;
-border-top:6px solid #e6d5b8;
-margin-top:auto
-}
-
-.footer-grid{
-max-width:1100px;
-margin:0 auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px
-}
-
-.footer-col h3{
-color:#fff;
-margin-bottom:20px;
-font-size:20px;
-font-family:"Cinzel",serif;
-border-bottom:2px solid rgba(230,213,184,0.35);
-display:inline-block;
-padding-bottom:8px
-}
-
+footer{ background:linear-gradient(180deg,#4d0000,#800000); color:#e6d5b8; padding:60px 20px 30px; border-top:6px solid #e6d5b8; margin-top:auto }
+.footer-grid{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px }
+.footer-col h3{ color:#fff; margin-bottom:20px; font-size:20px; font-family:"Cinzel",serif; border-bottom:2px solid rgba(230,213,184,0.35); display:inline-block; padding-bottom:8px }
 .footer-col ul{ list-style:none; }
-.footer-col li{ margin-bottom:12px }
 .footer-col a{ color:#f2e4cc; text-decoration:none; font-weight:600; display: flex; align-items: center; gap: 10px; transition: 0.3s;}
 .footer-col a:hover{ color:#fff; padding-left: 5px; }
-
-.social-links { display: flex; gap: 15px; margin-top: 15px; }
-.social-links a { font-size: 14px; color: #fff; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; border: 1px solid #e6d5b8; transition: 0.3s; }
-.social-links a:hover { background: #e6d5b8; color: #800000; }
 </style>
 </head>
 
@@ -551,13 +285,7 @@ padding-bottom:8px
 <img src="logorayhana.png" alt="Logo">
 <h1 onclick="showPage('home')" style="cursor:pointer">Source Library</h1>
 </div>
-
-<button class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-
+<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 <ul id="navLinks">
 <li><a onclick="showPage('home')">Home</a></li>
 <li class="dropdown">
@@ -582,7 +310,6 @@ padding-bottom:8px
         <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80" class="active">
         <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1600&q=80">
         <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80">
-
         <div class="hero-content">
             <h2>Source Library</h2>
             <p>Jelajahi ribuan koleksi literatur klasik dan modern dalam genggaman Anda.</p>
@@ -597,10 +324,7 @@ padding-bottom:8px
     <section id="recommended">
         <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px;">CURATED FOR YOU</span>
         <h2>Recommended Books</h2>
-        <div class="book-scroll-wrapper">
-            <div class="book-scroll" id="recommendContainer">
-                </div>
-        </div>
+        <div class="book-scroll-wrapper"><div class="book-scroll" id="recommendContainer"></div></div>
     </section>
 
     <section id="bookEvent">
@@ -608,12 +332,9 @@ padding-bottom:8px
             <span style="color: #800000; font-weight: 700; letter-spacing: 2px; font-size: 14px;">HAPPENING NOW</span>
             <h2 style="font-family:'Cinzel'; color:#800000; font-size:42px;">Library Activities & Events</h2>
         </div>
-        <div class="event-container" id="eventContainer">
-            </div>
+        <div class="event-container" id="eventContainer"></div>
         <div style="margin-top: 50px;">
-            <button class="btn" onclick="showPage('all-events')" style="background: transparent; border: 2px solid #800000; color: #800000; box-shadow: none;">
-                Lihat Semua Event →
-            </button>
+            <button class="btn" onclick="showPage('all-events')" style="background: transparent; border: 2px solid #800000; color: #800000; box-shadow: none;">Lihat Semua Event →</button>
         </div>
     </section>
 
@@ -623,10 +344,7 @@ padding-bottom:8px
             <h2 style="font-family:'Cinzel'; color:#800000; font-size:42px; margin-bottom:15px;">Berita Literasi Digital</h2>
             <p style="color:#666;">Wawasan terbaru mengenai buku, penulis, dan teknologi perpustakaan global.</p>
         </div>
-        
-        <div class="news-grid" id="newsGrid">
-            </div>
-
+        <div class="news-grid" id="newsGrid"></div>
         <button class="btn" onclick="showPage('all-news')" style="background:#800000; color:#fff;">Lihat Semua Berita</button>
     </section>
 </main>
@@ -635,8 +353,7 @@ padding-bottom:8px
     <div style="max-width:1200px; margin:0 auto;">
         <a onclick="showPage('home')" class="back-nav">← Back to Home</a>
         <h2 style="font-family:'Cinzel'; color:#800000; font-size:48px; text-align:center; margin-bottom:40px;">Pusat Informasi Literasi</h2>
-        <div class="news-grid" id="fullNewsGrid">
-            </div>
+        <div class="news-grid" id="fullNewsGrid"></div>
     </div>
 </section>
 
@@ -644,8 +361,7 @@ padding-bottom:8px
     <div style="max-width: 1200px; margin: 0 auto; text-align:center;">
         <a onclick="showPage('home')" class="back-nav">← Back to Home</a>
         <h2 style="font-family: 'Cinzel', serif; color: #800000; font-size: 42px; margin-bottom: 40px;">Kalender Event Lengkap</h2>
-        <div class="event-container" id="fullEventContainer">
-            </div>
+        <div class="event-container" id="fullEventContainer"></div>
     </div>
 </section>
 
@@ -653,28 +369,9 @@ padding-bottom:8px
     <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
         <a onclick="showPage('home')" class="back-nav">← Back to Home</a>
         <h2 style="font-family: 'Cinzel', serif; color: #800000; font-size: 48px;">About Source Library</h2>
-        <p style="font-size: 18px; color: #666; margin-top: 20px;">
-            Source Library adalah institusi literasi digital yang berdedikasi untuk melestarikan pengetahuan lama 
-            dan menyebarkan inovasi baru kepada masyarakat luas secara inklusif.
-        </p>
-
         <div class="about-grid">
-            <div class="about-card">
-                <h3>Visi Kami</h3>
-                <p>Menjadi pusat dokumentasi digital yang paling adaptif dan terpercaya di Indonesia, menjembatani kesenjangan akses informasi antar generasi.</p>
-            </div>
-            <div class="about-card">
-                <h3>Misi Utama</h3>
-                <ul style="padding-left: 20px; margin-top: 10px;">
-                    <li>Digitalisasi naskah dan buku klasik berkelas.</li>
-                    <li>Penyediaan platform literasi gratis 24/7.</li>
-                    <li>Penyelenggaraan event edukatif berkala.</li>
-                </ul>
-            </div>
-            <div class="about-card">
-                <h3>Nilai Institusi</h3>
-                <p>Integritas Data, Aksesibilitas Tanpa Batas, dan Pelestarian Budaya Literasi Klasik.</p>
-            </div>
+            <div class="about-card"><h3>Visi Kami</h3><p>Menjadi pusat dokumentasi digital paling adaptif di Indonesia.</p></div>
+            <div class="about-card"><h3>Misi Utama</h3><p>Digitalisasi naskah klasik dan akses gratis 24/7.</p></div>
         </div>
     </div>
 </section>
@@ -685,98 +382,40 @@ padding-bottom:8px
         <div class="library-grid">
             <a href="katalog.html?kategori=novel"><span>📖</span> Novel & Sastra</a>
             <a href="katalog.html?kategori=akademik"><span>🎓</span> Jurnal Akademik</a>
-            <a href="katalog.html?kategori=sejarah"><span>🌍</span> Arsip Sejarah</a>
-            <a href="katalog.html?kategori=biografi"><span>👤</span> Biografi Tokoh</a>
-            <a href="katalog.html" style="grid-column: span 2; background: #800000; color: #fff;">📚 Jelajahi Semua Koleksi</a>
+            <a href="katalog.html" style="grid-column: span 2; background: #800000; color: #fff;">📚 Jelajahi Semua</a>
         </div>
-        <button class="btn" style="background:#666; color:#fff;" onclick="closeLibrary()">Tutup Panel</button>
+        <button class="btn" style="background:#666; color:#fff;" onclick="closeLibrary()">Tutup</button>
     </div>
 </div>
 
-<footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h3>Source Library</h3>
-            <p style="color:#f2e4cc;font-size:14px;line-height:1.7;">Pusat literasi digital yang mengkurasi buku-buku lama berkelas dan referensi modern.</p>
-            <div class="social-links">
-                <a href="#">FB</a>
-                <a href="#">IG</a>
-                <a href="#">TW</a>
-            </div>
-        </div>
-        <div class="footer-col">
-            <h3>Navigasi Cepat</h3>
-            <ul>
-                <li><a onclick="showPage('home')">🏠 Beranda Utama</a></li>
-                <li><a onclick="showPage('about')">📚 Profil Perpustakaan</a></li>
-                <li><a href="admin.html">👩‍💻 Dashboard Admin</a></li>
-                <li><a href="kontak.html">✉️ Hubungi Kami</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Kontak & Lokasi</h3>
-            <p>📍 Jl. Perpustakaan No. 10, Medan</p>
-            <p>📞 +62 812 3456 7890</p>
-            <p>📧 info@sourcelibrary.com</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 <strong>Source Library Digital System</strong> — Dirancang untuk Keunggulan Literasi.</p>
-    </div>
-</footer>
+<footer><p>© 2026 Source Library Digital System</p></footer>
 
 <script src="books.js"></script>
-
 <script>
-// --- DATA: 6 BERITA ---
 const newsList = [
-    { title: "Koleksi Edisi Pertama Harry Potter", tag: "MAGIC", desc: "Arsip digital langka naskah J.K. Rowling kini tersedia di Source Library.", img: "https://images.unsplash.com/photo-1544640808-32ca72ac7f37?auto=format&fit=crop&w=800", full: "Temukan perjalanan Harry Potter dari batu filsuf hingga relikui kematian melalui koleksi cover asli tahun 1997 yang telah didigitalisasi." },
-    { title: "Kembalinya Chronicles of Narnia", tag: "FANTASY", desc: "Eksplorasi dunia C.S. Lewis melalui naskah kuno yang baru ditemukan.", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800", full: "Jelajahi peta asli Narnia dan sketsa karakter Aslan dalam resolusi tinggi yang kami peroleh dari arsip perpustakaan Oxford." },
-    { title: "Restorasi Naskah Kuno Majapahit", tag: "ARCHIVE", desc: "Teknologi AI membantu membaca serat naskah kuno yang hampir hancur.", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800", full: "Bekerjasama dengan ANRI, kami menggunakan AI untuk rekonstruksi teks pada naskah lontar peninggalan kerajaan Nusantara." },
-    { title: "Masa Depan Library: Metaverse", tag: "FUTURE", desc: "Menjelajahi rak buku virtual menggunakan teknologi VR terbaru.", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800", full: "Pengalaman imersif baru yang memungkinkan Anda membaca buku digital layaknya memegang fisik di dalam dunia metaverse kami." },
-    { title: "Sejarah Komik Marvel Golden Age", tag: "COMIC", desc: "Transformasi komik fisik ke format digital dengan restorasi warna.", img: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800", full: "Melihat kembali edisi pertama Captain America dan Avengers dalam format digital interaktif yang tajam." },
-    { title: "Tips Validasi Sumber Literasi Digital", tag: "EDUCATION", desc: "Cara menghindari hoax dan menemukan referensi akademik yang valid.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800", full: "Gunakan fitur bibliographic coupling di portal kami untuk memvalidasi kredibilitas sebuah jurnal secara otomatis." }
+    { title: "Koleksi Edisi Pertama Harry Potter", tag: "MAGIC", desc: "Arsip digital langka naskah J.K. Rowling.", img: "https://images.unsplash.com/photo-1544640808-32ca72ac7f37?w=800", full: "Tersedia koleksi cover asli tahun 1997 yang telah didigitalisasi." },
+    { title: "Restorasi Naskah Kuno Majapahit", tag: "ARCHIVE", desc: "Teknologi AI membantu membaca serat naskah kuno.", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800", full: "Bekerjasama dengan ANRI untuk rekonstruksi teks pada naskah lontar." },
+    { title: "Masa Depan Library: Metaverse", tag: "FUTURE", desc: "Menjelajahi rak buku virtual menggunakan VR.", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800", full: "Pengalaman imersif baru membaca buku digital dalam dunia metaverse." },
+    { title: "Tips Validasi Sumber Literasi", tag: "EDUCATION", desc: "Cara menghindari hoax di era digital.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800", full: "Gunakan fitur bibliographic coupling untuk memvalidasi kredibilitas jurnal." }
 ];
 
-// --- NAVIGATION LOGIC ---
+const libraryEvents = [
+    { judul: "Pameran Koleksi Klasik 1900-an", desc: "Menampilkan buku langka penulis dunia.", tgl: "15 Mei 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800" },
+    { judul: "Bedah Buku: Masa Depan Arsip", desc: "Diskusi panel pustakawan tentang AI.", tgl: "22 Mei 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800" },
+    { judul: "Workshop Manajemen Referensi", desc: "Pelatihan tools bagi mahasiswa.", tgl: "01 Juni 2026", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800" }
+];
+
 function showPage(pageId) {
-    const pages = ['homeContent', 'aboutContent', 'allEventsContent', 'allNewsContent'];
-    pages.forEach(p => {
+    ['homeContent', 'aboutContent', 'allEventsContent', 'allNewsContent'].forEach(p => {
         const el = document.getElementById(p);
         if(el) el.style.display = 'none';
     });
-    
     if(pageId === 'home') document.getElementById('homeContent').style.display = 'block';
     else if(pageId === 'about') document.getElementById('aboutContent').style.display = 'block';
-    else if(pageId === 'all-events') {
-        document.getElementById('allEventsContent').style.display = 'block';
-        renderFullEvents();
-    } else if(pageId === 'all-news') {
-        document.getElementById('allNewsContent').style.display = 'block';
-        renderFullNews();
-    }
-    
+    else if(pageId === 'all-events') { document.getElementById('allEventsContent').style.display = 'block'; renderFullEvents(); }
+    else if(pageId === 'all-news') { document.getElementById('allNewsContent').style.display = 'block'; renderFullNews(); }
     document.getElementById('navLinks').classList.remove('active');
     window.scrollTo(0,0);
-}
-
-// --- NEWS RENDER ---
-function renderNews() {
-    const grid = document.getElementById('newsGrid');
-    if(!grid) return;
-    grid.innerHTML = "";
-    newsList.slice(0,3).forEach(n => {
-        grid.innerHTML += createNewsHTML(n);
-    });
-}
-
-function renderFullNews() {
-    const grid = document.getElementById('fullNewsGrid');
-    if(!grid) return;
-    grid.innerHTML = "";
-    newsList.forEach(n => {
-        grid.innerHTML += createNewsHTML(n);
-    });
 }
 
 function createNewsHTML(n) {
@@ -787,99 +426,59 @@ function createNewsHTML(n) {
             <span class="news-tag">${n.tag}</span>
             <h3>${n.title}</h3>
             <p>${n.desc}</p>
-            <div class="news-full">
-                <p>${n.full}</p>
-                <a href="javascript:void(0)" style="color:#800000; font-weight:bold; text-decoration:none;">Baca Selengkapnya...</a>
-            </div>
+            <div class="news-full"><p>${n.full}</p></div>
         </div>
     </div>`;
 }
 
 function toggleNews(card) {
     const full = card.querySelector('.news-full');
-    const allFull = document.querySelectorAll('.news-full');
-    allFull.forEach(item => { if(item !== full) item.style.display = 'none'; });
-    full.style.display = (full.style.display === 'block') ? 'none' : 'block';
+    const isVisible = full.style.display === 'block';
+    document.querySelectorAll('.news-full').forEach(item => item.style.display = 'none');
+    full.style.display = isVisible ? 'none' : 'block';
 }
-
-// --- HAMBURGER ---
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-
-// --- HERO SLIDER ---
-const heroImages=document.querySelectorAll(".hero img");
-let current=0;
-setInterval(()=>{
-    if(heroImages.length > 0) {
-        heroImages[current].classList.remove("active");
-        current=(current+1)%heroImages.length;
-        heroImages[current].classList.add("active");
-    }
-},5000);
-
-// --- MODAL ---
-function openLibrary(){ document.getElementById("libraryMenu").style.display = "flex"; }
-function closeLibrary(){ document.getElementById("libraryMenu").style.display = "none"; }
-
-// --- DATA: 5 EVENTS ---
-const libraryEvents = [
-    { judul: "Pameran Koleksi Klasik 1900-an", desc: "Menampilkan buku langka penulis legendaris dunia.", tgl: "15 Mei 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80" },
-    { judul: "Bedah Buku: Masa Depan Arsip Digital", desc: "Diskusi panel pustakawan tentang AI di perpustakaan.", tgl: "22 Mei 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" },
-    { judul: "Workshop Manajemen Referensi", desc: "Pelatihan tools bibliographic untuk mahasiswa.", tgl: "01 Juni 2026", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80" },
-    { judul: "Exhibisi Literasi Sejarah Nusantara", desc: "Menelusuri sejarah Indonesia melalui arsip digital.", tgl: "10 Juni 2026", img: "https://images.unsplash.com/photo-1529148482759-b35b25c5f217?auto=format&fit=crop&w=800&q=80" },
-    { judul: "Festival Komik Dunia", desc: "Eksplorasi literasi visual dari Marvel hingga Manga.", tgl: "20 Juni 2026", img: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800&q=80" }
-];
 
 function createEventElement(ev) {
     const div = document.createElement("div");
     div.className = "event-card";
     div.innerHTML = `
         <img src="${ev.img}" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:25px; flex-grow: 1; display: flex; flex-direction: column;">
+        <div style="padding:25px; flex-grow: 1;">
             <h3>${ev.judul}</h3>
             <p style="font-size:14px; color:#666; margin:10px 0;">${ev.desc}</p>
-            <div style="font-size:12px; font-weight:bold; color:#800000; margin-top: auto;">📅 ${ev.tgl}</div>
+            <div style="font-size:12px; font-weight:bold; color:#800000; margin-top:10px;">📅 ${ev.tgl}</div>
         </div>`;
     return div;
 }
 
+function renderNews() { document.getElementById('newsGrid').innerHTML = newsList.slice(0,3).map(n => createNewsHTML(n)).join(''); }
+function renderFullNews() { document.getElementById('fullNewsGrid').innerHTML = newsList.map(n => createNewsHTML(n)).join(''); }
 function renderFullEvents() {
     const container = document.getElementById("fullEventContainer");
-    if(!container) return;
     container.innerHTML = "";
     libraryEvents.forEach(ev => container.appendChild(createEventElement(ev)));
 }
 
-// --- INITIAL LOAD ---
 document.addEventListener("DOMContentLoaded", () => {
     renderNews();
-    const recContainer = document.getElementById("recommendContainer");
-    if(recContainer && typeof books !== "undefined") {
-        const displayBooks = [...books, ...books];
-        displayBooks.forEach(book => {
-            const card = document.createElement("div");
-            card.className = "book-card";
-            card.innerHTML = `
-                <div class="book-card-inner">
-                    <div class="book-front"><img src="${book.cover}"></div>
-                    <div class="book-back">
-                        <h4>${book.judul}</h4>
-                        <p>${book.penulis}</p>
-                        <hr style="margin:15px auto; width:50%; border:1px solid #e6d5b8;">
-                        <p style="font-size:11px;">Katalog Digital: Tersedia</p>
-                    </div>
-                </div>`;
-            card.onclick = () => window.open(book.file, "_blank");
-            recContainer.appendChild(card);
-        });
-    }
     const homeEventContainer = document.getElementById("eventContainer");
-    if(homeEventContainer) {
-        libraryEvents.slice(0,3).forEach(ev => homeEventContainer.appendChild(createEventElement(ev)));
-    }
-});
-</script>
+    if(homeEventContainer) libraryEvents.slice(0,3).forEach(ev => homeEventContainer.appendChild(createEventElement(ev)));
+    
+    // Slider Logic
+    const heroImages=document.querySelectorAll(".hero img");
+    let current=0;
+    setInterval(()=>{
+        heroImages[current].classList.remove("active");
+        current=(current+1)%heroImages.length;
+        heroImages[current].classList.add("active");
+    },5000);
 
+    // Hamburger
+    document.getElementById('hamburger').onclick = () => document.getElementById('navLinks').classList.toggle('active');
+});
+
+function openLibrary(){ document.getElementById("libraryMenu").style.display = "flex"; }
+function closeLibrary(){ document.getElementById("libraryMenu").style.display = "none"; }
+</script>
 </body>
 </html>
