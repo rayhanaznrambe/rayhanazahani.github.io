@@ -331,7 +331,7 @@ flex-shrink: 0;
     text-align: center;
 }
 
-/* EVENT SECTION - FIXED WRAPPING */
+/* EVENT SECTION - FIXED LAYOUT */
 #bookEvent {
     padding: 100px 20px;
     background: linear-gradient(135deg, #fdfaf5 0%, #f3e9dd 100%);
@@ -340,11 +340,11 @@ flex-shrink: 0;
 
 .event-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 20px; /* Pencegah terpotong */
+    padding: 20px 0; /* Memberi ruang agar tidak terpotong bayangan */
 }
 
 .event-card {
@@ -355,9 +355,8 @@ flex-shrink: 0;
     transition: 0.4s;
     border: 1px solid rgba(230, 213, 184, 0.4);
     text-align: left;
-    height: 100%; /* Konsistensi tinggi */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Memastikan konten mengisi vertikal */
 }
 
 .event-card:hover { transform: translateY(-10px); }
@@ -375,7 +374,6 @@ flex-shrink: 0;
     gap: 30px;
     max-width: 1200px;
     margin: 40px auto;
-    align-items: start; /* Pastikan layout tidak rusak jika teks berbeda panjang */
 }
 
 .news-item {
@@ -387,7 +385,7 @@ flex-shrink: 0;
     cursor: pointer;
     border: 1px solid #f0f0f0;
     text-align: left;
-    position: relative;
+    height: 100%;
 }
 
 .news-item:hover { 
@@ -400,15 +398,15 @@ flex-shrink: 0;
 .news-item:hover .news-img { transform: scale(1.05); }
 
 .news-content { padding: 25px; background: #fff; }
-.news-content h3 { color: #800000; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 18px; }
+.news-content h3 { color: #800000; font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.2rem; }
 .news-tag { display: inline-block; padding: 4px 12px; background: #fdfaf5; color: #800000; border-radius: 5px; font-size: 11px; font-weight: 700; margin-bottom: 10px; border: 1px solid #e6d5b8; }
 
-.news-full { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e6d5b8; line-height: 1.6; animation: fadeIn 0.4s ease; font-size: 14px; }
+.news-full { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #e6d5b8; line-height: 1.6; animation: fadeIn 0.4s ease; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* ABOUT SECTION */
-#aboutContent, #contactContent, #loginContent {
+#aboutContent {
     display: none;
     padding: 100px 20px;
     background: #fff;
@@ -543,8 +541,6 @@ padding-bottom:8px
 .social-links { display: flex; gap: 15px; margin-top: 15px; }
 .social-links a { font-size: 14px; color: #fff; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; border: 1px solid #e6d5b8; transition: 0.3s; }
 .social-links a:hover { background: #e6d5b8; color: #800000; }
-
-.footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; }
 </style>
 </head>
 
@@ -576,8 +572,8 @@ padding-bottom:8px
 <li><a onclick="showPage('all-events')">Event</a></li>
 <li><a onclick="showPage('about')">About Us</a></li>
 <li><a href="admin.html">Admin</a></li>
-<li><a onclick="showPage('contact')">Contact</a></li>
-<li><a onclick="showPage('login')"><strong>Login</strong></a></li>
+<li><a href="kontak.html">Contact</a></li>
+<li><a href="login.html"><strong>Login</strong></a></li>
 </ul>
 </nav>
 
@@ -683,31 +679,6 @@ padding-bottom:8px
     </div>
 </section>
 
-<section id="contactContent">
-    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <a onclick="showPage('home')" class="back-nav">← Back to Home</a>
-        <h2 style="font-family: 'Cinzel', serif; color: #800000; font-size: 48px; margin-bottom: 20px;">Hubungi Kami</h2>
-        <p>Silakan kirimkan pesan kepada tim administrasi kami.</p>
-        <div style="margin-top:40px; text-align:left; background:#faf6f0; padding:30px; border-radius:20px;">
-            <p><strong>Email:</strong> info@sourcelibrary.com</p>
-            <p><strong>WhatsApp:</strong> +62 812 3456 7890</p>
-            <p><strong>Alamat:</strong> Jl. Perpustakaan No. 10, Medan, Sumatera Utara.</p>
-        </div>
-    </div>
-</section>
-
-<section id="loginContent">
-    <div style="max-width: 500px; margin: 0 auto; text-align: center;">
-        <a onclick="showPage('home')" class="back-nav">← Back to Home</a>
-        <h2 style="font-family: 'Cinzel', serif; color: #800000; font-size: 48px; margin-bottom: 30px;">Login</h2>
-        <div style="background:#faf6f0; padding:40px; border-radius:25px; border: 1px solid #e6d5b8;">
-            <input type="text" placeholder="Username" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd;">
-            <input type="password" placeholder="Password" style="width:100%; padding:15px; margin-bottom:20px; border-radius:10px; border:1px solid #ddd;">
-            <button class="btn" style="width:100%; margin-top:0;">Masuk Ke Sistem</button>
-        </div>
-    </div>
-</section>
-
 <div id="libraryMenu" class="library-menu">
     <div class="library-box">
         <h2 style="font-family:'Cinzel'; color:#800000;">Pilih Kategori Koleksi</h2>
@@ -739,7 +710,7 @@ padding-bottom:8px
                 <li><a onclick="showPage('home')">🏠 Beranda Utama</a></li>
                 <li><a onclick="showPage('about')">📚 Profil Perpustakaan</a></li>
                 <li><a href="admin.html">👩‍💻 Dashboard Admin</a></li>
-                <li><a onclick="showPage('contact')">✉️ Hubungi Kami</a></li>
+                <li><a href="kontak.html">✉️ Hubungi Kami</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -757,55 +728,19 @@ padding-bottom:8px
 <script src="books.js"></script>
 
 <script>
-// --- DATA: 6 BERITA DUNIA (FIXED CONTENT & THEMES) ---
+// --- DATA: 6 BERITA ---
 const newsList = [
-    { 
-        title: "Dunia Sihir Harry Potter: Koleksi Edisi Pertama", 
-        tag: "POPULAR", 
-        desc: "Melihat lebih dekat naskah asli J.K. Rowling yang kini tersedia digital.", 
-        img: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=800", 
-        full: "Koleksi Harry Potter kami mencakup sejarah ilustrasi cover dari 1997. Kami juga menyediakan analisis mendalam tentang dampak budaya Hogwarts pada minat baca remaja di Indonesia." 
-    },
-    { 
-        title: "Chronicles of Narnia: Pintu Menuju Fantasi", 
-        tag: "FANTASY", 
-        desc: "Arsip lengkap C.S. Lewis kini telah didigitalisasi untuk publik.", 
-        img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800", 
-        full: "Jelajahi peta asli Narnia dan sketsa karakter Aslan yang belum pernah dipublikasikan sebelumnya. Tersedia dalam format interaktif." 
-    },
-    { 
-        title: "Restorasi Naskah Kuno Populer Indonesia", 
-        tag: "TECH", 
-        desc: "AI membantu memulihkan naskah Majapahit yang termakan usia.", 
-        img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800", 
-        full: "Proyek 'Digital Nusantara' berhasil memindai 1000 naskah kuno dari seluruh provinsi, memastikan budaya kita tetap hidup di era internet." 
-    },
-    { 
-        title: "Marvel & DC: Sejarah Komik Golden Age", 
-        tag: "CULTURE", 
-        desc: "Bagaimana pahlawan super lahir dari krisis ekonomi dunia.", 
-        img: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800", 
-        full: "Dari Captain America hingga Batman, koleksi digital kami menghadirkan edisi pertama komik-komik legendaris yang mendunia." 
-    },
-    { 
-        title: "Teknik Penjilidan Buku Klasik Inggris", 
-        tag: "HISTORY", 
-        desc: "Seni estetika buku abad ke-18 yang masih memukau hingga kini.", 
-        img: "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&w=800", 
-        full: "Source Library berkolaborasi dengan museum London untuk menghadirkan video tutorial restorasi buku fisik secara digital." 
-    },
-    { 
-        title: "Masa Depan Library: Metaverse Pustaka", 
-        tag: "FUTURE", 
-        desc: "Menjelajahi rak buku virtual menggunakan teknologi VR.", 
-        img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800", 
-        full: "Pengguna kini dapat berjalan-jalan di perpustakaan virtual dan mengambil buku digital layaknya buku fisik di rak." 
-    }
+    { title: "Koleksi Edisi Pertama Harry Potter", tag: "MAGIC", desc: "Arsip digital langka naskah J.K. Rowling kini tersedia di Source Library.", img: "https://images.unsplash.com/photo-1544640808-32ca72ac7f37?auto=format&fit=crop&w=800", full: "Temukan perjalanan Harry Potter dari batu filsuf hingga relikui kematian melalui koleksi cover asli tahun 1997 yang telah didigitalisasi." },
+    { title: "Kembalinya Chronicles of Narnia", tag: "FANTASY", desc: "Eksplorasi dunia C.S. Lewis melalui naskah kuno yang baru ditemukan.", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800", full: "Jelajahi peta asli Narnia dan sketsa karakter Aslan dalam resolusi tinggi yang kami peroleh dari arsip perpustakaan Oxford." },
+    { title: "Restorasi Naskah Kuno Majapahit", tag: "ARCHIVE", desc: "Teknologi AI membantu membaca serat naskah kuno yang hampir hancur.", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800", full: "Bekerjasama dengan ANRI, kami menggunakan AI untuk rekonstruksi teks pada naskah lontar peninggalan kerajaan Nusantara." },
+    { title: "Masa Depan Library: Metaverse", tag: "FUTURE", desc: "Menjelajahi rak buku virtual menggunakan teknologi VR terbaru.", img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800", full: "Pengalaman imersif baru yang memungkinkan Anda membaca buku digital layaknya memegang fisik di dalam dunia metaverse kami." },
+    { title: "Sejarah Komik Marvel Golden Age", tag: "COMIC", desc: "Transformasi komik fisik ke format digital dengan restorasi warna.", img: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800", full: "Melihat kembali edisi pertama Captain America dan Avengers dalam format digital interaktif yang tajam." },
+    { title: "Tips Validasi Sumber Literasi Digital", tag: "EDUCATION", desc: "Cara menghindari hoax dan menemukan referensi akademik yang valid.", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800", full: "Gunakan fitur bibliographic coupling di portal kami untuk memvalidasi kredibilitas sebuah jurnal secara otomatis." }
 ];
 
 // --- NAVIGATION LOGIC ---
 function showPage(pageId) {
-    const pages = ['homeContent', 'aboutContent', 'allEventsContent', 'allNewsContent', 'contactContent', 'loginContent'];
+    const pages = ['homeContent', 'aboutContent', 'allEventsContent', 'allNewsContent'];
     pages.forEach(p => {
         const el = document.getElementById(p);
         if(el) el.style.display = 'none';
@@ -813,8 +748,6 @@ function showPage(pageId) {
     
     if(pageId === 'home') document.getElementById('homeContent').style.display = 'block';
     else if(pageId === 'about') document.getElementById('aboutContent').style.display = 'block';
-    else if(pageId === 'contact') document.getElementById('contactContent').style.display = 'block';
-    else if(pageId === 'login') document.getElementById('loginContent').style.display = 'block';
     else if(pageId === 'all-events') {
         document.getElementById('allEventsContent').style.display = 'block';
         renderFullEvents();
@@ -856,7 +789,7 @@ function createNewsHTML(n) {
             <p>${n.desc}</p>
             <div class="news-full">
                 <p>${n.full}</p>
-                <a href="javascript:void(0)" style="color:#800000; font-weight:bold; text-decoration:none;">Tutup Detail</a>
+                <a href="javascript:void(0)" style="color:#800000; font-weight:bold; text-decoration:none;">Baca Selengkapnya...</a>
             </div>
         </div>
     </div>`;
@@ -889,7 +822,7 @@ setInterval(()=>{
 function openLibrary(){ document.getElementById("libraryMenu").style.display = "flex"; }
 function closeLibrary(){ document.getElementById("libraryMenu").style.display = "none"; }
 
-// --- DATA: EVENTS ---
+// --- DATA: 5 EVENTS ---
 const libraryEvents = [
     { judul: "Pameran Koleksi Klasik 1900-an", desc: "Menampilkan buku langka penulis legendaris dunia.", tgl: "15 Mei 2026", img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80" },
     { judul: "Bedah Buku: Masa Depan Arsip Digital", desc: "Diskusi panel pustakawan tentang AI di perpustakaan.", tgl: "22 Mei 2026", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" },
@@ -903,10 +836,10 @@ function createEventElement(ev) {
     div.className = "event-card";
     div.innerHTML = `
         <img src="${ev.img}" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:25px; flex-grow:1;">
+        <div style="padding:25px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3>${ev.judul}</h3>
             <p style="font-size:14px; color:#666; margin:10px 0;">${ev.desc}</p>
-            <div style="font-size:12px; font-weight:bold; color:#800000; margin-top:auto;">📅 ${ev.tgl}</div>
+            <div style="font-size:12px; font-weight:bold; color:#800000; margin-top: auto;">📅 ${ev.tgl}</div>
         </div>`;
     return div;
 }
@@ -921,7 +854,6 @@ function renderFullEvents() {
 // --- INITIAL LOAD ---
 document.addEventListener("DOMContentLoaded", () => {
     renderNews();
-
     const recContainer = document.getElementById("recommendContainer");
     if(recContainer && typeof books !== "undefined") {
         const displayBooks = [...books, ...books];
@@ -942,7 +874,6 @@ document.addEventListener("DOMContentLoaded", () => {
             recContainer.appendChild(card);
         });
     }
-
     const homeEventContainer = document.getElementById("eventContainer");
     if(homeEventContainer) {
         libraryEvents.slice(0,3).forEach(ev => homeEventContainer.appendChild(createEventElement(ev)));
